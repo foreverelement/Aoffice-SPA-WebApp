@@ -10,18 +10,12 @@
         </mu-appbar>
 
         <!-- 内容条件渲染 -->
-        <!--
-            <Furnichure     v-if="this.$route.params.id === 'furnichure'" />
-            <Decoration     v-else-if="this.$route.params.id === 'decoration'" />
-            <Research       v-else-if="this.$route.params.id === 'research'"/>
-            <Training       v-else-if="this.$route.params.id === 'training'" />
-            <Welfare        v-else-if="this.$route.params.id === 'welfare'" />
-            <Computer       v-else />
-        -->
+        <Swiper :swiper_arr=bannerImg_Arr[0]  />
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import  Swiper      from    '../Discover/Swiper.vue'     // 引入轮播组件
 const   components = { Swiper }
 
@@ -37,6 +31,7 @@ export default {
             location.href='#/service/furnichure'
         }
     },
+    computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' }),
     components: components
 }
 </script>
