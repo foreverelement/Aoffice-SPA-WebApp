@@ -1,7 +1,7 @@
 <!-- "发现"页面 -->
 <template>
     <div id="discover">
-        <Swiper />
+        <Swiper :swiper_arr=bannerImg_Arr[0]  />
         <EnterpriseService />
         <Title :title_info=title_info />
         <BuildingList />
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import  Swiper                  from    '../components/Discover/Swiper.vue'
 import  EnterpriseService       from    '../components/Discover/EnterpriseService.vue'
 import  Title                   from    '../components/Auto/Title.vue'
@@ -24,6 +26,7 @@ export default {
             }
         }
     },
+    computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' }),
     components: components
 }
 </script>

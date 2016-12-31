@@ -3,7 +3,7 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <!-- 循环图片列表 -->
-            <div class="swiper-slide" v-for="item in bannerImg_Arr[0]">
+            <div class="swiper-slide" v-for="item in swiper_arr">
                 <img :src="item.imgUrl" class="bannerImg">
             </div>
         </div>
@@ -14,8 +14,8 @@
 
 <script>
 import Swiper from '../../assets/script/swiper.min.js'
-import { mapGetters } from 'vuex'
 export default {
+    props: [ 'swiper_arr' ],
     // Banner
     mounted: function () { this.carousel() },
     methods: {
@@ -33,8 +33,7 @@ export default {
                 });
             }, 100)
         }
-    },
-    computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
+    }
 }
 </script>
 
