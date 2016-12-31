@@ -103,7 +103,6 @@ export default {
         },
         // 目的: 执行跳转
         toUrl: function (message) {
-            // alert(message)
             location.href='#/service/' + message
         }
     }

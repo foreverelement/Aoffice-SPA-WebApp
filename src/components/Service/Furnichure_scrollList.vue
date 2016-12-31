@@ -7,7 +7,8 @@
                     <!-- 盒子内容 -->
                     <mu-col width="50" tablet="33" desktop="25" class="product--box" v-for="item in testGrid_info">
                         <!-- 图片 -->
-                        <img :src="item.imgUrl" @click="say('hi')" />
+                        <!-- @click="returnService()" -->
+                        <img :src="item.imgUrl" @click="toFurnitureDetails(item.furnitureID)" />
                         <!-- 文字内容 -->
                         <div class="product--content">
                             <h4> {{ item.title }} </h4>
@@ -40,32 +41,38 @@ export default {
                 {
                     imgUrl: 'http://images.aplusoffice.cn/images/furniture/es002/thumbnail.jpg',
                     title: '舒适皮质座椅1',
-                    subTitle: '240'
+                    subTitle: '240',
+                    furnitureID: 'A001'
                 },
                 {
                     imgUrl: 'http://images.aplusoffice.cn/images/furniture/es003/thumbnail.jpg',
                     title: '舒适皮质座椅2',
-                    subTitle: '240'
+                    subTitle: '240',
+                    furnitureID: 'A002'
                 },
                 {
                     imgUrl: 'http://images.aplusoffice.cn/images/furniture/es004/thumbnail.jpg',
                     title: '舒适皮质座椅3',
-                    subTitle: '240'
+                    subTitle: '240',
+                    furnitureID: 'A003'
                 },
                 {
                     imgUrl: 'http://images.aplusoffice.cn/images/furniture/es005/thumbnail.jpg',
                     title: '舒适皮质座椅4',
-                    subTitle: '240'
+                    subTitle: '240',
+                    furnitureID: 'A004'
                 },
                 {
                     imgUrl: 'http://images.aplusoffice.cn/images/furniture/es006/thumbnail.jpg',
                     title: '舒适皮质座椅5',
-                    subTitle: '240'
+                    subTitle: '240',
+                    furnitureID: 'A005'
                 },
                 {
                     imgUrl: 'http://images.aplusoffice.cn/images/furniture/es007/thumbnail.jpg',
                     title: '舒适皮质座椅6',
-                    subTitle: '240'
+                    subTitle: '240',
+                    furnitureID: 'A006'
                 }
             ]
         }
@@ -86,6 +93,9 @@ export default {
         },
         say: function (message) {
             alert(message)
+        },
+        toFurnitureDetails: function (toPageNum) {
+            location.href='#/service/furnichure/' + toPageNum
         }
     }
 }
