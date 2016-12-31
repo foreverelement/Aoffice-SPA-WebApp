@@ -1,14 +1,26 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
+import store from './store'
+import router from './router/config.js'
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
 
-// 允许调试
 Vue.config.devtools = true
 
-/* eslint-disable no-new */
+Vue.use(
+    MuseUI
+)
+
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App }
-})
+    el: '#app',
+    store,
+    router: router.router
+}).$mount('#app')
+
+if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+    document.body.style.fontFamily="PingFang SC Regular";
+} else if (/(Android)/i.test(navigator.userAgent)) {
+    document.body.style.fontFamily="NoteSansCJKsc-Regular";
+} else {
+    document.body.style.fontFamily="Microsoft Yahei";
+};
+

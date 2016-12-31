@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
-  </div>
+    <div id="index">
+        <router-view name="AppContent">      </router-view>
+        <router-view name="AppBottomNav">    </router-view>
+    </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'app',
-  components: {
-    Hello
-  }
+    mounted: function () {
+        this.addState()
+    },
+    methods: mapActions([ 'addState' ])
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass?indentedSyntax">
+@import './sass/main.sass'
+@import './sass/vendors/MuseUi'
+
+body
+    @extend %clearScroll
+#index
+    /*+REM(margin-bottom,80px)*/
+#app
+    position: relative
 </style>

@@ -1,0 +1,28 @@
+@charset "utf-8"
+
+// 颜色, 混合/变量, 常用字体
+@import "./helpers/color"
+@import "./helpers/mixinVar"
+@import "./helpers/font"
+// 状态
+@import "./state/state"
+
+// 定义基础色
+body
+    background-color: $base-color !important
+// 首页"发现"Banner样式
+.swiper-pagination-bullet
+    width: 8px !important
+    height: 8px !important
+
+.swiper-pagination-bullet
+    @extend %dib
+    border-radius: 100% !important
+    +bC(#000)
+    opacity: .2 !important
+    margin: 0 5px !important
+    cursor: pointer !important
+/* "当前"按钮 */
+.swiper-pagination-bullet-active
+    opacity: 1 !important
+    +bC($theme-color)

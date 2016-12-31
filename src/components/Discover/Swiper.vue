@@ -1,0 +1,70 @@
+<template>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- 循环图片列表 -->
+            <div class="swiper-slide" v-for="item in bannerImg_Arr[0]">
+                <img :src="item.imgUrl" class="bannerImg">
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</template>
+
+<script>
+import Swiper from '../../assets/script/swiper.min.js'
+import { mapGetters } from 'vuex'
+export default {
+    // Banner
+    mounted: function () { this.carousel() },
+    methods: {
+        carousel: function () {
+            setTimeout(() => {
+                const swiper = new Swiper('.swiper-container', {
+                    pagination: '.swiper-pagination',
+                    slidesPerView: 1,
+                    paginationClickable: true,
+                    spaceBetween: 30,
+                    loop: true,
+                    centeredSlides: true,
+                    autoplay: 2500,
+                    autoplayDisableOnInteraction: false
+                });
+            }, 100)
+        }
+    },
+    computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
+}
+</script>
+
+<style lang="sass?indentedSyntax" scoped>
+@import '../../sass/main'
+@import '../../sass/vendors/Swiper.min'
+
+.swiper-container
+    +w-h(100%,100%)
+    +mL(auto)
+    +mR(auto)
+.swiper-slide
+    text-align: center
+    font-size: 18px
+    background: #fff
+    /* Center slide text vertically */
+    display: -webkit-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+    -webkit-box-pack: center
+    -ms-flex-pack: center
+    -webkit-justify-content: center
+    justify-content: center
+    -webkit-box-align: center
+    -ms-flex-align: center
+    -webkit-align-items: center
+    align-items: center
+    img.bannerImg
+        /*+REM(width,360px)*/
+        width: 100%
+
+</style>
