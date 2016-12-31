@@ -34,6 +34,20 @@ export default {
         return {
             service_info: [
                 {
+                    imgUrl: require('../assets/images/find.png'),
+                    title: '委托找房',
+                    subTitle: 'Find Properties',
+                    imgLeftFloat: true,
+                    hrefUrl: 'findProperties'
+                },
+                {
+                    imgUrl: require('../assets/images/putIn.png'),
+                    title: '投放房源',
+                    subTitle: 'Put in Properties',
+                    imgLeftFloat: false,
+                    hrefUrl: 'putInProperties'
+                },
+                {
                     imgUrl: require('../assets/images/pic_furnichure.png'),
                     title: '办公家具',
                     subTitle: 'Office Furniture',
@@ -62,17 +76,10 @@ export default {
                     hrefUrl: 'training'
                 },
                 {
-                    imgUrl: require('../assets/images/pic_welfare.png'),
-                    title: '员工福利',
-                    subTitle: 'Employee Welfare',
-                    imgLeftFloat: true,
-                    hrefUrl: 'welfare'
-                },
-                {
                     imgUrl: require('../assets/images/pic_computer.png'),
                     title: '办公电脑',
                     subTitle: 'Office Computer',
-                    imgLeftFloat: false,
+                    imgLeftFloat: true,
                     hrefUrl: 'computer'
                 }
             ]

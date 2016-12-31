@@ -3,16 +3,11 @@
     <div class="demo-infinite-container">
         <mu-list>
             <template v-for="item in list">
-                <!--
-                    <mu-list-item :title="item"/>
-                    <mu-divider/>
-                -->
-
                 <mu-row gutter class="product--list">
                     <!-- 盒子内容 -->
                     <mu-col width="50" tablet="33" desktop="25" class="product--box" v-for="item in testGrid_info">
                         <!-- 图片 -->
-                        <img :src="item.imgUrl" />
+                        <img :src="item.imgUrl" @click="say('hi')" />
                         <!-- 文字内容 -->
                         <div class="product--content">
                             <h4> {{ item.title }} </h4>
@@ -88,6 +83,9 @@ export default {
                 this.num += 1
                 this.loading = false
             }, 1500)
+        },
+        say: function (message) {
+            alert(message)
         }
     }
 }
