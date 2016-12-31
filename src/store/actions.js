@@ -3,7 +3,7 @@ import axios from 'axios'
 import * as types from './mutations'
 
 export const addState = ({commit}) => {
-    axios.post('./data.json', {
+    axios.post('./static/data.json', {
         // code: ''
     })
     .then(function (response) {
