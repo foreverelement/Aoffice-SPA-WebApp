@@ -1,31 +1,25 @@
 # A+office-SPA-WebApp-Vue制作(重置版)
 
 > 本页面需要在服务器环境下通过域名访问,勿直接浏览静态页面
->
-> 框架基于Vue 2
->
-> 二次开发时建议安装Editor插件(大部分IDE都支持的插件)统一编辑格式
-
-
 
 ### 使用技术:
-* Vuejs           框架
-* Vuex            状态管理
-* Vue-router      路由管理
-* Axios           交互处理
-* Sass            样式预处理器
-* Webpack         模块打包
-* Babel           ES6转译ES5工具
-* Yarn            模块依赖安装
-
-
+| 技术名称        | 作用   |  版本  |
+| --------   | -----:  | :----:  |
+| Vuejs     | 框架 |   2.6.0     |
+| Vuex        |  状态管理   |   2.1.1   |
+| Vue-router        |    路由管理    |  2.1.1  |
+| Axios        |    交互处理   |  0.15.3  |
+| Sass (node-sass)       |    样式预处理器    |  4.1.1  |
+| Webpack        |    模块打包    |  1.13.2  |
+| Babel        |    ES6转译ES5    |  6.0.0  |
+| Yarn        |    模块依赖安装    |  0.17.6  |
 
 ## Components Structure / 组件结构说明:
 
 ```bash
 App.vue ( 根节点 )
     |
-    |- Discover.vue                     ( "发现"页面 )
+    |- Discover.vue                     ( "发现" )
         |
         |- Swiper.vue                   ( Banner轮播组件 )
         |
@@ -39,15 +33,31 @@ App.vue ( 根节点 )
         |
         |- BuildingList.vue             ( 通用楼盘组件 —— "热门房源" )
     |
-    |- HouseResource.vue                ( "房源"页面 )
+    |- HouseResource.vue                ( "房源" )
         |
         |- BuildingList.vue             ( 通用楼盘组件 —— "全部房源" )
     |
-    |- Map.vue                          ( "地图"页面 )
+    |- Map.vue                          ( "地图" )
     |
-    |- Service.vue                      ( "服务"页面 )
+    |- Service.vue                      ( "服务" )
+        |
+        |- Service_router.vue           ( "服务" - 路由页面 [ 上侧 通用标题组件; 下侧内容 根据  $route.params.id  传递来的ID值进行条件渲染  ] )
+            |
+            |- FindProperties.vue       ( "服务" - 条件渲染: "委托找房"内容 )
+            |
+            |- PutInProperties.vue      ( "服务" - 条件渲染："投放房源"内容 )
+            |
+            |- Furnichure.vue           ( "服务" - 条件渲染："办公家具"内容 )
+            |
+            |- Decoration.vue           ( "服务" - 条件渲染："办公装修"内容 )
+            |
+            |- Research.vue             ( "服务" - 条件渲染："外出考察"内容 )
+            |
+            |- Training.vue             ( "服务" - 条件渲染："员工培训"内容 —— 静态页 )
+            |
+            |- Computer.vue             ( "服务" - 条件渲染："办公电脑"内容 —— 静态页 )
     |
-    |- 404.vue                          ( "404"页面 )
+    |- 404.vue                          ( "404" )
 ```
 
 ## Build Setup / 开发流程
