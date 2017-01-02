@@ -31,7 +31,6 @@ export default {
                 // 获取到顶部appBar高度
                 const appBar_Arr = document.getElementsByClassName('mu-paper-1')
                 const appBar_height = appBar_Arr[0].offsetHeight                                        //只需要获取第一个对象的宽度即可
-
                 const dropDownMenu_Arr = document.getElementsByClassName('Service_dropDownMenu')
                 // 设置它的top值
                 dropDownMenu_Arr[0].style.top = appBar_height + "px"
@@ -50,7 +49,7 @@ export default {
 }
 </script>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 @import '../../../sass/main'
 
 #Service_Furnichure

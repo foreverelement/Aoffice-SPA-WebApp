@@ -25,18 +25,25 @@ export default {
             title: this.$route.params.id
         }
     },
+    mounted: function() {
+        // 获取通过路由传递过来的序号值
+        // const furnichureNO = this.$route.params.id
+        // console.log( furnichureNO ) // 获取到序号值
+        this.getFurnichureNO( this.$route.params.id )
+    },
     methods: {
         // 目的: 执行跳转 ( 返回 '家居页面' )
         returnFurnichure: () => {
             location.href='#/service/furnichure'
-        }
+        },
+        mapActions([ 'getFurnichureNO' ])
     },
     computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' }),
     components: components
 }
 </script>
 
-<style lang="sass?indentedSyntax">
+<style lang="sass" scoped>
 @import '../../sass/main.sass'
 
 #service_furnichure_router

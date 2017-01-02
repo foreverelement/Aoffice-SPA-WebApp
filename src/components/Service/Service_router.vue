@@ -67,7 +67,7 @@ export default {
 
 </script>
 
-<style lang="sass?indentedSyntax">
+<style lang="sass">
 @import '../../sass/main.sass'
 
 #service_router

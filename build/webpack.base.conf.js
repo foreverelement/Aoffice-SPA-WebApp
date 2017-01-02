@@ -69,10 +69,14 @@ module.exports = {
     ]
   },
   vue: {
-    loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
+    // loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
+    loaders: {
+        sass: 'style!css!sass?indentedSyntax',
+        scss: 'style!css!sass'
+    },
     postcss: [
       require('autoprefixer')({
-        browsers: ['last 2 versions']
+        browsers: ['last 10 versions']
       })
     ]
   }
