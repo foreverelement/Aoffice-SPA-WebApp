@@ -1,6 +1,5 @@
 <!-- 通用 - 标题组件 -->
 <template>
-    <!-- 通用组件 不用ID -->
     <div class="title">
         <div class="string"></div>
         <h2 v-bind:style="{ backgroundColor: title_info.backgroundColor }" > {{ title_info.title }} </h2>
@@ -11,7 +10,7 @@
 export default { props: ['title_info'] }
 </script>
 
-<style lang="sass?indentedSyntax">
+<style lang="sass">
 @import '../../sass/main'
 
 .title
@@ -32,7 +31,6 @@ export default { props: ['title_info'] }
         border-top: 1px solid $title-color
         +REM(border-bottom-width,1px)
     h2
-        /*position: absolute*/
         @extend %dib
         +REM(padding-left,14px)
         +REM(padding-right,14px)

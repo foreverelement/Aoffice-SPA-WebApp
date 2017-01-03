@@ -7,18 +7,23 @@
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
 
+        <!-- 通用填充组件 - 避免顶部标题遮挡 -->
+        <ContentMarginTop />
+
         <!-- 内容条件渲染 -->
-        <FindProperties     v-if="this.$route.params.id === 'findProperties'" class="auto--contentMarginTop" />
-        <PutInProperties    v-else-if="this.$route.params.id === 'putInProperties'" class="auto--contentMarginTop" />
-        <Furnichure         v-else-if="this.$route.params.id === 'furnichure'" class="auto--contentMarginTop" />
-        <Decoration         v-else-if="this.$route.params.id === 'decoration'" class="auto--contentMarginTop" />
-        <Research           v-else-if="this.$route.params.id === 'research'" class="auto--contentMarginTop" />
-        <Training           v-else-if="this.$route.params.id === 'training'" class="auto--contentMarginTop" />
+        <FindProperties     v-if="this.$route.params.id === 'findProperties'" />
+        <PutInProperties    v-else-if="this.$route.params.id === 'putInProperties'" />
+        <Furnichure         v-else-if="this.$route.params.id === 'furnichure'" />
+        <Decoration         v-else-if="this.$route.params.id === 'decoration'" />
+        <Research           v-else-if="this.$route.params.id === 'research'" />
+        <Training           v-else-if="this.$route.params.id === 'training'" />
         <Computer           v-else />
     </div>
 </template>
 
 <script>
+import  ContentMarginTop     from    '../Auto/ContentMarginTop.vue'
+
 import  FindProperties      from    './Router-views/FindProperties.vue'
 import  PutInProperties     from    './Router-views/PutInProperties.vue'
 import  Furnichure          from    './Router-views/Furnichure.vue'
@@ -27,7 +32,7 @@ import  Research            from    './Router-views/Research.vue'
 import  Training            from    './Router-views/Training.vue'
 import  Computer            from    './Router-views/Computer.vue'
 
-const   components = { FindProperties,PutInProperties,Furnichure,Decoration,Research,Training,Computer }
+const   components = { ContentMarginTop,FindProperties,PutInProperties,Furnichure,Decoration,Research,Training,Computer }
 
 export default {
     data() {

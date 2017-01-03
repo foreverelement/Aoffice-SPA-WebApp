@@ -89,7 +89,7 @@ export default {
 }
 </script>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 @import '../../sass/main'
 
 .demo-infinite-container
@@ -98,7 +98,6 @@ export default {
     -webkit-overflow-scrolling: touch
     /* row 家具产品列表 */
     .research--list
-        +REM(padding-top,16px)
         .research--box
             +REM(margin-bottom,16px)
             img

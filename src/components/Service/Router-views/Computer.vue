@@ -44,18 +44,6 @@ export default {
             ]
         }
     },
-    mounted: function () {
-        this.heightRevise()
-    },
-    methods: {
-        heightRevise: function() {
-            const appBar_Arr = document.getElementsByClassName('mu-paper-1')
-            const appBar_height = appBar_Arr[0].offsetHeight                                            //只需要获取第一个对象的宽度即可
-            // console.log(appBar_height)
-            const service_content = document.getElementById("Service_Computer")
-            service_content.style.marginTop = ( appBar_height + 16 ) + "px"
-        }
-    },
     components: components
 }
 </script>
