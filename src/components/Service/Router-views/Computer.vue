@@ -33,11 +33,13 @@ export default {
                 backgroundColor: '#FFF'
             },
             computer_info_img: [
-                { imgUrl: require('../../../assets/images/pic_computer_6.png') },
-                { imgUrl: require('../../../assets/images/pic_computer_5.png') },
-                { imgUrl: require('../../../assets/images/pic_computer_4.png') },
-                { imgUrl: require('../../../assets/images/pic_computer_3.png') },
                 { imgUrl: require('../../../assets/images/pic_computer_2.png') },
+                { imgUrl: require('../../../assets/images/pic_computer_3.png') },
+                { imgUrl: require('../../../assets/images/pic_computer_4.png') },
+                { imgUrl: require('../../../assets/images/pic_computer_5.png') },
+                { imgUrl: require('../../../assets/images/pic_computer_6.png') },
+                { imgUrl: require('../../../assets/images/pic_computer_7.png') },
+                { imgUrl: require('../../../assets/images/pic_computer_8.png') },
                 { imgUrl: require('../../../assets/images/pic_computer_1.png') }
             ]
         }

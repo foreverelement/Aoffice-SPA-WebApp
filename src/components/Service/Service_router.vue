@@ -8,12 +8,12 @@
         </mu-appbar>
 
         <!-- 内容条件渲染 -->
-        <FindProperties     v-if="this.$route.params.id === 'findProperties'" />
-        <PutInProperties    v-else-if="this.$route.params.id === 'putInProperties'" />
-        <Furnichure         v-else-if="this.$route.params.id === 'furnichure'" />
-        <Decoration         v-else-if="this.$route.params.id === 'decoration'" />
-        <Research           v-else-if="this.$route.params.id === 'research'"/>
-        <Training           v-else-if="this.$route.params.id === 'training'" />
+        <FindProperties     v-if="this.$route.params.id === 'findProperties'" class="auto--contentMarginTop" />
+        <PutInProperties    v-else-if="this.$route.params.id === 'putInProperties'" class="auto--contentMarginTop" />
+        <Furnichure         v-else-if="this.$route.params.id === 'furnichure'" class="auto--contentMarginTop" />
+        <Decoration         v-else-if="this.$route.params.id === 'decoration'" class="auto--contentMarginTop" />
+        <Research           v-else-if="this.$route.params.id === 'research'" class="auto--contentMarginTop" />
+        <Training           v-else-if="this.$route.params.id === 'training'" class="auto--contentMarginTop" />
         <Computer           v-else />
     </div>
 </template>
@@ -83,4 +83,3 @@ export default {
             color: $badgeFont-color !important
             text-align: center
 </style>
-

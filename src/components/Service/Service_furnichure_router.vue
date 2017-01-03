@@ -35,10 +35,10 @@ export default {
         // 目的: 执行跳转 ( 返回 '家居页面' )
         returnFurnichure: () => {
             location.href='#/service/furnichure'
-        },
-        mapActions([ 'getFurnichureNO' ])
+        }
+        // ,mapActions([ 'getFurnichureNO' ])
     },
-    computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' }),
+    // ,computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
     components: components
 }
 </script>
