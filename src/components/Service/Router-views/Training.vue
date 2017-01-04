@@ -1,25 +1,21 @@
 <!-- '服务'模块 - 员工培训 -->
 <template>
     <div id="Service_Training">
-        <!-- 核心课程 -->
-        <div class="training--info bC--while">
+        <div class="training--info bC--while">                                                              <!-- 核心课程 -->
             <Title :title_info = coreCourses />
             <p> {{ coreCourses.textContent }} </p>
         </div>
-        <!-- 课程图片 -->
-        <div class="training--info bC--lucency">
+        <div class="training--info bC--lucency">                                                            <!-- 课程图片 -->
             <img :src="coursesImg.imgUrl" />
         </div>
-        <!-- 公开课程 -->
-        <div class="training--info bC--while">
+        <div class="training--info bC--while">                                                              <!-- 公开课程 -->
             <Title :title_info = openCourses />
             <div class="openCourses--box" v-for="item in openCourses.coursesArr">
                 <h3> {{ item.title }} </h3>
                 <p> {{ item.textContent }} </p>
             </div>
         </div>
-        <!-- 海外交流 -->
-        <div class="training--info bC--while">
+        <div class="training--info bC--while">                                                              <!-- 海外交流 -->
             <Title :title_info = overseasExchange />
             <img :src="overseasExchange.imgUrl" />
             <div class="overseasExchange--box" v-for="item in overseasExchange.exchangeArr">
@@ -27,8 +23,7 @@
                 <p> {{ item.textContent }} </p>
             </div>
         </div>
-        <!-- 讲师介绍 -->
-        <div class="training--info bC--while">
+        <div class="training--info bC--while">                                                              <!-- 讲师介绍 -->
             <Title :title_info = teacherIntroduction />
             <div class="teacherIntroduction--box" v-for="item in teacherIntroduction.teacherArr">
                 <img :src="item.imgUrl" />
@@ -120,9 +115,11 @@ export default {
             teacherIntroduction: {
                 title: '讲师介绍',
                 backgroundColor: '#FFF',
+                // 如果添加讲师 可以直接 向 'teacherArr' 数组添加对象
                 teacherArr: [
                     {
                         imgUrl: require('../../../assets/images/pic_profile.png'),
+                        // 如需自定义讲师的个人信息数量, 可向 'teacherInfoArr' 数组添加对象 —— 模版将会二次循环信息内容
                         teacherInfoArr: [
                             {
                                 title: '工作经历',
@@ -172,14 +169,20 @@ export default {
 @import '../../../sass/main'
 
 #Service_Training
-    /* '培训'信息容器 */
-    .training--info
-        +REM(padding-left,$autoMargin)
-        +REM(padding-right,$autoMargin)
-        >img
+    .training--info                                                                                         // '培训'信息容器
+        +auto--contentBox($autoMargin,$title-color-light,$title-size,$badgeFont-color,$text-size)
+        +REM(margin-top,$autoMargin)
+        img
             @extend %imgCover
-    /* 容器盒子 - 白色背景 */
-    .bC--while
-    /* 容器盒子 - 透明背景 */
-    .bC--lucency
+        &:first-child
+            margin: 0
+        &:last-child
+            +REM(margin-bottom,$autoMargin)
+    .bC--while                                                                                              // 容器盒子 - 白色背景
+        +bC($F)
+        box-shadow: 0 .5px 1px rgba(0,0,0,0.12)
+    .bC--lucency                                                                                            // 容器盒子 - 透明背景
+        +bC(rgba($F,.1))
+    .openCourses--box, .overseasExchange--box, .teacherInfo                                                 // 公开课程 / 海外交流 / 教师信息介绍  ——box通用样式
+        +REM(margin-top,$autoMargin)
 </style>

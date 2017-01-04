@@ -8,15 +8,14 @@
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
-
         <!-- 内容条件渲染 -->
         <Swiper :swiper_arr=bannerImg_Arr[0]  />
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import  Swiper      from    '../Discover/Swiper.vue'     // 引入轮播组件
+import { mapGetters }   from 'vuex'
+import  Swiper          from    '../Discover/Swiper.vue'     // 引入轮播组件
 const   components = { Swiper }
 
 export default {
