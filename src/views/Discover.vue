@@ -1,6 +1,8 @@
 <!-- "发现"页面 -->
 <template>
     <div id="discover">
+        <DiscoverAppBar />
+
         <Swiper :swiper_arr=bannerImg_Arr[0]  />
         <EnterpriseService />
         <Title :title_info=title_info />
@@ -15,7 +17,8 @@ import  Swiper                  from    '../components/Discover/Swiper.vue'
 import  EnterpriseService       from    '../components/Discover/EnterpriseService.vue'
 import  Title                   from    '../components/Auto/Title.vue'
 import  BuildingList            from    '../components/Auto/BuildingList.vue'
-const   components = { Swiper,EnterpriseService,Title,BuildingList }
+import  DiscoverAppBar          from    '../components/Auto/DiscoverAppBar.vue'
+const   components = { Swiper,EnterpriseService,Title,BuildingList,DiscoverAppBar }
 
 export default {
     data() {

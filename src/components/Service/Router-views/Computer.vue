@@ -4,7 +4,6 @@
             <Title :title_info=computer_title />
             <img :src="computer_title_img.imgUrl" />
         </div>
-
         <div class="computer--info">
             <Title :title_info=computer_info />
             <div class="computer_info_img" v-for="item in computer_info_img">
