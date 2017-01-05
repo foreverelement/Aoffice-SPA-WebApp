@@ -31,17 +31,29 @@
         color: $F !important
 .mu-appbar-title
     width: 0 !important
+.left
+    position: absolute                                                          // 相对定位( 左侧按钮 )
+    left: 0
+    width: 14%
 .right
-    .mu-text-field
+    width: 84%
+    margin-left: -3%
+    .mu-text-field                                                              // 相对定位( 中间输入框 )
+        position: absolute
+        left: 15%
+        padding-left: 38%!important
         margin-bottom: 0 !important
         >.mu-text-field-icon                                                    // 控制放大镜的位置定位
-            left: 37% !important
+            left: 44.5% !important
             top: 25% !important
         >div>div
             .mu-text-field-line,.mu-text-field-focus-line
                 left: 0 !important
+    .mu-icon-button                                                             // 相对定位( 右侧按钮 )
+        position: absolute
+        right: 0
     .mu-text-field.has-icon
-        padding-left: 37% !important
+        padding-left: 34.5% !important                                          // 修正输入框的位置
     .focus-state
         >i.mu-icon
             display: none !important
