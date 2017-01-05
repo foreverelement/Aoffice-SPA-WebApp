@@ -10,7 +10,7 @@
         </mu-appbar>
 
         <!-- 内容条件渲染 -->
-        <Swiper :swiper_arr=bannerImg_Arr[0]  />
+        <Swiper :swiper_arr=furnichureInfo_Img_Arr  />
     </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
             location.href='#/service/furnichure'
         }
     }
-    ,computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
+    ,computed: mapGetters({ furnichureInfo_Img_Arr: 'furnichureInfo_Img_Arr' })
     ,components: components
 }
 </script>
