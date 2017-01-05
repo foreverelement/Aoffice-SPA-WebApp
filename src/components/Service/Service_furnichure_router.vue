@@ -26,17 +26,18 @@ export default {
         }
     },
     mounted: function() {
-        this.addState()                                             // 测试
-    },
-    methods: {
+        this.getFurnichureInfo()                                             // 测试
+    }
+    ,methods: {
+        // 目的: 进行交互
+        ...mapActions([ 'getFurnichureInfo' ])                                 // 测试
         // 目的: 执行跳转 ( 返回 '家居页面' )
-        returnFurnichure: () => {
+        ,returnFurnichure: () => {
             location.href='#/service/furnichure'
-        },
-        mapActions([ 'addState' ])                              // 测试
-    },
-    computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' }),
-    components: components
+        }
+    }
+    ,computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
+    ,components: components
 }
 </script>
 

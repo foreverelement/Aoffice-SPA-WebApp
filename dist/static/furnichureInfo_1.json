@@ -1,0 +1,38 @@
+{
+    "resultCode": 1,
+    "resultMsg": "家具详情加载成功",
+    "resultData": {
+        "furnitureSList": [
+            {
+                "supply": "images/pic-fur.png"
+            },
+            {
+                "supply": "images/pic-fur.png"
+            },
+            {
+                "supply": "images/pic-fur.png"
+            }
+        ],
+        "picUrl": "http://test.aplusoffice.cn/",
+        "p1List": [
+            "黑色网布办公室转椅",
+            "黑色网布办公室转椅",
+            "黑色网布办公室转椅",
+            "黑色网布办公室转椅"
+        ],
+        "p2List": [
+            "198元",
+            "298元",
+            "398元",
+            "498元"
+        ],
+        "furniture": {
+            "code": "es001",
+            "name": "黑色网布办公室转椅 ",
+            "description": "test",
+            "type": "办公椅",
+            "price": 1020,
+            "appPic": "images/pic-fur.png"
+        }
+    }
+}

@@ -13,3 +13,19 @@ export const addState = (state,res) => {
         }
     }
 }
+
+// 后期将modules 分出
+export const addFurnichureInfo = (state,res) => {
+    state.furnichureInfo_Img_Arr.push(res.furnitureSList)                     // 推 家具 - 详情图片数组
+
+    const Arr_furnichureInfo_Img = []
+    // 推 家具 - 详情图片数组
+    for(let i=0; i<res.furnitureSList.length;i++) {
+        function FurnichureInfoImg(imgUrl) {
+            this.imgUrl = res.picUrl + imgUrl
+        }
+        const furnichureInfoImgObj = new FurnichureInfoImg( res.furnitureSList[i].supply )
+        Arr_furnichureInfo_Img.push(furnichureInfoImgObj)
+    }
+    state.furnichureInfo_Img_Arr.push(Arr_furnichureInfo_Img)
+}

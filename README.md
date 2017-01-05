@@ -98,7 +98,8 @@ npm run build
     - [ ] 办公电脑 - 内容图片修改( 静态页 )
     - [ ] 员工培训( 静态页面 )
     - [ ] 委托找房( 表单提交 )
-- [ ] **Aoffice-SPA-WebApp-Vue性能优化**
+    - [ ] 后期将modules 分出
+- [ ] *Aoffice-SPA-WebApp-Vue性能优化**
     - [ ] 可复用组件改为`render`组件形式
     - [ ] 优化项目结构列表
     - [ ] 提出`content--box`盒子作为通用内容盒子,减少样式描述
