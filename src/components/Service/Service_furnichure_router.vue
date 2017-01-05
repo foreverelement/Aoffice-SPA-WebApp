@@ -8,14 +8,15 @@
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
+
         <!-- 内容条件渲染 -->
         <Swiper :swiper_arr=bannerImg_Arr[0]  />
     </div>
 </template>
 
 <script>
-import { mapGetters }   from 'vuex'
-import  Swiper          from    '../Discover/Swiper.vue'     // 引入轮播组件
+import { mapActions, mapGetters } from 'vuex'
+import  Swiper      from    '../Discover/Swiper.vue'     // 引入轮播组件
 const   components = { Swiper }
 
 export default {
@@ -25,24 +26,21 @@ export default {
         }
     },
     mounted: function() {
-        // 获取通过路由传递过来的序号值
-        // const furnichureNO = this.$route.params.id
-        // console.log( furnichureNO ) // 获取到序号值
-        this.getFurnichureNO( this.$route.params.id )
+        this.addState()                                             // 测试
     },
     methods: {
         // 目的: 执行跳转 ( 返回 '家居页面' )
         returnFurnichure: () => {
             location.href='#/service/furnichure'
-        }
-        // ,mapActions([ 'getFurnichureNO' ])
+        },
+        mapActions([ 'addState' ])                              // 测试
     },
-    // ,computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
+    computed: mapGetters({ bannerImg_Arr: 'bannerImg_Arr' }),
     components: components
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass?indentedSyntax">
 @import '../../sass/main.sass'
 
 #service_furnichure_router

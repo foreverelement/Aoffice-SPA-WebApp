@@ -107,3 +107,67 @@ npm run build
     - [ ] 增加`Gulp`构建流,优化静态图片( 进行无损压缩,避免资源加载过慢问题 )
     - [ ] 测试Router动态加载组件方案,如果性能优于单一JS加载速度,那么全部拆为动态加载
     - [ ] 增加Router切换动画,避免加载延迟空白
+
+***
+
+## API接口目录
+* 获取家具详情
+    > http://192.168.1.250:8082/api/es/furniture
+
+* 外出考察详情
+    > http://192.168.1.250:8082/api/es/getInvestigate
+
+***
+> test Service_furnichure_router.vue
+```js
+<!-- 服务模块 - 3级家具详情页面 - 内容模版根据$router.id 来获取数据 -->
+<template>
+    <div id="service_furnichure_router">
+        <!-- 标题 组件 -->
+        <mu-appbar >
+            <!-- 返回'家居页面' -->
+            <mu-icon-button icon='arrow_back' slot="left" @click="returnFurnichure()"/>
+            <h2> {{ title }} </h2>
+            <mu-icon-button icon='sms' slot="right"/>
+        </mu-appbar>
+        <!-- 内容条件渲染 -->
+        <Swiper :swiper_arr=bannerImg_Arr[0]  />
+    </div>
+</template>
+
+<script>
+import { mapGetters, mapActions }   from 'vuex'
+import  Swiper          from    '../Discover/Swiper.vue'     // 引入轮播组件
+const   components = { Swiper }
+
+export default {
+    data() {
+        return {
+            title: this.$route.params.id
+        }
+    },
+    mounted: function() {
+        this.addState()                                                 // 测试
+        // 获取通过路由传递过来的序号值
+        // const furnichureNO = this.$route.params.id
+        // console.log( furnichureNO ) // 获取到序号值
+        this.getFurnichureNO( this.$route.params.id )
+        // 获取 Vuex store拿到的数据 - 测试 暂时使用首页轮播数据
+        this.mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
+    },
+    methods: {
+        // 目的: 执行跳转 ( 返回 '家居页面' )
+        returnFurnichure: () => {
+            location.href='#/service/furnichure'
+        }
+        // ,mapActions([ 'getFurnichureNO' ])
+        // 目的: 进行异步请求 —— 请求'家具'数据
+        ,function: () => {
+            mapActions([ 'addState' ])                                  // 测试
+        }
+    }
+    ,components: components
+}
+</script>
+
+```
