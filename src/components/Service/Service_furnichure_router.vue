@@ -4,11 +4,12 @@
         <!-- 标题 组件 -->
         <mu-appbar >
             <!-- 返回'家居页面' -->
-            <mu-icon-button icon='arrow_back' slot="left" @click="returnFurnichure()"/>
+            <mu-icon-button icon='arrow_back' slot="left" @click="returnFurnichure()" />
+
+            </mu-icon-button>
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
-
         <!-- 内容条件渲染 -->
         <Swiper :swiper_arr=furnichureInfo_Img_Arr  />
     </div>
@@ -26,7 +27,8 @@ export default {
         }
     },
     mounted: function() {
-        this.getFurnichureInfo()                                             // 测试
+        this.addAppOnClick()                                                 // 添加App专用点击事件
+        this.getFurnichureInfo()                                             // 获取家具信息
     }
     ,methods: {
         // 目的: 进行交互
@@ -34,6 +36,16 @@ export default {
         // 目的: 执行跳转 ( 返回 '家居页面' )
         ,returnFurnichure: () => {
             location.href='#/service/furnichure'
+        }
+        // 目的: 向两个按钮添加App反馈事件( 返回 / 对话窗口 )
+        ,addAppOnClick: () => {
+            setTimeout(() => {
+                console.log('执行计时器事件')
+                const btnLeft   = document.getElementsByClassName('left')[0]        // 向左侧的返回按钮添加 returnBtn()事件
+                const btnRight  = document.getElementsByClassName('right')[0]       // 向右侧的对话按钮添加 dialogueBtn() 事件
+                btnLeft.setAttribute("onClick", "returnBtn()")
+                btnRight.setAttribute("onClick", "dialogueBtn()")
+            },1000)
         }
     }
     ,computed: mapGetters({ furnichureInfo_Img_Arr: 'furnichureInfo_Img_Arr' })

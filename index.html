@@ -35,6 +35,28 @@
         </div>
         <!-- 百度地图API -->
         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=upNTUWfwOFHCZbuQvFOgT0ATGnMwb16c"></script>
+        <script>
+            // App返回 事件
+            function returnBtn() {
+                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                    tianbai.getCall();
+                } else if (/(Android)/i.test(navigator.userAgent)) {
+                    AndroidFunction.showBack();
+                } else {
+                    alert('Windows');
+                };
+            };
+            // App对话 事件
+            function dialogueBtn(){
+                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                    tianbai.call();
+                } else if (/(Android)/i.test(navigator.userAgent)) {
+                    AndroidFunction.showChat();
+                } else {
+                    alert('Windows');
+                };
+            };
+        </script>
     </body>
 </html>
 

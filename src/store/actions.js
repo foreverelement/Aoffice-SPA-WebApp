@@ -22,7 +22,7 @@ export const getFurnichureInfo = ({commit}) => {
     })
     .then(function (response) {
         let get_data = response.data.resultData
-        console.log( "获取到数据" + get_data )
+        // console.log( "获取到数据" + get_data )
         commit('addFurnichureInfo',get_data)
     })
     .catch(function (error) {

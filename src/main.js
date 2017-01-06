@@ -23,4 +23,3 @@ if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
 } else {
     document.body.style.fontFamily="Microsoft Yahei";
 };
-
