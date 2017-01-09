@@ -27,6 +27,12 @@
         <div class="furnichure--box">
             <Title :title_info = size_title />
             <!-- 尺寸列表 -->
+            <ul class="furnichure--sizeList">
+                <li v-for="item in furnichureInfo.furnichureSizeList">
+                    <p> {{ item.name }} </p>
+                    <span> {{ item.price }} </span>
+                </li>
+            </ul>
         </div>
         <!-- 家具定制 -->
         <div class="furnichure--box">
