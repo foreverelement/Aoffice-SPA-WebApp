@@ -1,15 +1,15 @@
 <template>
-    <div id="Service_Furnichure">
+    <div id="Service_Furniture">
         <Service_dropDownMenu />
         <!-- 家具 - 下拉列表 -->
-        <Furnichure_scrollList />
+        <Furniture_scrollList />
     </div>
 </template>
 
 <script>
 import      Service_dropDownMenu        from    '../Service_dropDownMenu.vue'
-import      Furnichure_scrollList       from    '../Furnichure_scrollList.vue'
-const components = { Service_dropDownMenu,Furnichure_scrollList }
+import      Furniture_scrollList       from    '../Furniture_scrollList.vue'
+const components = { Service_dropDownMenu,Furniture_scrollList }
 
 export default {
     mounted: function () {
@@ -40,5 +40,5 @@ export default {
 <style lang="sass" scoped>
 @import '../../../sass/main'
 
-#Service_Furnichure
+#Service_Furniture
 </style>

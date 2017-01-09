@@ -48,11 +48,11 @@ export default {
                     hrefUrl: 'putInProperties'
                 },
                 {
-                    imgUrl: require('../assets/images/pic_furnichure.png'),
+                    imgUrl: require('../assets/images/pic_furniture.png'),
                     title: '办公家具',
                     subTitle: 'Office Furniture',
                     imgLeftFloat: true,
-                    hrefUrl: 'furnichure'
+                    hrefUrl: 'furniture'
                 },
                 {
                     imgUrl: require('../assets/images/pic_decoration.png'),

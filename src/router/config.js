@@ -11,7 +11,7 @@ import service                      from '../views/Service.vue'                 
 
 // 服务版块
 import service_router               from '../components/Service/Service_router.vue'             // "服务" 页面 - 路由模块
-import service_furnichure_router    from '../components/Service/Service_furnichure_router.vue'  // "服务" 页面 - '家具'路由模块
+import service_furniture_router    from '../components/Service/Service_furniture_router.vue'  // "服务" 页面 - '家具'路由模块
 
 const router = new VueRouter({
     routes: [
@@ -70,9 +70,9 @@ const router = new VueRouter({
                 },
                 // 服务模块 - '家具'内容 渲染模版
                 {
-                    path: '/service/furnichure/:id',
+                    path: '/service/furniture/:id',
                     components: {
-                        AppContent      : service_furnichure_router
+                        AppContent      : service_furniture_router
                     }
                 }
             ]

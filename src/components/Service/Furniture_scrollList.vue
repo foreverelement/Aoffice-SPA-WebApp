@@ -95,7 +95,7 @@ export default {
             alert(message)
         },
         toFurnitureDetails: function (toPageNum) {
-            location.href='#/service/furnichure/' + toPageNum
+            location.href='#/service/furniture/' + toPageNum
         }
     }
 }

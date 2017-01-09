@@ -2,21 +2,19 @@
 <template>
     <div id="service_furniture_router">
         <!-- 标题 组件 -->
-        <mu-appbar >
+        <mu-appbar>
             <!-- 返回'家居页面' -->
             <mu-icon-button icon='arrow_back' slot="left" @click="returnFurniture()" />
-            </mu-icon-button>
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
         <!-- 内容条件渲染 -->
-        <Swiper :swiper_arr=furnitureInfo.imgUrl  />
+        <Swiper :swiper_arr=furnitureInfo.imgUrl class=""/>
         <div class="furnitureTitle">
             <h3> {{ furnitureInfo.name }} </h3>
             <p> {{ furnitureInfo.price }} </p>
             <!-- 收藏按钮 -->
             <mu-checkbox class="demo-checkbox" uncheckIcon="favorite_border" checkedIcon="favorite" />
-            <!--<mu-checkbox class="demo-checkbox" uncheckIcon="visibility_off" checkedIcon="visibility"/>-->
         </div>
         <!-- 家具描述 -->
         <div class="furniture--box furniture__Describe">
@@ -131,7 +129,7 @@ export default {
 }
 </script>
 
-<style lang="sass?indentedSyntax">
+<style lang="sass">
 @import '../../sass/main.sass'
 
 #service_furniture_router

@@ -9,7 +9,7 @@ export default {
         this.marginTopRevise()
     },
     methods: {
-        // 目的: 通过读取顶部导航的高度值,将这个值赋给#Service_Furnichure的margin-top 来避免重叠
+        // 目的: 通过读取顶部导航的高度值,将这个值赋给#Service_Furniture的margin-top 来避免重叠
         marginTopRevise: function() {
             const appBar_Arr = document.getElementsByClassName('mu-paper-1')
             const appBar_height = appBar_Arr[0].offsetHeight                                            //只需要获取第一个对象的宽度即可

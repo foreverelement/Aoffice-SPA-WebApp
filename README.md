@@ -47,7 +47,7 @@ App.vue ( 根节点 )
             |
             |- PutInProperties.vue      ( "服务" - 条件渲染："投放房源"内容 )
             |
-            |- Furnichure.vue           ( "服务" - 条件渲染："办公家具"内容 )
+            |- Furniture.vue           ( "服务" - 条件渲染："办公家具"内容 )
             |
             |- Decoration.vue           ( "服务" - 条件渲染："办公装修"内容 )
             |
@@ -119,15 +119,15 @@ npm run build
     > http://192.168.1.250:8082/api/es/getInvestigate
 
 ***
-> test Service_furnichure_router.vue
+> test Service_furniture_router.vue
 ```js
 <!-- 服务模块 - 3级家具详情页面 - 内容模版根据$router.id 来获取数据 -->
 <template>
-    <div id="service_furnichure_router">
+    <div id="service_furniture_router">
         <!-- 标题 组件 -->
         <mu-appbar >
             <!-- 返回'家居页面' -->
-            <mu-icon-button icon='arrow_back' slot="left" @click="returnFurnichure()"/>
+            <mu-icon-button icon='arrow_back' slot="left" @click="returnFurniture()"/>
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
@@ -150,18 +150,18 @@ export default {
     mounted: function() {
         this.addState()                                                 // 测试
         // 获取通过路由传递过来的序号值
-        // const furnichureNO = this.$route.params.id
-        // console.log( furnichureNO ) // 获取到序号值
-        this.getFurnichureNO( this.$route.params.id )
+        // const furnitureNO = this.$route.params.id
+        // console.log( furnitureNO ) // 获取到序号值
+        this.getFurnitureNO( this.$route.params.id )
         // 获取 Vuex store拿到的数据 - 测试 暂时使用首页轮播数据
         this.mapGetters({ bannerImg_Arr: 'bannerImg_Arr' })
     },
     methods: {
         // 目的: 执行跳转 ( 返回 '家居页面' )
-        returnFurnichure: () => {
-            location.href='#/service/furnichure'
+        returnFurniture: () => {
+            location.href='#/service/furniture'
         }
-        // ,mapActions([ 'getFurnichureNO' ])
+        // ,mapActions([ 'getFurnitureNO' ])
         // 目的: 进行异步请求 —— 请求'家具'数据
         ,function: () => {
             mapActions([ 'addState' ])                                  // 测试
