@@ -9,10 +9,10 @@
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
         <!-- 内容条件渲染 -->
-        <Swiper :swiper_arr=furnitureInfo.imgUrl class=""/>
-        <div class="furnitureTitle">
+        <Swiper :swiper_arr=furnitureInfo.imgUrl class="furniture--swiper" />
+        <div class="furniture--title">
             <h3> {{ furnitureInfo.name }} </h3>
-            <p> {{ furnitureInfo.price }} </p>
+            <p> ￥ {{ furnitureInfo.price }} </p>
             <!-- 收藏按钮 -->
             <mu-checkbox class="demo-checkbox" uncheckIcon="favorite_border" checkedIcon="favorite" />
         </div>
@@ -131,6 +131,15 @@ export default {
 
 <style lang="sass">
 @import '../../sass/main.sass'
+%furniture--font
+    h3
+        +REM(font-size,$text-size)
+        color: rgba($title-color,.7)
+    p
+        +REM(font-size,$text-size)
+        color: rgba($title-color,.7)
+        >b
+            color: $theme-color
 
 #service_furniture_router
     /* 设置MuseUI - App Bar样式 */
@@ -144,4 +153,46 @@ export default {
         h2
             color: $badgeFont-color !important
             text-align: center
+    // 统一上边距
+    .furniture--box
+        +REM(padding,$autoMargin)
+        padding-top: 0
+        +REM(margin-top,$autoMargin)
+        +bC($F)
+        box-shadow: 0 1px 2px rgba(0,0,0,.117647), 0 1px 3px rgba(0,0,0,.117647) !important
+        &:last-child
+            +REM(margin-bottom,$autoMargin)
+        img
+            @extend %imgCover
+        @extend %furniture--font
+    // 轮播图
+    .furniture--swiper
+        +REM(margin-top,$autoMargin)
+        box-shadow: 1px 1px 0 rgba(#1F0000,.1)
+    // 名称介绍
+    .furniture--title
+        position: relative
+        +REM(padding,$autoMargin)
+        +bC($F)
+        @extend %furniture--font
+        >p
+            color: $theme-color
+        .mu-checkbox
+            position: absolute
+            +REM(right,$autoMargin*2)
+            +REM(top,$autoMargin*1.5)
+            .mu-icon
+                color: $theme-color !important
+    // 家具尺寸
+    .furniture--sizeList
+        li
+            +REM(padding-top,$autoMargin/2)
+            +REM(padding-bottom,$autoMargin/2)
+            border-bottom: 1px solid rgba($badgeFont-color,.5)
+            overflow: hidden
+            p
+                float: left
+            span
+                float: right
+                color: $theme-color
 </style>
