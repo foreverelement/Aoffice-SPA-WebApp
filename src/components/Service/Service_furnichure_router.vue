@@ -1,41 +1,41 @@
 <!-- 服务模块 - 3级家具详情页面 - 内容模版根据$router.id 来获取数据 -->
 <template>
-    <div id="service_furnichure_router">
+    <div id="service_furniture_router">
         <!-- 标题 组件 -->
         <mu-appbar >
             <!-- 返回'家居页面' -->
-            <mu-icon-button icon='arrow_back' slot="left" @click="returnFurnichure()" />
+            <mu-icon-button icon='arrow_back' slot="left" @click="returnFurniture()" />
             </mu-icon-button>
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
         <!-- 内容条件渲染 -->
-        <Swiper :swiper_arr=furnichureInfo_Img_Arr  />
-        <div class="furnichureTitle">
-            <h3> {{ furnichureInfo.name }} </h3>
-            <p> {{ furnichureInfo.price }} </p>
+        <Swiper :swiper_arr=furnitureInfo.imgUrl  />
+        <div class="furnitureTitle">
+            <h3> {{ furnitureInfo.name }} </h3>
+            <p> {{ furnitureInfo.price }} </p>
             <!-- 收藏按钮 -->
             <mu-checkbox class="demo-checkbox" uncheckIcon="favorite_border" checkedIcon="favorite" />
             <!--<mu-checkbox class="demo-checkbox" uncheckIcon="visibility_off" checkedIcon="visibility"/>-->
         </div>
         <!-- 家具描述 -->
-        <div class="furnichure--box furnichure__Describe">
+        <div class="furniture--box furniture__Describe">
             <Title :title_info = describe_title />
-            <p> {{ furnichureInfo.description }} </p>
+            <p> {{ furnitureInfo.description }} </p>
         </div>
         <!-- 家具尺寸 -->
-        <div class="furnichure--box">
+        <div class="furniture--box">
             <Title :title_info = size_title />
             <!-- 尺寸列表 -->
-            <ul class="furnichure--sizeList">
-                <li v-for="item in furnichureInfo.furnichureSizeList">
+            <ul class="furniture--sizeList">
+                <li v-for="item in furnitureInfo.furnitureSizeList">
                     <p> {{ item.name }} </p>
                     <span> {{ item.price }} </span>
                 </li>
             </ul>
         </div>
         <!-- 家具定制 -->
-        <div class="furnichure--box">
+        <div class="furniture--box">
             <Title :title_info = custom_title />
             <div>
                 <p> 1.  {{ custom_List[0].text }} </p>
@@ -44,12 +44,12 @@
             </div>
         </div>
         <!-- 购买流程 -->
-        <div class="furnichure--box">
+        <div class="furniture--box">
             <Title :title_info = flow_title />
             <img :src="flow_img.imgUrl" />
         </div>
         <!-- 注意事项 -->
-        <div class="furnichure--box">
+        <div class="furniture--box">
             <Title :title_info = Notes_title />
             <div v-for="(item, index) in Notes_content">
                 <p> {{ index + 1 }} . {{ item.text }} </p>
@@ -106,14 +106,14 @@ export default {
     },
     mounted: function() {
         this.addAppOnClick()                                                 // 添加App专用点击事件
-        this.getFurnichureInfo()                                             // 获取家具信息
+        this.getFurnitureInfo()                                             // 获取家具信息
     }
     ,methods: {
         // 目的: 进行交互
-        ...mapActions([ 'getFurnichureInfo' ])                                 // 测试
+        ...mapActions([ 'getFurnitureInfo' ])                                 // 测试
         // 目的: 执行跳转 ( 返回 '家居页面' )
-        ,returnFurnichure: () => {
-            location.href='#/service/furnichure'
+        ,returnFurniture: () => {
+            location.href='#/service/furniture'
         }
         // 目的: 向两个按钮添加App反馈事件( 返回 / 对话窗口 )
         ,addAppOnClick: () => {
@@ -126,7 +126,7 @@ export default {
             },1000)
         }
     }
-    ,computed: mapGetters({ furnichureInfo_Img_Arr: 'furnichureInfo_Img_Arr', furnichureInfo: 'furnichureInfo' })
+    ,computed: mapGetters({ furnitureInfo: 'furnitureInfo' })
     ,components: components
 }
 </script>
@@ -134,7 +134,7 @@ export default {
 <style lang="sass?indentedSyntax">
 @import '../../sass/main.sass'
 
-#service_furnichure_router
+#service_furniture_router
     /* 设置MuseUI - App Bar样式 */
     .mu-paper-1
         top: 0 !important
