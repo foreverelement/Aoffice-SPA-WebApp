@@ -5,25 +5,97 @@
         <mu-appbar >
             <!-- 返回'家居页面' -->
             <mu-icon-button icon='arrow_back' slot="left" @click="returnFurnichure()" />
-
             </mu-icon-button>
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
         <!-- 内容条件渲染 -->
         <Swiper :swiper_arr=furnichureInfo_Img_Arr  />
+        <div class="furnichureTitle">
+            <h3> {{ furnichureInfo.name }} </h3>
+            <p> {{ furnichureInfo.price }} </p>
+            <!-- 收藏按钮 -->
+            <mu-checkbox class="demo-checkbox" uncheckIcon="favorite_border" checkedIcon="favorite" />
+            <!--<mu-checkbox class="demo-checkbox" uncheckIcon="visibility_off" checkedIcon="visibility"/>-->
+        </div>
+        <!-- 家具描述 -->
+        <div class="furnichure--box furnichure__Describe">
+            <Title :title_info = describe_title />
+            <p> {{ furnichureInfo.description }} </p>
+        </div>
+        <!-- 家具尺寸 -->
+        <div class="furnichure--box">
+            <Title :title_info = size_title />
+            <!-- 尺寸列表 -->
+        </div>
+        <!-- 家具定制 -->
+        <div class="furnichure--box">
+            <Title :title_info = custom_title />
+            <div>
+                <p> 1.  {{ custom_List[0].text }} </p>
+                <p> 2.  {{ custom_List[1].text }} </p>
+                <p> 3.  定制电话：<b> {{ custom_List[2].text }} </b> </p>
+            </div>
+        </div>
+        <!-- 购买流程 -->
+        <div class="furnichure--box">
+            <Title :title_info = flow_title />
+            <img :src="flow_img.imgUrl" />
+        </div>
+        <!-- 注意事项 -->
+        <div class="furnichure--box">
+            <Title :title_info = Notes_title />
+            <div v-for="(item, index) in Notes_content">
+                <p> {{ index + 1 }} . {{ item.text }} </p>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-import  Swiper      from    '../Discover/Swiper.vue'     // 引入轮播组件
-const   components = { Swiper }
+import      { mapActions, mapGetters } from 'vuex'
+import      Title           from    '../Auto/Title.vue'
+import      Swiper          from    '../Discover/Swiper.vue'     // 引入轮播组件
+const       components = { Swiper,Title }
 
 export default {
     data() {
         return {
-            title: this.$route.params.id
+            title: this.$route.params.id,
+            describe_title: {
+                title: '家居描述',
+                backgroundColor: '#FFF'
+            },
+            size_title: {
+                title: '家具尺寸',
+                backgroundColor: '#FFF'
+            },
+            custom_title: {
+                title: '家具定制',
+                backgroundColor: '#FFF'
+            },
+            custom_List: [
+                { text: '独家定制专属您的办公家具；' },
+                { text: '定制流程请联系客服或拨打电话咨询；' },
+                { text: '0532-83861532' }
+            ],
+            flow_title: {
+                title: '购买流程',
+                backgroundColor: '#FFF'
+            },
+            flow_img: {
+                imgUrl: require('../../assets/images/instruction.png')
+            },
+            Notes_title: {
+                title: '注意事项',
+                backgroundColor: '#FFF'
+            },
+            Notes_content: [
+                { text: '商品为厂家直销；' },
+                { text: '商品最终以实物为准；' },
+                { text: '商品任何质量问题均有厂家直接解决；' },
+                { text: '一次性购买5000元家具可享青岛市内免费运输服务。' }
+            ]
         }
     },
     mounted: function() {
@@ -48,7 +120,7 @@ export default {
             },1000)
         }
     }
-    ,computed: mapGetters({ furnichureInfo_Img_Arr: 'furnichureInfo_Img_Arr' })
+    ,computed: mapGetters({ furnichureInfo_Img_Arr: 'furnichureInfo_Img_Arr', furnichureInfo: 'furnichureInfo' })
     ,components: components
 }
 </script>

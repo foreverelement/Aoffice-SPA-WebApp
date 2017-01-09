@@ -42,7 +42,6 @@
             <Title :title_info=decoration_Notes_title />
             <!-- <li v-for="(item, index) in items"> -->
             <div class="Notes--box" v-for="(item, index) in decoration_Notes">
-                <!-- {{ parentMessage }} - {{ index }} - {{ item.message }} -->
                 <p> {{ index + 1 }} . {{ item.title }} </p>
             </div>
         </div>
