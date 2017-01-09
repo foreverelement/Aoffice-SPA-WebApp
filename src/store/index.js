@@ -12,7 +12,8 @@ const state = {
     bannerImg_Arr: []                                       // "发现" - banner图片数组
     ,hotBuildingList_Arr: []                                // "发现" - "热门房源"内容
     ,furnichureInfo_Img_Arr: []                                 // "服务" - "家具"详情内容
- }
+    ,furnichureInfo: {}
+}
 const store = new Vuex.Store({
     state,
     getters,
