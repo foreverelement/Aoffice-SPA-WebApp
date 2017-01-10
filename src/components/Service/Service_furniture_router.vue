@@ -8,7 +8,7 @@
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
-        <!-- 内容条件渲染 -->
+        <!-- 内容渲染 -->
         <Swiper :swiper_arr=furnitureInfo.imgUrl class="furniture--swiper" />
         <div class="furniture--title">
             <h3> {{ furnitureInfo.name }} </h3>

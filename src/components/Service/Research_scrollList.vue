@@ -7,7 +7,7 @@
                 <mu-row gutter class="research--list">
                     <!-- 盒子内容 -->
                     <mu-col width="50" tablet="33" desktop="25" class="research--box" v-for="item in research_info" >
-                        <img :src="item.imgUrl" @click="toResearchDetails(item.code)" />
+                        <img :src="item.imgUrl" @click="consoloMsg(item.code)" />
                         <!-- 文字内容 -->
                         <div class="research--content" @click="toResearchDetails(item.code)" >
                             <h4> {{ item.title }} </h4>
@@ -15,7 +15,6 @@
                         </div>
                     </mu-col>
                 </mu-row>
-
             </template>
         </mu-list>
         <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore"/>
@@ -93,8 +92,10 @@ export default {
         toResearchDetails: function (toPageCode) {
             location.href = '#/service/research/' + toPageCode
         }
-        //,
-        //consoloMsg: function()
+        ,
+        consoloMsg: function(msg) {
+            console.log(msg)
+        }
     }
 }
 </script>

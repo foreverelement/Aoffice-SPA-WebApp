@@ -28,3 +28,19 @@ export const getFurnitureInfo = ({commit}) => {
         console.log(error);
     });
 }
+
+//获得 "外出详情" - 数据
+export const getResearchInfo =({ commit }) => {
+    axios.post( './static/researchInfo_1.json', {            //静态json测试
+    // axios.post( 'http://192.168.1.250:8082/api/es/getInvestigate', {
+        // code: ''
+    })
+    .then(function (response) {
+        let get_ResearchInfoData = response.data.resultData
+        console.log('response' + response)
+        // console.log('data' + response.data)
+        // console.log('response.data.resultData' + response.data.resultData)
+        // console.log('INFO' + response.data.resultData.investigate)
+    })
+}
+
