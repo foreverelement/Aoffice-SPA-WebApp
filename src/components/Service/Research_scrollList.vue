@@ -6,11 +6,10 @@
 
                 <mu-row gutter class="research--list">
                     <!-- 盒子内容 -->
-                    <mu-col width="50" tablet="33" desktop="25" class="research--box" v-for="item in research_info">
-                        <!-- 图片 -->
-                        <img :src="item.imgUrl" />
+                    <mu-col width="50" tablet="33" desktop="25" class="research--box" v-for="item in research_info" >
+                        <img :src="item.imgUrl" @click="toResearchDetails(item.code)" />
                         <!-- 文字内容 -->
-                        <div class="research--content">
+                        <div class="research--content" @click="toResearchDetails(item.code)" >
                             <h4> {{ item.title }} </h4>
                             <p> {{ item.subTitle }} </p>
                         </div>
@@ -39,34 +38,40 @@ export default {
             research_info: [
                 // 设置12个测试
                 {
-                    imgUrl: 'http://images.aplusoffice.cn/images/building/B000000009/real/real2.jpg',
-                    title: '上海漕河泾新兴1',
-                    subTitle: '上海市徐汇区桂平路'
+                    imgUrl:     'http://images.aplusoffice.cn/images/building/B000000009/real/real2.jpg',
+                    title:      '上海漕河泾新兴1',
+                    subTitle:   '上海市徐汇区桂平路',
+                    code:       'ig0001'
                 },
                 {
-                    imgUrl: 'http://images.aplusoffice.cn/images/building/B000000009/real/real1.jpg',
-                    title: '上海漕河泾新兴2',
-                    subTitle: '上海市徐汇区桂平路'
+                    imgUrl:     'http://images.aplusoffice.cn/images/building/B000000009/real/real1.jpg',
+                    title:      '上海漕河泾新兴2',
+                    subTitle:   '上海市徐汇区桂平路',
+                    code:       'ig0001'
                 },
                 {
-                    imgUrl: 'http://images.aplusoffice.cn/images/building/B000000009/real/real4.jpg',
-                    title: '上海漕河泾新兴3',
-                    subTitle: '上海市徐汇区桂平路'
+                    imgUrl:     'http://images.aplusoffice.cn/images/building/B000000009/real/real4.jpg',
+                    title:      '上海漕河泾新兴3',
+                    subTitle:   '上海市徐汇区桂平路',
+                    code:       'ig0001'
                 },
                 {
-                    imgUrl: 'http://images.aplusoffice.cn/images/building/B000000009/real/real3.jpg',
-                    title: '上海漕河泾新兴4',
-                    subTitle: '上海市徐汇区桂平路'
+                    imgUrl:     'http://images.aplusoffice.cn/images/building/B000000009/real/real3.jpg',
+                    title:      '上海漕河泾新兴4',
+                    subTitle:   '上海市徐汇区桂平路',
+                    code:       'ig0001'
                 },
                 {
-                    imgUrl: 'http://images.aplusoffice.cn/images/building/real4-default.jpg',
-                    title: '上海漕河泾新兴5',
-                    subTitle: '上海市徐汇区桂平路'
+                    imgUrl:     'http://images.aplusoffice.cn/images/building/real4-default.jpg',
+                    title:      '上海漕河泾新兴5',
+                    subTitle:   '上海市徐汇区桂平路',
+                    code:       'ig0001'
                 },
                 {
-                    imgUrl: 'http://images.aplusoffice.cn/images/building/real3-default.jpg',
-                    title: '上海漕河泾新兴6',
-                    subTitle: '上海市徐汇区桂平路'
+                    imgUrl:     'http://images.aplusoffice.cn/images/building/real3-default.jpg',
+                    title:      '上海漕河泾新兴6',
+                    subTitle:   '上海市徐汇区桂平路',
+                    code:       'ig0001'
                 }
             ]
         }
@@ -84,7 +89,12 @@ export default {
                 this.num += 1
                 this.loading = false
             }, 1500)
+        },
+        toResearchDetails: function (toPageCode) {
+            location.href = '#/service/research/' + toPageCode
         }
+        //,
+        //consoloMsg: function()
     }
 }
 </script>

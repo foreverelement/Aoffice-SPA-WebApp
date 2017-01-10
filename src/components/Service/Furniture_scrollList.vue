@@ -91,11 +91,8 @@ export default {
                 this.loading = false
             }, 1500)
         },
-        say: function (message) {
-            alert(message)
-        },
         toFurnitureDetails: function (toPageNum) {
-            location.href='#/service/furniture/' + toPageNum
+            location.href = '#/service/furniture/' + toPageNum
         }
     }
 }
