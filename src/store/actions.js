@@ -33,17 +33,28 @@ export const getFurnitureInfo = ({commit}) => {
 
 //获得 "外出详情" - 数据
 export const getResearchInfo = ({commit}) => {
-    axios.post( './static/researchInfo_1.json', {                                                       // 静态json测试
-        // code: 'ig0001'
-    })
+    // axios.post( './static/researchInfo_1.json', {                                                       // 静态json测试
+    // axios.post( 'http://192.168.1.6:8282/aoffice_app/api/test/crossDomain', {
+    //     // code: 'ig0001'
+    //     userId: 1
+    // })
+    // .then(function (response) {
+    //     let get_ResearchInfoData = response.data.resultData
+    //     console.log(response)
+    //     commit('addResearchInfo',get_ResearchInfoData)
+    // })
+    // .catch(function (error) {
+    //     console.log(error);
+    // })
+    var params = new URLSearchParams();
+    params.append('code', 'ig0003');
+    axios.post('http://192.168.1.30:8282/aoffice_app/api/es/getInvestigate', params)
     .then(function (response) {
-        let get_ResearchInfoData = response.data
-        console.log( 'res属性:' + response.data.resultData )
-        console.dir( response.data.resultData )
-        // commit('addResearchInfo',get_ResearchInfoData)
+        let get_ResearchInfoData = response.data.resultData
+        console.log(response)
+        commit('addResearchInfo',get_ResearchInfoData)
     })
     .catch(function (error) {
         console.log(error);
-    });
+    })
 }
-

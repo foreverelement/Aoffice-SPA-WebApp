@@ -49,9 +49,6 @@ export const addFurnitureInfo = (state,res) => {
 
 // 外出详情页
 export const addResearchInfo =( state, res ) => {
-    let researchIPList = []
-    researchIPList = res.IPList
-    // console.log( 'res:' + res)
-    // console.log( 'IPList:' + res[0] )
-    // console.log( 'investigate:' + res[1] )
+    state.researchInfo = res
+    state.researchInfo.investigate.appPic = res.picUrl + res.investigate.appPic                     // 拼接图片地址
 }

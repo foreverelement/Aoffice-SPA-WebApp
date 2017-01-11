@@ -9,6 +9,17 @@
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
         <!-- 内容渲染 -->
+        <div class="research--box">
+            <!-- <img :src="researchInfo" />
+            <h3> {{ furnitureInfo.name }} </h3>
+            <p> ￥ {{ furnitureInfo.price }} </p> -->
+        </div>
+        <div class="research--box">
+
+        </div>
+        <div class="research--box">
+
+        </div>
     </div>
 </template>
 
@@ -52,6 +63,29 @@ export default {
 
 <style lang="sass">
 @import '../../../sass/main'
+%research--font
+    h3
+        +REM(font-size,$text-size)
+        color: rgba($title-color,.7)
+    p
+        +REM(font-size,$text-size)
+        color: rgba($title-color,.7)
+        >b
+            color: $theme-color
 
 #service_research_router
+    /* 设置MuseUI - App Bar样式 */
+    +auto--AppBar
+    // 统一box样式
+    // .research--box
+    //     +REM(padding,$autoMargin)
+    //     padding-top: 0
+    //     +REM(margin-top,$autoMargin)
+    //     +bC($F)
+    //     box-shadow: 0 1px 2px rgba(0,0,0,.117647), 0 1px 3px rgba(0,0,0,.117647) !important
+    //     &:last-child
+    //         +REM(margin-bottom,$autoMargin)
+    //     img
+    //         @extend %imgCover
+    //     @extend %furniture--font
 </style>
