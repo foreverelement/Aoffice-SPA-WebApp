@@ -46,3 +46,12 @@ export const addFurnitureInfo = (state,res) => {
     }
     state.furnitureInfo['furnitureSizeList'] = furnitureSizeList_Arr                                // 最后将生成的list数组推入 state.furnitureInfo 对象中
 }
+
+// 外出详情页
+export const addResearchInfo =( state, res ) => {
+    let researchIPList = []
+    researchIPList = res.IPList
+    // console.log( 'res:' + res)
+    // console.log( 'IPList:' + res[0] )
+    // console.log( 'investigate:' + res[1] )
+}
