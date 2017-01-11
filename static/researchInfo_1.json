@@ -2,6 +2,7 @@
     "resultCode": 1,
     "resultMsg": "考察项目加载成功",
     "resultData": {
+        "picUrl": "http://test.aplusoffice.cn/",
         "IPList": [
             {
                 "codeIP": "01",

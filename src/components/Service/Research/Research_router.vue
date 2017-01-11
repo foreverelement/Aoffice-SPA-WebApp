@@ -10,15 +10,19 @@
         </mu-appbar>
         <!-- 内容渲染 -->
         <div class="research--box">
-            <!-- <img :src="researchInfo" />
-            <h3> {{ furnitureInfo.name }} </h3>
-            <p> ￥ {{ furnitureInfo.price }} </p> -->
+            <img :src="researchInfo.appPic" />
+            <h3> {{ researchInfo.name }} </h3>
+            <p> {{ researchInfo.address }} </p>
+            <span> {{ researchInfo.appPic }} </span>
         </div>
+        <!-- 地点介绍 -->
         <div class="research--box">
-
+            <Title :title_info = introduced_title />
+            <p> {{ researchInfo.description }} </p>
         </div>
+        <!-- 考察流程 -->
         <div class="research--box">
-
+            <Title :title_info = flow_title />
         </div>
     </div>
 </template>
@@ -31,7 +35,15 @@ const       components = { Title }
 export default {
     data() {
         return {
-            title:this.$route.params.id
+            title:this.$route.params.id,
+            introduced_title: {
+                title: '地点介绍',
+                backgroundColor: '#FFF'
+            },
+            flow_title: {
+                title: '考察流程',
+                backgroundColor: '#FFF'
+            }
         }
     },
     mounted: function() {
@@ -77,7 +89,9 @@ export default {
     /* 设置MuseUI - App Bar样式 */
     +auto--AppBar
     // 统一box样式
-    // .research--box
+    .research--box
+        // +auto--contentBox($autoMargin,rgba($title-color,.7),$text-size,rgba($title-color,.7),$text-size)
+        +bC($F)
     //     +REM(padding,$autoMargin)
     //     padding-top: 0
     //     +REM(margin-top,$autoMargin)
