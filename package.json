@@ -1,7 +1,7 @@
 {
-  "name": "Aoffice-SPA-WebApp-Vue-Reset",
+  "name": "Aoffice-SPA-WebApp",
   "version": "1.0.0",
-  "description": "Aoffice-SPA-WebApp-Vue-Reset",
+  "description": "Aoffice-SPA-WebApp",
   "author": "yanxiaodi <929213769@qq.com>",
   "private": true,
   "scripts": {
