@@ -9,10 +9,13 @@
         <!-- 隐藏左侧 -->
         <mu-drawer :open="open" :docked="docked" class="left--box" @close="toggle()">
             <mu-list @itemClick="docked ? '' : toggle()">
-                <mu-list-item title="Menu Item 1"/>
-                <mu-list-item title="Menu Item 2"/>
-                <mu-list-item title="Menu Item 3"/>
-                <mu-list-item v-if="docked" @click.native="open = false" title="Close"/>
+                <mu-list-item title="新功能介绍" @click="toAboutInfo( 'newFeatures' )" />                             <!-- NewFeatures -->
+                <mu-list-item title="常见问题"   @click="toAboutInfo( 'FAQ' )" />                                     <!-- FAQ -->
+                <mu-list-item title="关于我们"   @click="toAboutInfo( 'aboutUs' )" />                                 <!-- AboutUs -->
+                <mu-list-item title="商务合作"   @click="toAboutInfo( 'cooperation' )" />                             <!-- Cooperation -->
+                <mu-list-item title="隐私政策"   @click="toAboutInfo( 'privacyPolicy' )" />                           <!-- PrivacyPolicy -->
+                <mu-list-item title="版权信息"   @click="toAboutInfo( 'copyrightInfo' )" />                           <!-- CopyrightInfo -->
+                <!--<mu-list-item v-if="docked" @click.native="open = false" title="Close"/>-->
             </mu-list>
         </mu-drawer>
     </mu-appbar>
@@ -30,6 +33,10 @@ export default {
         toggle (flag) {
             this.open = !this.open
             this.docked = !flag
+        },
+        toAboutInfo: function(pageName) {
+            location.href = '#/aboutAPlus/' + pageName
+            console.log('跳转至' + pageName)
         }
     }
 }

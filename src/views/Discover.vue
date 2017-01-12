@@ -2,7 +2,6 @@
 <template>
     <div id="discover">
         <DiscoverAppBar />
-
         <Swiper :swiper_arr=bannerImg_Arr[0]  />
         <EnterpriseService />
         <Title :title_info=title_info />

@@ -65,7 +65,7 @@ export default {
         },
         // 目的: 执行跳转
         returnService: () => {
-            location.href='#/service/'
+            location.href = '#/service/'
         }
         // 目的: 向两个按钮添加App反馈事件( 返回 / 对话窗口 )
         ,addAppOnClick: () => {
