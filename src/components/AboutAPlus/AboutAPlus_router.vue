@@ -6,8 +6,6 @@
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
-        <!-- 通用填充组件 - 避免顶部标题遮挡 -->
-        <ContentMarginTop />
         <!-- 内容条件渲染 -->
         <NewFeatures             v-if = "this.$route.params.id === 'newFeatures'" />
         <FAQ                v-else-if = "this.$route.params.id === 'FAQ'" />
