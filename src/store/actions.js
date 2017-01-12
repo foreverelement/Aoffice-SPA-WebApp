@@ -18,9 +18,9 @@ export const addState = ({commit}) => {
 
 // 后期将modules 分出
 export const getFurnitureInfo = ({commit}) => {
-    // axios.post('./static/furnitureInfo_1.json', {
-    axios.post('http://192.168.1.30:8282/aoffice_app/api/es/getInvestigate?icode=ig0001' , {
-        icode: 'ig0001'
+    axios.post('./static/furnitureInfo_1.json', {
+    // axios.post('http://192.168.1.30:8282/aoffice_app/api/es/getInvestigate?icode=ig0001' , {
+        // icode: 'ig0001'
     })
     .then(function (response) {
         let get_data = response.data.resultData

@@ -179,7 +179,7 @@ export default {
         li
             +REM(padding-top,$autoMargin/2)
             +REM(padding-bottom,$autoMargin/2)
-            border-bottom: 1px solid rgba($badgeFont-color,.5)
+            @extend %auto--borderBottomSoild                    // 通用修饰下划线
             overflow: hidden
             p
                 float: left

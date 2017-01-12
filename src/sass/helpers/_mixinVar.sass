@@ -143,10 +143,16 @@ $autoMargin: 16px
     +REM(padding-right,$right)
     +REM(padding-bottom,$bottom)
     +REM(padding-left,$left)
+// 通用修饰下划线
+%auto--borderBottomSoild
+    border-bottom: 1px solid rgba($badgeFont-color,.3)
 // 通用
 =auto--contentBox($auto--paddingSize,$titleColor,$titleSize,$textColor,$textSize)
     +REM(padding,$auto--paddingSize)
+    +REM(margin-top,$auto--paddingSize)
     @extend %justify                            // 两侧对其
+    &:last-child
+        +REM(margin-bottom,$auto--paddingSize)
     h3
         +REM(font-size,$titleSize)
         font-weight: bold
@@ -154,7 +160,8 @@ $autoMargin: 16px
         color: rgba($titleColor,.7)
     p
         +REM(font-size,$textSize)
-        color: $textColor
+        +REM(line-height,$textSize*2)
+        color: $badgeFont-color
 // 通用 -AppBar导航栏样式混合
 =auto--AppBar
     .mu-paper-1
