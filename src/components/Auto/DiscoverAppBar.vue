@@ -4,8 +4,6 @@
         <mu-icon-button icon='list' slot="left" @click="toggle(true)" />
         <mu-text-field icon="search" class="appbar-search-field"  slot="right" />
         <mu-icon-button icon='chat' slot="right" />
-        <!--<mu-flat-button icon='' slot=""/>-->
-
         <!-- 隐藏左侧 -->
         <mu-drawer :open="open" :docked="docked" class="left--box" @close="toggle()">
             <mu-list @itemClick="docked ? '' : toggle()">
@@ -15,12 +13,10 @@
                 <mu-list-item title="商务合作"   @click="toAboutInfo( 'cooperation' )" />                             <!-- Cooperation -->
                 <mu-list-item title="隐私政策"   @click="toAboutInfo( 'privacyPolicy' )" />                           <!-- PrivacyPolicy -->
                 <mu-list-item title="版权信息"   @click="toAboutInfo( 'copyrightInfo' )" />                           <!-- CopyrightInfo -->
-                <!--<mu-list-item v-if="docked" @click.native="open = false" title="Close"/>-->
             </mu-list>
         </mu-drawer>
     </mu-appbar>
 </template>
-
 <script>
 export default {
     data () {
@@ -36,12 +32,11 @@ export default {
         },
         toAboutInfo: function(pageName) {
             location.href = '#/aboutAPlus/' + pageName
-            console.log('跳转至' + pageName)
+            // console.log('跳转至' + pageName)
         }
     }
 }
 </script>
-
 <style lang="sass">
 @import '../../sass/main'
 

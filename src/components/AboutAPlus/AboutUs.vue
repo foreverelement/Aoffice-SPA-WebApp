@@ -7,12 +7,7 @@
             </div>
         </div>
         <div class="aboutUs--box">
-            <ul>
-                <li v-for = "item in aboutUsInfo.connection" >
-                    <p> <b> {{ item.title }} </b> </p>
-                    <p> {{ item.info }} </p>
-                </li>
-            </ul>
+            <AutoTemplate :aboutAPlus_auto_Arr = aboutUsInfo.connection />
         </div>
         <div class="aboutUs--box">
             <img :src="aboutUsInfo.mapImgUrl" />
@@ -20,6 +15,8 @@
     </div>
 </template>
 <script>
+import AutoTemplate         from    './AboutAPlus_autoTemplate.vue'         // 通用渲染数组模板
+const components = { AutoTemplate }
 export default {
     data() {
         return {
@@ -40,21 +37,22 @@ export default {
                 connection: [
                     {
                         title:          `热线电话：`,
-                        info:           `0532-83861532`
+                        textContent:    `0532-83861532`
                     },
                     {
                         title:           `邮件咨询：`,
-                        info:            `aplusoffice@forevercj.com`
+                        textContent:     `aplusoffice@forevercj.com`
                     },
                     {
                         title:           `公司地址：`,
-                        info:            `山东省青岛市市南区华润大厦B座2408号`
+                        textContent:     `山东省青岛市市南区华润大厦B座2408号`
                     }
                 ],
                 mapImgUrl: require('../../assets/images/map.png')
             }
         }
-    }
+    },
+    components: components
 }
 </script>
 <style lang="sass">
@@ -67,14 +65,14 @@ export default {
         +REM(margin-bottom,$autoMargin)
         &:last-child
             margin: 0
-        // 联系方式 数组
+        // 联系方式
         ul li
-            p
+            margin: 0
+            >h3
                 @extend %dib
-                >b
-                    @extend %bold
-                    color: rbga($title-color-light,7)
-        // 艾迦办公地址地图图片
+            >p
+                @extend %dib
+                color: rbga($title-color-light,.7)
         >img
             @extend %imgCover
 </style>

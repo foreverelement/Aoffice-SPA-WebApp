@@ -1,16 +1,12 @@
 <!-- 常见问题 -->
 <template>
     <div id="FAQ">
-        <ul>
-           <li v-for="item in FAQ_Arr" >
-               <h3> {{ item.title }} </h3>
-               <p> {{ item.textContent }} </p>
-           </li>
-        </ul>
+        <AutoTemplate :aboutAPlus_auto_Arr=FAQ_Arr />
     </div>
 </template>
-
 <script>
+import AutoTemplate         from    './AboutAPlus_autoTemplate.vue'         // 通用渲染数组模板
+const components = { AutoTemplate }
 export default {
     data() {
         return {
@@ -33,20 +29,14 @@ export default {
                 }
             ]
         }
-    }
+    },
+    components: components
 }
 </script>
-
 <style lang="sass">
 @import '../../sass/main.sass'
 
 #FAQ
     +auto--contentBox($autoMargin,$title-color,$title-size,$badgeFont-color,$text-size)
     +bC($F)
-    ul li
-        +REM(margin-top,$autoMargin)
-        &:first-child
-            margin: 0
-        h3
-            font-weight: bold
 </style>
