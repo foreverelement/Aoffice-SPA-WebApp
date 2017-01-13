@@ -3,7 +3,6 @@
     <div class="demo-infinite-container">
         <mu-list>
             <template v-for="item in list">
-
                 <mu-row gutter class="research--list">
                     <!-- 盒子内容 -->
                     <mu-col width="50" tablet="33" desktop="25" class="research--box" v-for="item in research_info" >

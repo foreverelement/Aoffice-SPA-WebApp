@@ -81,4 +81,6 @@ export default {
 #aboutAPlus_router
     /* 设置MuseUI - App Bar样式 */
     +auto--AppBar
+    min-height: 100vh
+    +bC($base-color)
 </style>
