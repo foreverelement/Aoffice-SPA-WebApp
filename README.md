@@ -130,11 +130,70 @@ npm run build
 2. 组件引用名称开头需大写
 3. 路由页面首字母需小写
 
+***
+
 > Sass文件( 禁止使用CSS文件编写样式 )
+
 1. 颜色值需大写 ( 例子'#FFF' )
 2. 类名需严格遵循BEM命名法
 3. 减少使用驼峰命名( 引用混合 / 继承方法除外 )
 
+***
+
 > JS文件
+
 1. 变量名 / 方法名 开头需小写
 2. 使用驼峰命名法( 避免使用 破折号 / 下划线 连接两个单词 )
+
+***
+
+> 房源详情返回数据
+```json
+{
+    "resultCode": 1,
+    "resultMsg": "楼盘详情加载成功",
+    "resultData": {
+        "buildingDetails": {
+            "code": "B000000008",
+            "name": "长江中心A座",
+            "type": "A",
+            "address": "XX，YY，ZZ",
+            "description": "长江中心是集政府行政审批中心、银行、5A级智能化写字楼、健身休闲中心于一体的智能化甲级写字楼。",
+            "propertyCompany": "长江物业",               -----物业
+            "floorHeight": "净高2.6m",                    -----高度
+            "parkingNum": "地下车位数：500个",          -----车位
+            "longitude": 120.188076,                      ------经度
+            "latitude": 35.957857,                        -------维度
+            "areaMin": 94,                               ----最小面积
+            "areaMax": 690,                             -----最大面积
+            "priceMonthMin": null,
+            "priceDayMin": 1.6,                          -------最小价格  按天
+            "priceDayMax": 2.9,                          ------最大价格 按天
+            "parentCode": null,
+            "amountA": 15,                  -----独立空间
+            "amountB": 41,                  -----工位
+            "road": "路",
+            "city": "城市",
+            "reg": "区"
+        },
+        "buildingPicList": [       ------图片list
+            {
+                "realAppUrl": "images/pic-house01.jpg"
+            },
+            {
+                "realAppUrl": "images/pic-house02.jpg"
+            }
+        ],
+        "buildingRelationList": [
+            {
+                "code": "B000000016",
+                "name": "欢乐颂创意办公空间",
+                "type": "B",
+                "subTitle": "欢乐颂创意办公空间",             -----子标题
+                "appListUrl": "images/app/building/B000000001/app_pic_url.jpg",
+                "description": "欢乐颂创意办公空间配备专业秘书接受入住客户的呼叫服务，提供打印/复印服务、会务服务、接送服务、商务/法务服务、财税服务、安保服务、管理咨询等个性化一站式服务，灵动满足个性需求，达成&ldquo;有限空间,无限链接&rdquo;的事业愿景。"
+            }
+        ]
+    }
+}
+```
