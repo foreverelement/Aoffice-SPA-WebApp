@@ -2,7 +2,8 @@
     <div id="aboutAPlus_router">
         <!-- 标题 组件 -->
         <mu-appbar >
-            <mu-icon-button icon='arrow_back' slot="left" @click="returnService()"/>
+            <!--<i class="material-icons"></i>-->
+            <mu-icon-button icon='keyboard_arrow_left' slot="left" @click="returnService()"/>
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
