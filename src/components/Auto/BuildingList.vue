@@ -3,18 +3,16 @@
     <div class="buildingList">
         <div class="building--box" v-for="item in hotBuildingList_Arr[0]">
             <!-- 建筑 - 简介 -->
-            <div class="building--intro" v-bind:style="{ backgroundImage: 'url(' + item.appListUrl + ')' }">
+            <div class="building--intro" v-bind:style="{ backgroundImage: 'url(' + item.appListUrl + ')' }" @click = 'toBuildingDetails( item.code, item.type )'>
                 <div class="badge"> {{ item.badge }} </div>
                 <h2> {{ item.name }} </h2>
                 <p> {{ item.subTitle }} </p>
             </div>
-
-            <!-- 建筑 - 细节 (组建引入) -->
+            <!-- 建筑 - 细节 ( 组件引入 ) -->
             <BuildingList_details :building_details=item />
         </div>
     </div>
 </template>
-
 <script>
 import  BuildingList_details    from   './BuildingList_details.vue'
 import  { mapGetters }          from 'vuex'
@@ -22,10 +20,26 @@ const   components = { BuildingList_details }
 
 export default {
     computed: mapGetters({ hotBuildingList_Arr: 'hotBuildingList_Arr' })
+    ,methods: {
+        toBuildingDetails: function ( toPageCode, toPageType ) {
+            // console.log( '接受code' + toPageCode ) 成功
+            // console.log( '接受type' + toPageType ) 成功
+            // 判断大厦类型( 大楼 / 联合办公 )
+            let building_type = toPageType
+            if ( building_type === 'A' ) {
+                // console.log('类型为写字楼')
+                // console.log(toPageCode)
+                location.href = '#/office-Building/' + toPageCode                              // 跳向'写字楼' 路由模版
+
+            } else {
+                // console.log('类行为联合办公')
+                location.href = '#/co-working/' + toPageCode                                // 跳向'联合办公' 路由模版
+            }
+        }
+    }
     ,components: components
 }
 </script>
-
 <style lang="sass" scoped>
 @import '../../sass/main'
 

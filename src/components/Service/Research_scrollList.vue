@@ -90,8 +90,7 @@ export default {
         },
         toResearchDetails: function (toPageCode) {
             location.href = '#/service/research/' + toPageCode
-        }
-        ,
+        },
         consoloMsg: function(msg) {
             console.log(msg)
         }
