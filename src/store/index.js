@@ -12,6 +12,8 @@ const state = {
     ,hotBuildingList_Arr: []                                // "发现" - "热门房源"内容
     ,furnitureInfo: {}
     ,researchInfo: {}                                       // "考察" -详情页数据
+    ,officeBuilding_Arr: []                                 // "办公楼" -详情
+    ,coWorking_Arr: []                                      // "联合办公" - 详情
 }
 const store = new Vuex.Store({
     state,

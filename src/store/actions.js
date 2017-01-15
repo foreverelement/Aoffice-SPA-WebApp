@@ -59,3 +59,19 @@ export const getResearchInfo = ({commit}) => {
     //     console.log(error);
     // })
 }
+
+//获得 "联合办公" - 数据
+export const setCoWorkingInfo = ({commit}) => {
+     // 静态json
+    axios.post( './static/buildingDetails_1.json', {
+        // code: 'ig0001'
+    })
+    .then(function (response) {
+        let set_CoWorkingInfo = response.data.resultData
+        console.log(set_CoWorkingInfo)
+        commit('addCoWorkingInfo',set_CoWorkingInfo)
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+}

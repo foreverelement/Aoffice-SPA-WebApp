@@ -6,12 +6,21 @@
     </div>
 </template>
 <script>
+import      { mapActions, mapGetters } from 'vuex'
 export default {
     data() {
         return {
             title: this.$route.params.id
         }
     }
+    ,mounted: function() {
+        this.setCoWorkingInfo()         // 获取store内 联合办公数据
+    }
+    ,methods:{
+        // 目的: 通过ajax获取联合办公数据
+        ...mapActions(['setCoWorkingInfo'])         // 执行异步
+    }
+    ,computed: mapGetters({ getCoWorkingInfo: 'getCoWorkingInfo' })
 }
 </script>
 <style lang="sass">

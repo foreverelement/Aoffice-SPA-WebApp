@@ -58,3 +58,8 @@ export const addResearchInfo =( state,res ) => {
     // IPList = res.IPList
     state.researchInfo['IPList'] = res.IPList
 }
+
+// 联合办公 - 数据
+export const addCoWorkingInfo =( state,res ) => {
+    state.officeBuilding_Arr = res
+}
