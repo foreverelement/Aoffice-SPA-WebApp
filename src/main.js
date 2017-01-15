@@ -3,8 +3,10 @@ import store from './store'
 import router from './router/config.js'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
+require('./assets/iconfont/material-icons.css')
 
 Vue.config.devtools = true
+Vue.config.debug = true
 
 Vue.use(
     MuseUI
