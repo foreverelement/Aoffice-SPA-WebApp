@@ -1,33 +1,38 @@
 <!-- 服务模块 - 3级外出考察详情页 -->
 <template>
     <div id="service_research_router">
-        <!-- 标题 组件 -->
-        <mu-appbar>
-            <!-- 返回'家居页面' -->
-            <mu-icon-button icon='arrow_back' slot="left" @click="returnResearch()" />
-            <h2> {{ title }} </h2>
-            <mu-icon-button icon='sms' slot="right"/>
-        </mu-appbar>
-        <!-- 内容渲染 -->
-        <div class="research--box">
-            <img :src="researchInfo.appPic" />
-            <h3> {{ researchInfo.name }} </h3>
-            <p> {{ researchInfo.address }} </p>
-        </div>
-        <!-- 地点介绍 -->
-        <div class="research--box">
-            <Title :title_info = introduced_title />
-            <p> {{ researchInfo.description }} </p>
-        </div>
-        <!-- 考察流程 -->
-        <div class="research--box">
-            <Title :title_info = flow_title />
-            <ul class="flow--list">
-                <li v-for = "item in researchInfo.IPList">
-                    <p> <b> {{ item.descriptionIP }} </b> </p>
-                    <p> {{ item.timeLenght }} 分钟 </p>
-                </li>
-            </ul>
+        <!-- 加载动画 -->
+        <CssLoading v-if="researchInfo.judgeShow" />
+        <!-- 外出考察 详情 ( 当动画消失,显示内容 ) -->
+        <div v-else>
+            <!-- 标题 组件 -->
+            <mu-appbar>
+                <!-- 返回'家居页面' -->
+                <mu-icon-button icon='arrow_back' slot="left" @click="returnResearch()" />
+                <h2> {{ title }} </h2>
+                <mu-icon-button icon='sms' slot="right"/>
+            </mu-appbar>
+            <!-- 内容渲染 -->
+            <div class="research--box">
+                <!-- <img :src="researchInfo.appPic" /> -->
+                <h3> {{ researchInfo.name }} </h3>
+                <p> {{ researchInfo.address }} </p>
+            </div>
+            <!-- 地点介绍 -->
+            <div class="research--box">
+                <Title :title_info = introduced_title />
+                <p> {{ researchInfo.description }} </p>
+            </div>
+            <!-- 考察流程 -->
+            <div class="research--box">
+                <Title :title_info = flow_title />
+                <ul class="flow--list">
+                    <li v-for = "item in researchInfo.IPList">
+                        <p> <b> {{ item.descriptionIP }} </b> </p>
+                        <p> {{ item.timeLenght }} 分钟 </p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
@@ -35,7 +40,8 @@
 <script>
 import      { mapActions, mapGetters } from 'vuex'
 import      Title           from    '../../Auto/Title.vue'
-const       components = { Title }
+import      CssLoading    from    '../../Auto/CssLoading_1.vue'
+const       components = { Title, CssLoading }
 
 export default {
     data() {
@@ -52,7 +58,6 @@ export default {
         }
     },
     mounted: function() {
-        this.addAppOnClick()                                                        // 添加App专用点击事件
         this.getResearchInfo()                                                      // 获取家具信息
     }
     ,methods: {
@@ -61,16 +66,6 @@ export default {
         // 目的: 执行跳转 ( 返回 '家居页面' )
         ,returnResearch: () => {
             location.href='#/service/research'
-        }
-        // 目的: 向两个按钮添加App反馈事件( 返回 / 对话窗口 )
-        ,addAppOnClick: () => {
-            setTimeout(() => {
-                // console.log('执行计时器事件')
-                const btnLeft   = document.getElementsByClassName('left')[0]        // 向左侧的返回按钮添加 returnBtn()事件
-                const btnRight  = document.getElementsByClassName('right')[0]       // 向右侧的对话按钮添加 dialogueBtn() 事件
-                btnLeft.setAttribute("onClick", "returnBtn()")
-                btnRight.setAttribute("onClick", "dialogueBtn()")
-            },1000)
         }
     }
     ,computed: mapGetters({ researchInfo: 'researchInfo' })

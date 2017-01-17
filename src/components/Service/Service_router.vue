@@ -26,7 +26,7 @@ import  ContentMarginTop     from    '../Auto/ContentMarginTop.vue'
 
 import  FindProperties      from    './Router-views/FindProperties.vue'
 import  PutInProperties     from    './Router-views/PutInProperties.vue'
-import  Furniture          from    './Router-views/Furniture.vue'
+import  Furniture           from    './Router-views/Furniture.vue'
 import  Decoration          from    './Router-views/Decoration.vue'
 import  Research            from    './Router-views/Research.vue'
 import  Training            from    './Router-views/Training.vue'

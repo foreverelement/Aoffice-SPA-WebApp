@@ -11,7 +11,14 @@ const state = {
     bannerImg_Arr: []                                       // "发现" - banner图片数组
     ,hotBuildingList_Arr: []                                // "发现" - "热门房源"内容
     ,furnitureInfo: {}
-    ,researchInfo: {}                                       // "考察" -详情页数据
+    ,researchInfo: {                                        // "考察" -详情页数据
+        IPList: [],
+        address: '',
+        appPic: '',
+        description: '',
+        name: '',
+        judgeShow: true
+    }
     ,officeBuilding_Arr: []                                 // "办公楼" -详情
     ,coWorking_Arr: []                                      // "联合办公" - 详情
 }

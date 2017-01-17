@@ -57,6 +57,11 @@ export const addResearchInfo =( state,res ) => {
     // let IPList = []
     // IPList = res.IPList
     state.researchInfo['IPList'] = res.IPList
+
+    setTimeout(function() {
+        state.researchInfo['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
+        // console.log('计时器成功!')
+    },4000)
 }
 
 // 联合办公 - 数据
