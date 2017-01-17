@@ -159,24 +159,24 @@ npm run build
             "type": "A",
             "address": "XX，YY，ZZ",
             "description": "长江中心是集政府行政审批中心、银行、5A级智能化写字楼、健身休闲中心于一体的智能化甲级写字楼。",
-            "propertyCompany": "长江物业",               -----物业
-            "floorHeight": "净高2.6m",                    -----高度
-            "parkingNum": "地下车位数：500个",          -----车位
-            "longitude": 120.188076,                      ------经度
-            "latitude": 35.957857,                        -------维度
-            "areaMin": 94,                               ----最小面积
-            "areaMax": 690,                             -----最大面积
+            "propertyCompany": "长江物业",
+            "floorHeight": "净高2.6m",
+            "parkingNum": "地下车位数：500个",
+            "longitude": 120.188076,
+            "latitude": 35.957857,
+            "areaMin": 94,
+            "areaMax": 690,
             "priceMonthMin": null,
-            "priceDayMin": 1.6,                          -------最小价格  按天
-            "priceDayMax": 2.9,                          ------最大价格 按天
+            "priceDayMin": 1.6,
+            "priceDayMax": 2.9,
             "parentCode": null,
-            "amountA": 15,                  -----独立空间
-            "amountB": 41,                  -----工位
+            "amountA": 15,
+            "amountB": 41,
             "road": "路",
             "city": "城市",
             "reg": "区"
         },
-        "buildingPicList": [       ------图片list
+        "buildingPicList": [
             {
                 "realAppUrl": "images/pic-house01.jpg"
             },
@@ -189,7 +189,7 @@ npm run build
                 "code": "B000000016",
                 "name": "欢乐颂创意办公空间",
                 "type": "B",
-                "subTitle": "欢乐颂创意办公空间",             -----子标题
+                "subTitle": "欢乐颂创意办公空间",
                 "appListUrl": "images/app/building/B000000001/app_pic_url.jpg",
                 "description": "欢乐颂创意办公空间配备专业秘书接受入住客户的呼叫服务，提供打印/复印服务、会务服务、接送服务、商务/法务服务、财税服务、安保服务、管理咨询等个性化一站式服务，灵动满足个性需求，达成&ldquo;有限空间,无限链接&rdquo;的事业愿景。"
             }

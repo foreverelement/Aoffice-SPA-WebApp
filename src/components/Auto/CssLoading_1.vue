@@ -1,3 +1,4 @@
+<!-- 加载动画 -->
 <template lang="html">
     <div class="loading">
         <div>

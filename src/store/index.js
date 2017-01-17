@@ -10,7 +10,17 @@ Vue.use(Vuex)
 const state = {
     bannerImg_Arr: []                                       // "发现" - banner图片数组
     ,hotBuildingList_Arr: []                                // "发现" - "热门房源"内容
-    ,furnitureInfo: {}
+    ,furnitureInfo: {
+        appPic: '',
+        code: '',
+        description: '',
+        furnitureSizeList: [],
+        imgUrl: [],
+        name: '',
+        price: 0,
+        type: '',
+        judgeShow: true
+    }
     ,researchInfo: {                                        // "考察" -详情页数据
         IPList: [],
         address: '',

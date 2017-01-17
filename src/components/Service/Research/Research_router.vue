@@ -40,7 +40,7 @@
 <script>
 import      { mapActions, mapGetters } from 'vuex'
 import      Title           from    '../../Auto/Title.vue'
-import      CssLoading    from    '../../Auto/CssLoading_1.vue'
+import      CssLoading      from    '../../Auto/CssLoading_1.vue'
 const       components = { Title, CssLoading }
 
 export default {

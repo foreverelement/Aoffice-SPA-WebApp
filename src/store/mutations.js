@@ -45,6 +45,11 @@ export const addFurnitureInfo = (state,res) => {
         furnitureSizeList_Arr.push(furnitureSize_Obj)                                                               // 将生成的对象 放入furnitureSizeList_Arr数组中
     }
     state.furnitureInfo['furnitureSizeList'] = furnitureSizeList_Arr                                                // 最后将生成的list数组推入 state.furnitureInfo 对象中
+
+    setTimeout(function() {
+        state.furnitureInfo['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
+        console.log('计时器成功！')
+    },4000)
 }
 
 // 外出详情页

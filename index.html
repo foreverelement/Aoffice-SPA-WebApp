@@ -10,12 +10,6 @@
         <!-- 强制让文档的宽度与设备的宽度保持 1:1,并且文档最大的宽度比例是 1.0,且不允许用户点击屏幕放大浏览 -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
         <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script><!-- 淘宝手淘移动端方案 -->
-        <!-- 360代理谷歌字体 -->
-        <!--
-            <link href='http://fonts.useso.com/css?family=Roboto:300,400,500,700,400italic'>
-            <link rel="stylesheet" href="http://fonts.useso.com/icon?family=Material+Icons">
-        -->
-        <!-- /. 360代理谷歌字体 -->
         <link rel="apple-touch-icon" href="./static/favicon.png">
         <link rel="Shortcut Icon" href="./static/favicon.png" type="image/x-icon">
         <meta name="description" content="A+office_WebApp_描述文字_小于150字"><!-- 页面描述 -->
@@ -38,40 +32,5 @@
         </div>
         <!-- 百度地图API -->
         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=upNTUWfwOFHCZbuQvFOgT0ATGnMwb16c"></script>
-        <script>
-            // App返回 事件
-            function returnBtn() {
-                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-                    tianbai.getCall();
-                } else if (/(Android)/i.test(navigator.userAgent)) {
-                    AndroidFunction.showBack();
-                } else {
-                    alert('Windows');
-                };
-            };
-            // App对话 事件
-            function dialogueBtn(){
-                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-                    tianbai.call();
-                } else if (/(Android)/i.test(navigator.userAgent)) {
-                    AndroidFunction.showChat();
-                } else {
-                    alert('Windows');
-                };
-            };
-        </script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-<!--
-    <title>aoffice-spa-webapp-vue-reset</title>
--->

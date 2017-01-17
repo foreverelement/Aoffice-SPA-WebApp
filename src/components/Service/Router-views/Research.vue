@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import      Research_scrollList       from    '../Research_scrollList.vue'
+import      Research_scrollList       from    '../Research/Research_scrollList.vue'
 const components = { Research_scrollList }
 
 export default {
