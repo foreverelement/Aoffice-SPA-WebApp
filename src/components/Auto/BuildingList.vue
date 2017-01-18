@@ -29,11 +29,10 @@ export default {
             if ( building_type === 'A' ) {
                 // console.log('类型为写字楼')
                 // console.log(toPageCode)
-                location.href = '#/office-Building/' + toPageCode                              // 跳向'写字楼' 路由模版
-
+                location.href = '#/office-Building/' + toPageCode                               // 跳向'写字楼' 路由模版
             } else {
                 // console.log('类行为联合办公')
-                location.href = '#/co-working/' + toPageCode                                // 跳向'联合办公' 路由模版
+                location.href = '#/co-working/' + toPageCode                                    // 跳向'联合办公' 路由模版
             }
         }
     }

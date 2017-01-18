@@ -29,8 +29,12 @@ const state = {
         name: '',
         judgeShow: true
     }
-    ,officeBuilding_Arr: []                                 // "办公楼" -详情
-    ,coWorking_Arr: []                                      // "联合办公" - 详情
+    ,officeBuilding: {                                  // "办公楼" -详情
+        judgeShow: true
+    }
+    ,coWorking: {                                       // "联合办公" - 详情
+        judgeShow: true
+    }
 }
 const store = new Vuex.Store({
     state,

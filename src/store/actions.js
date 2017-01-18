@@ -63,13 +63,27 @@ export const getResearchInfo = ({commit}) => {
 //获得 "联合办公" - 数据
 export const setCoWorkingInfo = ({commit}) => {
      // 静态json
-    axios.post( './static/buildingDetails_1.json', {
+    axios.post( './static/buildingDetails_CoWorking_1.json', {
         // code: 'ig0001'
     })
     .then(function (response) {
         let set_CoWorkingInfo = response.data.resultData
-        console.log(set_CoWorkingInfo)
         commit('addCoWorkingInfo',set_CoWorkingInfo)
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+}
+
+//获得 "办公楼详情" - 数据
+export const setOfficeBuildingInfo = ({commit}) => {
+     // 静态json
+    axios.post( './static/buildingDetails_OfficeBuilding_1.json', {
+        // code: 'ig0001'
+    })
+    .then(function (response) {
+        let set_OfficeBuildingInfo = response.data.resultData
+        commit('addOfficeBuildingInfo',set_OfficeBuildingInfo)
     })
     .catch(function (error) {
         console.log(error);

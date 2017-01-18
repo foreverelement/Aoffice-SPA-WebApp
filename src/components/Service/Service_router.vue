@@ -74,15 +74,5 @@ export default {
 
 #service_router
     /* 设置MuseUI - App Bar样式 */
-    .mu-paper-1
-        position: fixed
-        top: 0 !important
-        bottom: initial !important
-        box-shadow: 0 1px 2px rgba(0,0,0,.117647), 0 1px 3px rgba(0,0,0,.117647) !important
-        +bC($F)
-        .mu-icon
-            color: $badgeFont-color !important
-        h2
-            color: $badgeFont-color !important
-            text-align: center
+    +auto--AppBar
 </style>

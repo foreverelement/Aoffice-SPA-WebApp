@@ -147,53 +147,117 @@ npm run build
 
 ***
 
-> 房源详情返回数据
+> 房源详情返回数据 ( 房源详情 / 联合办公 ) 同一个
 ```json
 {
     "resultCode": 1,
     "resultMsg": "楼盘详情加载成功",
     "resultData": {
-        "buildingDetails": {
-            "code": "B000000008",
-            "name": "长江中心A座",
-            "type": "A",
-            "address": "XX，YY，ZZ",
-            "description": "长江中心是集政府行政审批中心、银行、5A级智能化写字楼、健身休闲中心于一体的智能化甲级写字楼。",
-            "propertyCompany": "长江物业",
-            "floorHeight": "净高2.6m",
-            "parkingNum": "地下车位数：500个",
-            "longitude": 120.188076,
-            "latitude": 35.957857,
-            "areaMin": 94,
-            "areaMax": 690,
-            "priceMonthMin": null,
-            "priceDayMin": 1.6,
-            "priceDayMax": 2.9,
-            "parentCode": null,
-            "amountA": 15,
-            "amountB": 41,
-            "road": "路",
-            "city": "城市",
-            "reg": "区"
-        },
-        "buildingPicList": [
+        "typeASearch": [],      独立空间LIST
+        "typeBSearch": [        工位LIST
             {
-                "realAppUrl": "images/pic-house01.jpg"
-            },
-            {
-                "realAppUrl": "images/pic-house02.jpg"
+                "code": "R000000148",
+                "type": "B",
+                "area": 1,                       面积
+                "floor": 3,
+                "remark": "此处为备注",           备注
+                "priceSale": null,                 总价
+                "priceMonth": 700,                  月价
+                "priceDay": 23.33,                  日价
+                "appPic": null,                     手机图片
+                "decoration": "B",
+                "status": "1",
+                "amount": 1,                        剩余数量（仅工位有）
+                "seatCount": "D40",                 ---可容纳工位数（仅独立空间有）
+                "isSave": false,                    是否收藏
+                "appBuilding": null,
+                "buildingType": null,
+                "buildingName": null,
+                "decorationStr": "精装",
+                "floorStr": "低层",
+                "statusStr": "待租",
+                "areaStr": "1.0"
             }
         ],
-        "buildingRelationList": [
+        "status12Search": [            待租LIST
             {
-                "code": "B000000016",
-                "name": "欢乐颂创意办公空间",
-                "type": "B",
-                "subTitle": "欢乐颂创意办公空间",
-                "appListUrl": "images/app/building/B000000001/app_pic_url.jpg",
-                "description": "欢乐颂创意办公空间配备专业秘书接受入住客户的呼叫服务，提供打印/复印服务、会务服务、接送服务、商务/法务服务、财税服务、安保服务、管理咨询等个性化一站式服务，灵动满足个性需求，达成&ldquo;有限空间,无限链接&rdquo;的事业愿景。"
+                "code": "R000000080",
+                "type": "C",
+                "area": 94.82,
+                "floor": 25,
+                "remark": "此处为备注",
+                "priceSale": null,
+                "priceMonth": 7965,
+                "priceDay": 2.8,
+                "appPic": null,
+                "decoration": "C",
+                "status": "1",
+                "amount": 1,
+                "seatCount": null,
+                "isSave": false,
+                "appBuilding": null,
+                "buildingType": null,
+                "buildingName": null,
+                "decorationStr": "简装",
+                "floorStr": "高层",
+                "statusStr": "待租",
+                "areaStr": "94.82"
             }
-        ]
+        ]，
+        "status3Search": [],    ------------待售LIST
+        "buildingRelationList": [         联合办公或者所属大夏
+            {
+                "code": "B000000008",
+                "name": "长江中心A座",
+                "type": "A",
+                "subTitle": "因为向往大海，所以汇入长江",
+                "appListUrl": "images/app/building2/B000000008/list/app_list_url.jpg",
+                "description": "长江中心位于人杰地灵的青岛西海岸，是岛城首座高层钢结构商务写字楼，也是开发区目前最高级别的5A甲级写字楼，成为开发区CBD长江路上的标志性代表建筑。\r长江中心总建筑面积54000平方米，由主楼和裙楼两部分组成，其中地下2层为停车场可容纳386个车位。主楼28层，以写字楼为主，主楼一楼大堂及2、3层规划建设有高级餐厅、咖啡厅、票务及商务中心等商务配套服务，更特别设计多个多功能会议厅及仅开放给楼内企业的大小不同规模的会议室，为入驻企业提供360°国际化全面商务支持。裙楼5层，招商银行业已进驻，还有大型餐饮休闲企业，为整个CBD提供全面高端的金融、餐饮、娱乐服务。"
+            }
+        ],
+        "buildingPicList": [
+            {
+                "realAppUrl": "images/building2/B000000016/real/real10.jpg"
+            },
+            {
+                "realAppUrl": "images/building2/B000000016/real/real2.jpg"
+            },
+            {
+                "realAppUrl": "images/building2/B000000016/real/real3.jpg"
+            },
+            {
+                "realAppUrl": "images/building2/B000000016/real/real4.jpg"
+            },
+            {
+                "realAppUrl": "images/building2/B000000016/real/real5.jpg"
+            },
+            {
+                "realAppUrl": "images/building2/B000000016/real/real1.jpg"
+            }
+        ],
+        "buildingDetails": {
+            "code": "B000000016",
+            "name": "欢乐颂创意办公空间",
+            "type": "B",
+            "address": "开发区，长江中路517号",
+            "description": "欢乐颂创意办公空间配备专业秘书接受入住客户的呼叫服务，提供打印/复印服务、会务服务、接送服务、商务/法务服务、财税服务、安保服务、管理咨询等个性化一站式服务，灵动满足个性需求，达成“有限空间,无限链接”的事业愿景。",
+            "propertyCompany": "长江物业；管理费：7元/平米/月",
+            "floorHeight": "净高2.6m",
+            "parkingNum": "地下车位数：500个",
+            "longitude": 120.188076,     ----经度
+            "latitude": 35.9578795,      ----维度
+            "areaMin": 1,                ----最小面积
+            "areaMax": 165,              ----最大面积
+            "priceMonthMin": null,
+            "priceDayMin": 3,              ----天最小
+            "priceDayMax": 23.33,          -----天最大
+            "parentCode": "B000000008",
+            "amountA": 0,         ------独立空间数量
+            "amountB": 40,        ------工位数量
+            "city": "开发区",      ------城市
+            "reg": "长江中路517号",  ------区
+            "road": ""            --------路
+        }
     }
 }
 ```

@@ -16,6 +16,11 @@ export const addState = (state,res) => {
 
 // 后期将modules 分出
 export const addFurnitureInfo = (state,res) => {
+    // 首先清空state对象( 保持唯一性;然后重新定义默认加载动画属性 )
+    state.furnitureInfo = {
+        judgeShow: true
+    }
+
     let furnitureImgUrl_Arr = []                                                                                    // 创建一个空数组，再循环中填入对象(拼接属性)
     let furnitureSizeList_Arr = []                                                                                  // 创建一个空数组，再循环中填入对象(拼接属性)
     for(let i=0; i<res.furnitureSList.length;i++) {                                                                 // 推 家具 - 详情图片数组
@@ -54,6 +59,11 @@ export const addFurnitureInfo = (state,res) => {
 
 // 外出详情页
 export const addResearchInfo =( state,res ) => {
+    // 首先清空state对象( 保持唯一性;然后重新定义默认加载动画属性 )
+    state.researchInfo = {
+        judgeShow: true
+    }
+
     // state.researchInfo = res
     state.researchInfo.appPic = res.picUrl + res.investigate.appPic                                     // 拼接图片地址
     state.researchInfo['name'] = res.investigate.name
@@ -71,5 +81,30 @@ export const addResearchInfo =( state,res ) => {
 
 // 联合办公 - 数据
 export const addCoWorkingInfo =( state,res ) => {
-    state.officeBuilding_Arr = res
+    // 首先清空state对象( 保持唯一性;然后重新定义默认加载动画属性 )
+    state.coWorking = {
+        judgeShow: true
+    }
+    // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
+    state.coWorking.buildingDetails = res.buildingDetails
+
+    setTimeout(function() {
+        state.coWorking['judgeShow'] = false                // 当有数据时,设置加载动画状态为false
+    },4000)
+}
+
+// 办公楼详情 - 数据
+export const addOfficeBuildingInfo =( state,res ) => {
+    // 首先清空state对象( 保持唯一性;然后重新定义默认加载动画属性 )
+    state.officeBuilding = {
+        judgeShow: true
+    }
+
+    // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
+    state.officeBuilding.buildingDetails = res.buildingDetails
+
+    // 设置加载动画状态为false
+    setTimeout(function() {
+        state.officeBuilding['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
+    },4000)
 }

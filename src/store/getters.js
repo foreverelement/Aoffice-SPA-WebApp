@@ -4,4 +4,5 @@ export const hotBuildingList_Arr        =   state   => state.hotBuildingList_Arr
 // 后期将modules 分出
 export const furnitureInfo              =   state   => state.furnitureInfo              // 家具 详情页 信息内容
 export const researchInfo               =   state   => state.researchInfo               // 外出 详情页 信息内容
-export const getCoWorkingInfo           =   state   => state.coWorking_Arr              // 联合办公
+export const getCoWorkingInfo           =   state   => state.coWorking                  // 联合办公
+export const getOfficeBuildingInfo      =   state   => state.officeBuilding             // 联合办公
