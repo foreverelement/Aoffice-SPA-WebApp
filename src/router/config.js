@@ -15,8 +15,8 @@ import service_router               from '../components/Service/Service_router.v
 import furniture_router             from '../components/Service/Furniture/Furniture_router.vue'     // "服务" 页面 - '家具'路由模块
 import research_router              from '../components/Service/Research/Research_router.vue'       // "服务" 页面 - '外出考察'路由模块
 // 房源详情 ( 写字楼 / 联合办公 )
-import OfficeBuilding_router        from '../components/Auto/OfficeBuilding_router.vue'             // "写字楼 ( 详情 )" - 路由模块
-import CoWorking_router             from '../components/Auto/CoWorking_router.vue'                  // "联合办公 ( 详情 )" - 路由模块
+import OfficeBuilding_router        from '../components/BuildingDetails/OfficeBuilding_router.vue'  // "写字楼 ( 详情 )" - 路由模块
+import CoWorking_router             from '../components/BuildingDetails/CoWorking_router.vue'       // "联合办公 ( 详情 )" - 路由模块
 
 const router = new VueRouter({
     routes: [
