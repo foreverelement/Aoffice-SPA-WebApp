@@ -1,6 +1,6 @@
 export const addState = (state,res) => {
-    state.bannerImg_Arr.push(res.bannerImg)                                                         // 推 商品细节
-    state.hotBuildingList_Arr.push(res.hotBuildingList)                                             // 推 热门房源
+    state.bannerImg_Arr.push(res.bannerImg)                                                                         // 推 商品细节
+    state.hotBuildingList_Arr.push(res.hotBuildingList)                                                             // 推 热门房源
 
     // 判断楼盘类型
     for (var i = 0; i < res.hotBuildingList.length; i++) {
@@ -65,7 +65,7 @@ export const addResearchInfo =( state,res ) => {
     }
 
     // state.researchInfo = res
-    state.researchInfo.appPic = res.picUrl + res.investigate.appPic                                     // 拼接图片地址
+    state.researchInfo.appPic = res.picUrl + res.investigate.appPic                                                 // 拼接图片地址
     state.researchInfo['name'] = res.investigate.name
     state.researchInfo['address'] = res.investigate.city + res.investigate.region + res.investigate.road + '号'     // 拼接具体地址
     state.researchInfo['description'] = res.investigate.description                                                 // 详细描述
@@ -74,8 +74,7 @@ export const addResearchInfo =( state,res ) => {
     state.researchInfo['IPList'] = res.IPList
 
     setTimeout(function() {
-        state.researchInfo['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
-        // console.log('计时器成功!')
+        state.researchInfo['judgeShow'] = false                                                                     // 当有数据时,设置加载动画状态为false
     },4000)
 }
 
@@ -86,10 +85,13 @@ export const addCoWorkingInfo =( state,res ) => {
         judgeShow: true
     }
     // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
-    state.coWorking.buildingDetails = res.buildingDetails
+    state.coWorking.buildingDetails = res.buildingDetails                                                           // 详情数据( 办公楼 + 联合办公 )
+    state.coWorking.buildingPicList = res.buildingPicList                                                           // 图片列表( 数组 )
+    // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
+    // state.coWorking.buildingRelationList
 
     setTimeout(function() {
-        state.coWorking['judgeShow'] = false                // 当有数据时,设置加载动画状态为false
+        state.coWorking['judgeShow'] = false                                                                        // 当有数据时,设置加载动画状态为false
     },4000)
 }
 
