@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import      Service_dropDownMenu        from    '../Service_dropDownMenu.vue'
+import      Service_dropDownMenu        from    '../Furniture/Furniture_dropDownMenu.vue'
 import      Furniture_scrollList       from    '../Furniture_scrollList.vue'
 const components = { Service_dropDownMenu,Furniture_scrollList }
 

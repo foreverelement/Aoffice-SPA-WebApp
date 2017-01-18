@@ -6,14 +6,12 @@
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
-
         <!-- 通用填充组件 - 避免顶部标题遮挡 -->
         <ContentMarginTop />
-
         <!-- 内容条件渲染 -->
         <FindProperties     v-if="this.$route.params.id === 'findProperties'" />
         <PutInProperties    v-else-if="this.$route.params.id === 'putInProperties'" />
-        <Furniture         v-else-if="this.$route.params.id === 'furniture'" />
+        <Furniture          v-else-if="this.$route.params.id === 'furniture'" />
         <Decoration         v-else-if="this.$route.params.id === 'decoration'" />
         <Research           v-else-if="this.$route.params.id === 'research'" />
         <Training           v-else-if="this.$route.params.id === 'training'" />
@@ -22,8 +20,7 @@
 </template>
 
 <script>
-import  ContentMarginTop     from    '../Auto/ContentMarginTop.vue'
-
+import  ContentMarginTop    from    '../Auto/ContentMarginTop.vue'
 import  FindProperties      from    './Router-views/FindProperties.vue'
 import  PutInProperties     from    './Router-views/PutInProperties.vue'
 import  Furniture           from    './Router-views/Furniture.vue'
@@ -41,7 +38,6 @@ export default {
         }
     },
     mounted: function () {
-        this.addAppOnClick()                                                 // 添加App专用点击事件
         this.setTitle( this.$route.params.id )
     },
     methods: {
@@ -66,16 +62,6 @@ export default {
         // 目的: 执行跳转
         returnService: () => {
             location.href = '#/service/'
-        }
-        // 目的: 向两个按钮添加App反馈事件( 返回 / 对话窗口 )
-        ,addAppOnClick: () => {
-            setTimeout(() => {
-                // console.log('执行计时器事件')
-                const btnLeft   = document.getElementsByClassName('left')[0]        // 向左侧的返回按钮添加 returnBtn()事件
-                const btnRight  = document.getElementsByClassName('right')[0]       // 向右侧的对话按钮添加 dialogueBtn() 事件
-                btnLeft.setAttribute("onClick", "returnBtn()")
-                btnRight.setAttribute("onClick", "dialogueBtn()")
-            },1000)
         }
     },
     components: components
