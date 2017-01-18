@@ -87,8 +87,12 @@ export const addCoWorkingInfo =( state,res ) => {
     // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
     state.coWorking.buildingDetails = res.buildingDetails                                                           // 详情数据( 办公楼 + 联合办公 )
     state.coWorking.buildingPicList = res.buildingPicList                                                           // 图片列表( 数组 )
+    state.coWorking.typeASearch     = res.typeASearch                                                               // 独立空间List
+    state.coWorking.typeBSearch     = res.typeBSearch                                                               // 独立工位List
     // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
     // state.coWorking.buildingRelationList
+    let buildingRelationList_length = res.buildingRelationList.length
+    console.log('buildingRelationList数组的length值' + buildingRelationList_length)                                  // 需要+1 ( 测试取值 - 成功 )
 
     setTimeout(function() {
         state.coWorking['judgeShow'] = false                                                                        // 当有数据时,设置加载动画状态为false

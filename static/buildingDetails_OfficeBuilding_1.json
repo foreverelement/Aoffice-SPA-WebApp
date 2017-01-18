@@ -3,7 +3,31 @@
     "resultMsg": "楼盘详情加载成功",
     "resultData": {
         "picUrl": "http://test.aplusoffice.cn/",
-        "typeASearch": [],
+        "typeASearch": [
+            {
+                "code": "R000000148",
+                "type": "B",
+                "area": 1,
+                "floor": 3,
+                "remark": "此处为备注",
+                "priceSale": null,
+                "priceMonth": 700,
+                "priceDay": 23.33,
+                "appPic": null,
+                "decoration": "B",
+                "status": "1",
+                "amount": 1,
+                "seatCount": "D40",
+                "isSave": false,
+                "appBuilding": null,
+                "buildingType": null,
+                "buildingName": null,
+                "decorationStr": "精装",
+                "floorStr": "低层",
+                "statusStr": "待租",
+                "areaStr": "1.0"
+            }
+        ],
         "typeBSearch": [
             {
                 "code": "R000000148",
@@ -54,7 +78,31 @@
                 "areaStr": "94.82"
             }
         ],
-        "status3Search": [],
+        "status3Search": [
+            {
+                "code": "R000000080",
+                "type": "C",
+                "area": 94.82,
+                "floor": 25,
+                "remark": "此处为备注",
+                "priceSale": null,
+                "priceMonth": 7965,
+                "priceDay": 2.8,
+                "appPic": null,
+                "decoration": "C",
+                "status": "1",
+                "amount": 1,
+                "seatCount": null,
+                "isSave": false,
+                "appBuilding": null,
+                "buildingType": null,
+                "buildingName": null,
+                "decorationStr": "简装",
+                "floorStr": "高层",
+                "statusStr": "待租",
+                "areaStr": "94.82"
+            }
+        ],
         "buildingRelationList": [
             {
                 "code": "B000000008",
