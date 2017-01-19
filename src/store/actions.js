@@ -33,31 +33,33 @@ export const getFurnitureInfo = ({commit}) => {
 
 //获得 "外出详情" - 数据
 export const getResearchInfo = ({commit}) => {
-     // 静态json
-    axios.post( './static/researchInfo_1.json', {
-        // code: 'ig0001'
-    })
-    .then(function (response) {
-        let get_ResearchInfoData = response.data.resultData
-        // console.log(response)
-        commit('addResearchInfo',get_ResearchInfoData)
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
-
-    // axios跨域解决方案( 测试成功 )
-    // var params = new URLSearchParams();
-    // params.append('code', 'ig0003');
-    // axios.post('http://192.168.1.30:8282/aoffice_app/api/es/getInvestigate', params)
+    //  // 静态json
+    // axios.post( './static/researchInfo_1.json', {
+    //     // code: 'ig0001'
+    // })
     // .then(function (response) {
     //     let get_ResearchInfoData = response.data.resultData
-    //     console.log(response)
+    //     // console.log(response)
     //     commit('addResearchInfo',get_ResearchInfoData)
     // })
     // .catch(function (error) {
     //     console.log(error);
     // })
+
+    // http://app.aplusoffice.cn/api
+
+    // axios跨域解决方案( 测试成功 )
+    var params = new URLSearchParams();
+    params.append('code', 'ig0003');
+    axios.post('http://app.aplusoffice.cn/api/es/getInvestigate', params)
+    .then(function (response) {
+        let get_ResearchInfoData = response.data.resultData
+        console.log(response)
+        commit('addResearchInfo',get_ResearchInfoData)
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
 }
 
 //获得 "联合办公" - 数据
