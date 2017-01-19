@@ -33,7 +33,8 @@ const state = {
         judgeShow: true
     }
     ,coWorking: {                                       // "联合办公" - 详情
-        judgeShow: true
+        judgeShow: true,
+        buildingRelationList_judgeShow: true
     }
 }
 const store = new Vuex.Store({
