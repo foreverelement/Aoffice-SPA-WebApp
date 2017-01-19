@@ -88,8 +88,21 @@ export const addCoWorkingInfo =( state,res ) => {
     state.coWorking.buildingPicList = res.buildingPicList                                                           // 图片列表( 数组 )
     state.coWorking.typeASearch     = res.typeASearch                                                               // 独立空间List
     state.coWorking.typeBSearch     = res.typeBSearch                                                               // 独立工位List
+
+    let coWorkingImgUrl_Arr = []                                                                                    // 创建一个空数组，在循环中填入对象(拼接属性)
+    console.log( 'length值' + res.buildingPicList.length )
+    for( let i=0; i<res.buildingPicList.length;i++ ) {                                                                // 推 家具 - 详情图片数组
+        function CoWorkingImgUrl(imgUrl) {
+            this.imgUrl = res.picUrl + imgUrl
+        }
+        console.log( '图片对象' + res.buildingPicList[i].realAppUrl )
+        const coWorkingImgUrl_Obj = new CoWorkingImgUrl( res.buildingPicList[i].realAppUrl )
+        coWorkingImgUrl_Arr.push( coWorkingImgUrl_Obj )                                                             // 将构造函数的对象推入 store的数组中
+    }
+    state.coWorking['imgUrl_Arr'] = coWorkingImgUrl_Arr                                                             // 最后将生成的轮播图数组推入 state.furnitureInfo 对象中
+
+
     // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
-    // state.coWorking.buildingRelationList
     let buildingRelationList_length = res.buildingRelationList.length
     // console.log('buildingRelationList数组的length值' + buildingRelationList_length)                               // ( 测试取值 - 成功 )
     if ( buildingRelationList_length < 1 ) {
@@ -99,15 +112,7 @@ export const addCoWorkingInfo =( state,res ) => {
         state.coWorking.buildingRelationList            = res.buildingRelationList                                  // 将 buildingRelationList 数组赋值
     }
 
-    let coWorkingImgUrl_Arr = []                                                                                    // 创建一个空数组，在循环中填入对象(拼接属性)
-    for(let i=0; i<res.buildingPicList.length;i++) {                                                                // 推 家具 - 详情图片数组
-        function CoWorkingImgUrl(imgUrl) {
-            this.imgUrl = res.picUrl + imgUrl
-        }
-        const coWorkingImgUrl_Obj = new CoWorkingImgUrl( res.buildingPicList[i].realAppUrl )
-        coWorkingImgUrl_Arr.push( coWorkingImgUrl_Obj )                                                             // 将构造函数的对象推入 store的数组中
-    }
-    state.coWorking['imgUrl_Arr'] = coWorkingImgUrl_Arr                                                             // 最后将生成的轮播图数组推入 state.furnitureInfo 对象中
+
 
     // 设置加载动画状态为false
     setTimeout(function() {
