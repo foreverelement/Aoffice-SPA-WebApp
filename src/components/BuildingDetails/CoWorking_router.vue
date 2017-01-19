@@ -64,12 +64,13 @@
 </template>
 <script>
 import  { mapActions, mapGetters } from 'vuex'
-import  DBAppBar    from    './BuildingDetails_AppBar.vue'      // 通用头部
-import  CssLoading  from    '../Auto/CssLoading_1.vue'          // 引入加载动画
-import  Title       from    '../Auto/Title.vue'                 // 引入标题
-import  Swiper      from    '../Discover/Swiper.vue'            // 引入轮播图
+import  DBAppBar            from    './BuildingDetails_AppBar.vue'      // 通用头部
+import  CssLoading          from    '../Auto/CssLoading_1.vue'          // 引入加载动画
+import  Title               from    '../Auto/Title.vue'                 // 引入标题
+import  Swiper              from    '../Discover/Swiper.vue'            // 引入轮播图
+import  DetailsList         from    './BuildingDetails_List.vue'        // 引入 独立空间 + 工位 的列表
 
-const   components = { DBAppBar, CssLoading, Title, Swiper }
+const   components = { DBAppBar, CssLoading, Title, Swiper, DetailsList }
 
 export default {
     data() {
