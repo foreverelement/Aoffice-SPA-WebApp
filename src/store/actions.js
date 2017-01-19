@@ -74,7 +74,6 @@ export const setCoWorkingInfo = ({commit}) => {
         console.log(error);
     })
 }
-
 //获得 "办公楼详情" - 数据
 export const setOfficeBuildingInfo = ({commit}) => {
      // 静态json

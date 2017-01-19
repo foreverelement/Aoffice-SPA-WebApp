@@ -80,9 +80,61 @@ export const addResearchInfo =( state,res ) => {
 
 // 联合办公 - 数据
 export const addCoWorkingInfo =( state,res ) => {
+    // // 首先清空state对象( 保持唯一性; 重定义默认 1.加载动画属性, 2.隐藏buildingRelationList_judgeShow数组属性 )
+    // state.coWorking = { judgeShow: true }
+    // state.coWorking = { buildingRelationList_judgeShow: true }
+    // // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
+    // state.coWorking.buildingDetails = res.buildingDetails                                                           // 详情数据( 办公楼 + 联合办公 )
+    // state.coWorking.buildingPicList = res.buildingPicList                                                           // 图片列表( 数组 )
+    // state.coWorking.typeASearch     = res.typeASearch                                                               // 独立空间List
+    // state.coWorking.typeBSearch     = res.typeBSearch                                                               // 独立工位List
+    // // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
+    // let buildingRelationList_length = res.buildingRelationList.length
+    // if ( buildingRelationList_length < 1 ) {
+    //     console.log( 'buildingRelationList是空数组' )
+    // } else {
+    //     state.coWorking.buildingRelationList_judgeShow  = false                                                     // 更改状态
+    //     state.coWorking.buildingRelationList            = res.buildingRelationList                                  // 将 buildingRelationList 数组赋值
+    // }
+    // setTimeout(function() {
+    //     state.coWorking.judgeShow = false                         // 当有数据时,设置加载动画状态为false                                              // 当有数据时,设置加载动画状态为false
+    // },4000)
+
+
+
+    // // 首先清空state对象( 保持唯一性;然后重新定义默认加载动画属性 )
+    // state.coWorking = {
+    //     judgeShow: true,
+    //     buildingRelationList_judgeShow: true
+    // }
+    // // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
+    // state.coWorkingcoWorking.buildingDetails = res.buildingDetails                                                           // 详情数据( 办公楼 + 联合办公 )
+    // state.coWorkingcoWorking.buildingPicList = res.buildingPicList                                                           // 图片列表( 数组 )
+    // state.coWorkingcoWorking.typeASearch     = res.typeASearch                                                               // 独立空间List
+    // state.coWorkingcoWorking.typeBSearch     = res.typeBSearch                                                               // 独立工位List
+    // // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
+    // let buildingRelationList_length = res.buildingRelationList.length
+    // if ( buildingRelationList_length < 1 ) {
+    //     console.log( 'buildingRelationList是空数组' )
+    // } else {
+    //     state.coWorking.buildingRelationList_judgeShow  = false                                                     // 更改状态
+    //     state.coWorking.buildingRelationList            = res.buildingRelationList                                  // 将 buildingRelationList 数组赋值
+    // }
+
+    // // 设置加载动画状态为false
+    // setTimeout(function() {
+    //     state.coWorking['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
+    // },4000)
+
+
     // 首先清空state对象( 保持唯一性; 重定义默认 1.加载动画属性, 2.隐藏buildingRelationList_judgeShow数组属性 )
-    state.coWorking = { judgeShow: true }
-    state.coWorking = { buildingRelationList_judgeShow: true }
+    state.coWorking = {
+        judgeShow: true,
+        buildingRelationList_judgeShow: true
+    }
+
+
+
     // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
     state.coWorking.buildingDetails = res.buildingDetails                                                           // 详情数据( 办公楼 + 联合办公 )
     state.coWorking.buildingPicList = res.buildingPicList                                                           // 图片列表( 数组 )
@@ -99,6 +151,9 @@ export const addCoWorkingInfo =( state,res ) => {
         state.coWorking.buildingRelationList            = res.buildingRelationList                                  // 将 buildingRelationList 数组赋值
     }
 
+
+
+    // 设置加载动画状态为false
     setTimeout(function() {
         state.coWorking['judgeShow'] = false                                                                        // 当有数据时,设置加载动画状态为false
     },4000)
@@ -106,14 +161,24 @@ export const addCoWorkingInfo =( state,res ) => {
 
 // 办公楼详情 - 数据
 export const addOfficeBuildingInfo =( state,res ) => {
-    // 首先清空state对象( 保持唯一性;然后重新定义默认加载动画属性 )
+    // 首先清空state对象( 保持唯一性; 重定义默认 1.加载动画属性, 2.隐藏buildingRelationList_judgeShow数组属性 )
     state.officeBuilding = {
-        judgeShow: true
+        judgeShow: true,
+        buildingRelationList_judgeShow: true
     }
-
     // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
-    state.officeBuilding.buildingDetails = res.buildingDetails
-
+    state.officeBuilding.buildingDetails    = res.buildingDetails                                                           // 详情数据( 办公楼 + 联合办公 )
+    state.officeBuilding.buildingPicList    = res.buildingPicList                                                           // 图片列表( 数组 )
+    state.officeBuilding.status12Search     = res.status12Search                                                            // 待租List
+    state.officeBuilding.status3Search      = res.status3Search                                                             // 待售List
+    // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
+    let buildingRelationList_length = res.buildingRelationList.length
+    if ( buildingRelationList_length < 1 ) {
+        console.log( 'buildingRelationList是空数组' )
+    } else {
+        state.officeBuilding.buildingRelationList_judgeShow  = false                                                     // 更改状态
+        state.officeBuilding.buildingRelationList            = res.buildingRelationList                                  // 将 buildingRelationList 数组赋值
+    }
     // 设置加载动画状态为false
     setTimeout(function() {
         state.officeBuilding['judgeShow'] = false            // 当有数据时,设置加载动画状态为false

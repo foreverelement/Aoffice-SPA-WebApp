@@ -30,7 +30,8 @@ const state = {
         judgeShow: true
     }
     ,officeBuilding: {                                  // "办公楼" -详情
-        judgeShow: true
+        judgeShow: true,
+        buildingRelationList_judgeShow: true
     }
     ,coWorking: {                                       // "联合办公" - 详情
         judgeShow: true,
