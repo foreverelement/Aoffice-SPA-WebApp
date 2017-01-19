@@ -35,7 +35,8 @@ const state = {
     }
     ,coWorking: {                                       // "联合办公" - 详情
         judgeShow: true,
-        buildingRelationList_judgeShow: true
+        buildingRelationList_judgeShow: true,
+        nameInfo: '0'
     }
 }
 const store = new Vuex.Store({

@@ -7,14 +7,14 @@
         <div v-else>
             <DBAppBar :AppBar_title = title />
             <Swiper :swiper_arr = getCoWorkingInfo.imgUrl_Arr />
-            <div class="coWorking--box">
+            <div class="intro">
                 <h2> {{ getCoWorkingInfo.buildingDetails.name }} </h2>
                 <ul>
                     <li>
                         <span> 详细地址: </span>
-                        <p> {{ getCoWorkingInfo.buildingDetails.city }} </p>
+                        <p class="origin"> {{ getCoWorkingInfo.buildingDetails.city }} </p>
                         <p> {{ getCoWorkingInfo.buildingDetails.reg }} </p>
-                        <p> {{ getCoWorkingInfo.buildingDetails.road }} </p>
+                        <p class="end"> {{ getCoWorkingInfo.buildingDetails.road }} </p>
                     </li>
                     <li>
                         <span> 独立空间: </span>
@@ -26,37 +26,37 @@
                     </li>
                     <li>
                         <span> 物业: </span>
-                        <p> <b> {{ getCoWorkingInfo.buildingDetails.propertyCompany }} </b> </p>
+                        <p> {{ getCoWorkingInfo.buildingDetails.propertyCompany }} </p>
                     </li>
                     <li>
                         <span> 车位: </span>
-                        <p> <b> {{ getCoWorkingInfo.buildingDetails.parkingNum }} </b> </p>
+                        <p> {{ getCoWorkingInfo.buildingDetails.parkingNum }} </p>
                     </li>
                 </ul>
             </div>
             <!-- '联合办公'简介 -->
-            <div class="coWorking--box">
-                <!--<Title :title_info = titleInfo />-->
+            <div class="contentBox">
+                <Title :title_info = titleInfo />
                 <p> {{ getCoWorkingInfo.buildingDetails.description }} </p>
             </div>
             <!-- 独立空间 -->
-            <div class="coWorking--box">
+            <div class="contentBox">
                 <Title :title_info = typeASearch />
             </div>
             <!-- 工位 -->
-            <div class="coWorking--box">
+            <div class="contentBox">
                 <Title :title_info = typeBSearch />
             </div>
-            <!-- 立刻预约 -->
-            <div class="coWorking--box">
+            <!-- 立即预约 -->
+            <div class="contentBox">
                 <Title :title_info = reserve />
             </div>
-            <!-- 所属大厦 -->
-            <div class="coWorking--box">
+            <!-- 所属 - 大厦 -->
+            <div class="contentBox">
                 <Title :title_info = affiliation />
             </div>
             <!-- 大厦周边 -->
-            <div class="coWorking--box">
+            <div class="contentBox">
                 <Title :title_info = around />
             </div>
         </div>
@@ -75,10 +75,10 @@ export default {
     data() {
         return {
             title: this.$route.params.id
-            // ,titleInfo: {
-            //     title: this.getCoWorkingInfo.buildingDetails.name + '简介'
-            //     ,backgroundColor: '#FFF'
-            // }
+            ,titleInfo: {
+                title: '联合办公'
+                ,backgroundColor: '#FFF'
+            }
             ,typeASearch: {
                 title: '独立空间'
                 ,backgroundColor: '#FFF'
@@ -118,4 +118,6 @@ export default {
 @import '../../sass/main'
 
 .co-working_router
+    // 加载 通用 - 房源详情页 样式内容 ( Sass混合 )
+    +auto--BuildingDetails
 </style>

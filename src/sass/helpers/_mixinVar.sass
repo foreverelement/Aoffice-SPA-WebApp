@@ -174,3 +174,47 @@ $autoMargin: 16px
         h2
             color: $badgeFont-color !important
             text-align: center
+
+// 通用 - 房源详情页 样式内容 ( 适应于 办公楼 + 联合办公 )
+=auto--BuildingDetails
+    // 介绍部分
+    .intro
+        +REM(padding,$autoMargin)
+        +bC($F)
+        h2
+            // +REM(padding-left,$autoMargin/2)
+            +REM(font-size,$bigTitle-size)
+            +REM(line-height,$bigTitle-size*2)
+            color: $title-color
+        ul li
+            +REM(padding-top,$autoMargin/2)
+            +REM(padding-bottom,$autoMargin/2)
+            overflow: hidden
+            border-bottom: 1px solid rgba($badgeFont-color,.3)
+            // 详细地址 样式 ( 地址右侧有个小灰线 )
+            &:first-child
+                >p
+                    float: left
+                    @extend %dib
+                    +REM(padding-left,$autoMargin/2)
+                    +REM(padding-right,$autoMargin/2)
+                    border-right: 1px solid rgba($badgeFont-color,.3)
+                >p.origin
+                    padding-left: 0
+                >p.end
+                    border-right: none
+            span
+                float: left
+                min-width: 25%
+                +REM(font-size,$text-size)
+                color: rgba($title-color,.8)
+                font-weight: bold
+            p
+                +REM(font-size,$text-size)
+                color: $badgeFont-color
+                >b
+                    color: $theme-color
+    .contentBox
+        // 传入默认参数
+        +auto--contentBox($autoMargin,$title-color,$title-size,$badgeFont-color,$text-size)
+        +bC($F)

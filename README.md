@@ -203,7 +203,7 @@ npm run build
                 "statusStr": "待租",
                 "areaStr": "94.82"
             }
-        ]，
+        ],
         "status3Search": [],    ------------待售LIST
         "buildingRelationList": [         联合办公或者所属大夏
             {
