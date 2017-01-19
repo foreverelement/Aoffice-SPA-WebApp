@@ -2,7 +2,7 @@
     "resultCode": 1,
     "resultMsg": "楼盘详情加载成功",
     "resultData": {
-        "picUrl": "http://test.aplusoffice.cn/",
+        "picUrl": "http://images.aplusoffice.cn/",
         "typeASearch": [
             {
                 "code": "R000000148",
