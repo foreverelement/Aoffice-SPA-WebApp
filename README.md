@@ -99,6 +99,7 @@ npm run build
     - [ ] 员工培训( 静态页面 )
     - [ ] 委托找房( 表单提交 )
     - [ ] 后期将modules 分出
+    - [ ] 根据静态View需求,将改好的内容 合并起来
 - [ ] **Aoffice-SPA-WebApp-Vue性能优化**
     - [ ] 可复用组件改为`render`组件形式
     - [ ] 优化项目结构列表
@@ -148,28 +149,28 @@ npm run build
 ***
 
 > 房源详情返回数据 ( 房源详情 / 联合办公 ) 同一个
-```json
+```js
 {
     "resultCode": 1,
     "resultMsg": "楼盘详情加载成功",
     "resultData": {
-        "typeASearch": [],      独立空间LIST
-        "typeBSearch": [        工位LIST
+        "typeASearch": [],      // 独立空间LIST
+        "typeBSearch": [        // 工位LIST
             {
                 "code": "R000000148",
                 "type": "B",
-                "area": 1,                       面积
+                "area": 1,                       // 面积
                 "floor": 3,
-                "remark": "此处为备注",           备注
-                "priceSale": null,                 总价
-                "priceMonth": 700,                  月价
-                "priceDay": 23.33,                  日价
-                "appPic": null,                     手机图片
+                "remark": "此处为备注",           // 备注
+                "priceSale": null,                 // 总价
+                "priceMonth": 700,                  // 月价
+                "priceDay": 23.33,                  // 日价
+                "appPic": null,                     // 手机图片
                 "decoration": "B",
                 "status": "1",
-                "amount": 1,                        剩余数量（仅工位有）
-                "seatCount": "D40",                 ---可容纳工位数（仅独立空间有）
-                "isSave": false,                    是否收藏
+                "amount": 1,                        // 剩余数量（仅工位有）
+                "seatCount": "D40",                //  ---可容纳工位数（仅独立空间有）
+                "isSave": false,                    // 是否收藏
                 "appBuilding": null,
                 "buildingType": null,
                 "buildingName": null,
@@ -179,7 +180,7 @@ npm run build
                 "areaStr": "1.0"
             }
         ],
-        "status12Search": [            待租LIST
+        "status12Search": [           //  待租LIST
             {
                 "code": "R000000080",
                 "type": "C",
@@ -204,8 +205,8 @@ npm run build
                 "areaStr": "94.82"
             }
         ],
-        "status3Search": [],    ------------待售LIST
-        "buildingRelationList": [         联合办公或者所属大夏
+        "status3Search": [],    // ------------待售LIST
+        "buildingRelationList": [         // 联合办公或者所属大夏
             {
                 "code": "B000000008",
                 "name": "长江中心A座",
@@ -244,19 +245,19 @@ npm run build
             "propertyCompany": "长江物业；管理费：7元/平米/月",
             "floorHeight": "净高2.6m",
             "parkingNum": "地下车位数：500个",
-            "longitude": 120.188076,     ----经度
-            "latitude": 35.9578795,      ----维度
-            "areaMin": 1,                ----最小面积
-            "areaMax": 165,              ----最大面积
+            "longitude": 120.188076,    //  ----经度
+            "latitude": 35.9578795,     //  ----维度
+            "areaMin": 1,               //  ----最小面积
+            "areaMax": 165,             //  ----最大面积
             "priceMonthMin": null,
-            "priceDayMin": 3,              ----天最小
-            "priceDayMax": 23.33,          -----天最大
+            "priceDayMin": 3,              // ----天最小
+            "priceDayMax": 23.33,         //  -----天最大
             "parentCode": "B000000008",
-            "amountA": 0,         ------独立空间数量
-            "amountB": 40,        ------工位数量
-            "city": "开发区",      ------城市
-            "reg": "长江中路517号",  ------区
-            "road": ""            --------路
+            "amountA": 0,        //  ------独立空间数量
+            "amountB": 40,        // ------工位数量
+            "city": "开发区",      // ------城市
+            "reg": "长江中路517号",  // ------区
+            "road": ""           //  --------路
         }
     }
 }
