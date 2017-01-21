@@ -43,10 +43,42 @@
             <!-- 待租房源 -->
             <div class="contentBox">
                 <Title :title_info = status12Search />
+                <ul>
+                    <li v-for = "item in getOfficeBuildingInfo.status12Search">
+                        <!-- 小图片 -->
+                        <img :src="item.imgUrl">
+                        <!-- 面积 -->
+                        <p> {{ item.area }}m² </p>
+                        <!-- 月 价格 -->
+                        <p> <b> {{ item.priceMonth }} </b> 元 / 月 </p>
+                        <!-- 平方米 日 价格 -->
+                        <p> <b> {{ item.priceDay }} </b> 元 / m² / 日 </p>
+                        <!-- 待租状态 -->
+                        <p> {{ item.statusStr }} </p>
+                        <!-- 装修类型 -->
+                        <p> {{ item.decorationStr }} </p>
+                    </li>
+                </ul>
             </div>
             <!-- 待售房源 -->
             <div class="contentBox">
                 <Title :title_info = status3Search />
+                <ul>
+                    <li v-for = "item in getOfficeBuildingInfo.status3Search">
+                        <!-- 小图片 -->
+                        <img :src="item.imgUrl">
+                        <!-- 面积 -->
+                        <p> {{ item.area }}m² </p>
+                        <!-- 售价 -->
+                        <p> <b> {{ item.priceSale }} </b> 万元 / 套 </p>
+                        <!-- 层高 -->
+                        <p> {{ item.floorStr }} </p>
+                        <!-- 待售状态( 属性名与 '待租房源' 相同 ) -->
+                        <p> {{ item.statusStr }} </p>
+                        <!-- 装修类型 -->
+                        <p> {{ item.decorationStr }} </p>
+                    </li>
+                </ul>
             </div>
             <!-- 立即预约 -->
             <div class="contentBox">

@@ -42,10 +42,38 @@
             <!-- 独立空间 -->
             <div class="contentBox">
                 <Title :title_info = typeASearch />
+                <ul>
+                    <li v-for = "item in getCoWorkingInfo.typeASearch">
+                        <!-- 小图片 -->
+                        <img :src="item.imgUrl">
+                        <!-- 面积 -->
+                        <p> {{ item.area }}m² </p>
+                        <!-- 月 价格 -->
+                        <p> <b> {{ item.priceMonth }} </b> 元 / 月 </p>
+                        <!-- 平方米 日 价格 -->
+                        <p> <b> {{ item.priceDay }} </b> 元 / m² / 日 </p>
+                        <!-- 工位 -->
+                        <p> {{ item.seatCount }} 个工位 </p>
+                    </li>
+                </ul>
             </div>
             <!-- 工位 -->
             <div class="contentBox">
                 <Title :title_info = typeBSearch />
+                <ul>
+                    <li v-for = "item in getCoWorkingInfo.typeASearch">
+                        <!-- 小图片 -->
+                        <img :src="item.imgUrl">
+                        <!-- 面积 -->
+                        <p> {{ item.area }}m² </p>
+                        <!-- 月 价格 -->
+                        <p> <b> {{ item.priceMonth }} </b> 元 / 月 </p>
+                        <!-- 平方米 日 价格 -->
+                        <p> <b> {{ item.priceDay }} </b> 元 / m² / 日 </p>
+                        <!-- 剩余工位 -->
+                        <p> 剩余 {{ item.seatCount }} 个 </p>
+                    </li>
+                </ul>
             </div>
             <!-- 立即预约 -->
             <div class="contentBox">

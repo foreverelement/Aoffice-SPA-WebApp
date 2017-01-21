@@ -51,7 +51,7 @@ export const addFurnitureInfo = (state,res) => {
 
     setTimeout(function() {
         state.furnitureInfo['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
-        console.log('计时器成功！')
+        // console.log('计时器成功！')
     },4000)
 }
 

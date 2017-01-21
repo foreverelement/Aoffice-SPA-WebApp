@@ -1,8 +1,11 @@
-<!-- 房源详情页 - 列表页( 办公楼 + 联合办公 ) -->
+<!-- 房源详情页列表部分 - 列表页( 办公楼 + 联合办公 ) -->
 <template>
-    <div class="buildingDetails_List">
+    <ul class="buildingDetails_List">
+        <li v-for = "item in buildingDetailsList_Arr">
+            <img :src="item.imgUrl">
 
-    </div>
+        </li>
+    </ul>
 </template>
 
 <script>

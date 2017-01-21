@@ -100,6 +100,9 @@ npm run build
     - [ ] 委托找房( 表单提交 )
     - [ ] 后期将modules 分出
     - [ ] 根据静态View需求,将改好的内容 合并起来
+    - [ ] 房源详情页的JSON数据需要增加List列表图片Url
+    - [ ] 房源详情页 '查看更多'按钮功能 无限期延后 ( 没必要做... )
+    - [ ] 房源详情页,待售房源的价格如果为空,样式怎么处理?( 能否避免删除这个数据节点? 否则会造成样式上下不对齐 )
 - [ ] **Aoffice-SPA-WebApp-Vue性能优化**
     - [ ] 可复用组件改为`render`组件形式
     - [ ] 优化项目结构列表
@@ -159,17 +162,17 @@ npm run build
             {
                 "code": "R000000148",
                 "type": "B",
-                "area": 1,                       // 面积
+                "area": 1,                          // 面积
                 "floor": 3,
-                "remark": "此处为备注",           // 备注
-                "priceSale": null,                 // 总价
+                "remark": "此处为备注",              // 备注
+                "priceSale": null,                  // 总价
                 "priceMonth": 700,                  // 月价
                 "priceDay": 23.33,                  // 日价
                 "appPic": null,                     // 手机图片
                 "decoration": "B",
                 "status": "1",
                 "amount": 1,                        // 剩余数量（仅工位有）
-                "seatCount": "D40",                //  ---可容纳工位数（仅独立空间有）
+                "seatCount": "D40",                 //  ---可容纳工位数（仅独立空间有）
                 "isSave": false,                    // 是否收藏
                 "appBuilding": null,
                 "buildingType": null,
