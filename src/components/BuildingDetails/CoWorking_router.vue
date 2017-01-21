@@ -61,7 +61,7 @@
             <div class="contentBox">
                 <Title :title_info = typeBSearch />
                 <ul>
-                    <li v-for = "item in getCoWorkingInfo.typeASearch">
+                    <li v-for = "item in getCoWorkingInfo.typeBSearch">
                         <!-- 小图片 -->
                         <img :src="item.imgUrl">
                         <!-- 面积 -->

@@ -62,15 +62,15 @@ export const addResearchInfo =( state,res ) => {
         judgeShow: true
     }
     // state.researchInfo = res
-    state.researchInfo.appPic = res.picUrl + res.investigate.appPic                                                 // 拼接图片地址
+    state.researchInfo.appPic = res.picUrl + res.investigate.appPic                                                         // 拼接图片地址
     state.researchInfo['name'] = res.investigate.name
-    state.researchInfo['address'] = res.investigate.city + res.investigate.region + res.investigate.road + '号'     // 拼接具体地址
-    state.researchInfo['description'] = res.investigate.description                                                 // 详细描述
+    state.researchInfo['address'] = res.investigate.city + res.investigate.region + res.investigate.road + '号'             // 拼接具体地址
+    state.researchInfo['description'] = res.investigate.description                                                         // 详细描述
     // let IPList = []
     // IPList = res.IPList
     state.researchInfo['IPList'] = res.IPList
     setTimeout(function() {
-        state.researchInfo['judgeShow'] = false                                                                     // 当有数据时,设置加载动画状态为false
+        state.researchInfo['judgeShow'] = false                                                                             // 当有数据时,设置加载动画状态为false
     },4000)
 }
 
@@ -82,31 +82,53 @@ export const addCoWorkingInfo =( state,res ) => {
         buildingRelationList_judgeShow: true
     }
     // 不能将整个res参数 赋值 到 state上 ( 会破坏judgeShow属性 )
-    state.coWorking.buildingDetails = res.buildingDetails                                                           // 详情数据( 办公楼 + 联合办公 )
-    state.coWorking.buildingPicList = res.buildingPicList                                                           // 图片列表( 数组 )
-    state.coWorking.typeASearch     = res.typeASearch                                                               // 独立空间List
-    state.coWorking.typeBSearch     = res.typeBSearch                                                               // 独立工位List
-    let coWorkingImgUrl_Arr = []                                                                                    // 创建一个空数组，在循环中填入对象(拼接属性)
-    for( let i=0; i<res.buildingPicList.length;i++ ) {                                                                // 推 家具 - 详情图片数组
+    state.coWorking.buildingDetails = res.buildingDetails                                                                   // 详情数据( 办公楼 + 联合办公 )
+    state.coWorking.buildingPicList = res.buildingPicList                                                                   // 图片列表( 数组 )
+    state.coWorking.typeASearch     = res.typeASearch                                                                       // 独立空间List
+    state.coWorking.typeBSearch     = res.typeBSearch                                                                       // 独立工位List
+    let coWorkingImgUrl_Arr = []                                                                                            // 创建一个空数组，在循环中填入对象(拼接属性)
+    for( let i=0; i<res.buildingPicList.length; i++ ) {                                                                     // 推 家具 - 详情图片数组
         function CoWorkingImgUrl(imgUrl) {
             this.imgUrl = res.picUrl + imgUrl
         }
         const coWorkingImgUrl_Obj = new CoWorkingImgUrl( res.buildingPicList[i].realAppUrl )
-        coWorkingImgUrl_Arr.push( coWorkingImgUrl_Obj )                                                             // 将构造函数的对象推入 store的数组中
+        coWorkingImgUrl_Arr.push( coWorkingImgUrl_Obj )                                                                     // 将构造函数的对象推入 store的数组中
     }
-    state.coWorking['imgUrl_Arr'] = coWorkingImgUrl_Arr                                                             // 最后将生成的轮播图数组推入 state.furnitureInfo 对象中
+    state.coWorking['imgUrl_Arr'] = coWorkingImgUrl_Arr                                                                     // 最后将生成的轮播图数组推入 state.furnitureInfo 对象中
+
+    // 修改'独立空间'数组内 图片对象的地址( 全拼 )
+    for( let i=0; i<res.typeASearch.length; i++ ) {
+        // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
+        if ( res.typeASearch[i].appPic == "" ) {
+            // console.log('空值')                                                                                            // 成功
+            res.typeASearch[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"                     // 替换为 空图片链接
+        } else {
+            res.typeASearch[i].imgUrl = res.picUrl + res.typeASearch[i].appPic                                              // 拼接'独立空间'小图片 图片地址
+        }
+    }
+
+    // 修改'工位'数组内 图片对象的地址( 全拼 )
+    for( let i=0; i<res.typeBSearch.length; i++ ) {
+        // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
+        if ( res.typeBSearch[i].appPic == "" ) {
+            res.typeBSearch[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"                    // 替换为 空图片链接
+        } else {
+            res.typeBSearch[i].imgUrl = res.picUrl + res.typeBSearch[i].appPic                                              // 拼接'工位'小图片 图片地址
+        }
+    }
+
     // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
     let buildingRelationList_length = res.buildingRelationList.length
-    // console.log('buildingRelationList数组的length值' + buildingRelationList_length)                               // ( 测试取值 - 成功 )
+    // console.log('buildingRelationList数组的length值' + buildingRelationList_length)                                      // ( 测试取值 - 成功 )
     if ( buildingRelationList_length < 1 ) {
         console.log( 'buildingRelationList是空数组' )
     } else {
-        state.coWorking.buildingRelationList_judgeShow  = false                                                     // 更改状态
-        state.coWorking.buildingRelationList            = res.buildingRelationList                                  // 将 buildingRelationList 数组赋值
+        state.coWorking.buildingRelationList_judgeShow  = false                                                             // 更改状态
+        state.coWorking.buildingRelationList            = res.buildingRelationList                                          // 将 buildingRelationList 数组赋值
     }
     // 设置加载动画状态为false
     setTimeout(function() {
-        state.coWorking['judgeShow'] = false                                                                        // 当有数据时,设置加载动画状态为false
+        state.coWorking['judgeShow'] = false                                                                                // 当有数据时,设置加载动画状态为false
     },2000)
 }
 
@@ -122,25 +144,57 @@ export const addOfficeBuildingInfo =( state,res ) => {
     state.officeBuilding.buildingPicList    = res.buildingPicList                                                           // 图片列表( 数组 )
     state.officeBuilding.status12Search     = res.status12Search                                                            // 待租List
     state.officeBuilding.status3Search      = res.status3Search                                                             // 待售List
+
+
+    // // 修改'工位'数组内 图片对象的地址( 全拼 )
+    // for( let i=0; i<res.typeBSearch.length; i++ ) {
+    //     // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
+    //     if ( res.typeBSearch[i].appPic == "" ) {
+    //         res.typeBSearch[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"                    // 替换为 空图片链接
+    //     } else {
+    //         res.typeBSearch[i].imgUrl = res.picUrl + res.typeBSearch[i].appPic                                              // 拼接'工位'小图片 图片地址
+    //     }
+    // }
+
+
+    // 修改'待租房源'数组内 图片对象的地址( 全拼 )
+    for( let i=0; i<res.status12Search.length; i++ ) {
+        // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
+        if ( res.status12Search[i].appPic == "" ) {
+            res.status12Search[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"               // 替换为 空图片链接
+        } else {
+            res.status12Search[i].imgUrl = res.picUrl + res.status12Search[i].appPic                                      // 拼接'待租房源'小图片 图片地址
+        }
+    }
+    // 修改'待售房源'数组内 图片对象的地址( 全拼 )
+    for( let i=0; i<res.status3Search.length; i++ ) {
+        // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
+        if ( res.status3Search[i].appPic == "" ) {
+            res.status3Search[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"                // 替换为 空图片链接
+        } else {
+            res.status3Search[i].imgUrl = res.picUrl + res.status3Search[i].appPic                                        // 拼接'待售房源'小图片 图片地址
+        }
+    }
+
     // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
     let buildingRelationList_length = res.buildingRelationList.length
     if ( buildingRelationList_length < 1 ) {
         console.log( 'buildingRelationList是空数组' )
     } else {
-        state.officeBuilding.buildingRelationList_judgeShow  = false                                                     // 更改状态
-        state.officeBuilding.buildingRelationList            = res.buildingRelationList                                  // 将 buildingRelationList 数组赋值
+        state.officeBuilding.buildingRelationList_judgeShow  = false                                                        // 更改状态
+        state.officeBuilding.buildingRelationList            = res.buildingRelationList                                     // 将 buildingRelationList 数组赋值
     }
-    let officeBuildingImgUrl_Arr = []                                                                                    // 创建一个空数组，在循环中填入对象(拼接属性)
-    for(let i=0; i<res.buildingPicList.length;i++) {                                                                // 推 家具 - 详情图片数组
+    let officeBuildingImgUrl_Arr = []                                                                                       // 创建一个空数组，在循环中填入对象(拼接属性)
+    for(let i=0; i<res.buildingPicList.length;i++) {                                                                        // 推 家具 - 详情图片数组
         function OfficeBuildingImgUrl(imgUrl) {
             this.imgUrl = res.picUrl + imgUrl
         }
         const officeBuildingImgUrl_Obj = new OfficeBuildingImgUrl( res.buildingPicList[i].realAppUrl )
-        officeBuildingImgUrl_Arr.push( officeBuildingImgUrl_Obj )                                                             // 将构造函数的对象推入 store的数组中
+        officeBuildingImgUrl_Arr.push( officeBuildingImgUrl_Obj )                                                           // 将构造函数的对象推入 store的数组中
     }
-    state.officeBuilding['imgUrl_Arr'] = officeBuildingImgUrl_Arr                                                             // 最后将生成的轮播图数组推入 state.furnitureInfo 对象中
+    state.officeBuilding['imgUrl_Arr'] = officeBuildingImgUrl_Arr                                                           // 最后将生成的轮播图数组推入 state.furnitureInfo 对象中
     // 设置加载动画状态为false
     setTimeout(function() {
-        state.officeBuilding['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
+        state.officeBuilding['judgeShow'] = false                                                                           // 当有数据时,设置加载动画状态为false
     },2000)
 }
