@@ -32,7 +32,6 @@ export default {
         },
         toAboutInfo: function(pageName) {
             location.href = '#/aboutAPlus/' + pageName
-            // console.log('跳转至' + pageName)
         }
     }
 }

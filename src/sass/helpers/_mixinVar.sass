@@ -218,3 +218,34 @@ $autoMargin: 16px
         // 传入默认参数
         +auto--contentBox($autoMargin,$title-color,$title-size,$badgeFont-color,$text-size)
         +bC($F)
+    // 列表样式
+    .buildingDetails--list
+        ul li
+            @extend %flexWrap
+            padding: 0
+            +REM(padding-top,$autoMargin/2)
+            +REM(padding-bottom,$autoMargin/2)
+            border-bottom: 1px solid rgba($badgeFont-color,.3)
+            >div
+                flex: 1
+                >img
+                    width: 100%
+            >p
+                flex: 1
+                @extend %flexCenter             // 保持居中
+                +REM(font-size,$badge-size)
+                >b
+                    color: $theme-color
+            p.priceDay
+                flex: 1.5
+    // 提交表单 样式
+    .mu-text-field.focus-state
+        color: $theme-color !important
+        .mu-text-field-line,.mu-text-field-focus-line
+            +bC($theme-color !important)
+    // 按钮颜色样式
+    .mu-raised-button-primary
+        +bC($theme-color !important)
+        // 图标样式
+        .mu-icon
+            color: $F !important

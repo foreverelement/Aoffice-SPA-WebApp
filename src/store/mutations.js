@@ -117,6 +117,16 @@ export const addCoWorkingInfo =( state,res ) => {
         }
     }
 
+    // 修改'所属大厦'( list-intro ) 数组内 图片对象的地址( 全拼 )
+    for( let i=0; i<res.buildingRelationList.length; i++ ) {
+        res.buildingRelationList[i].imgUrl = res.picUrl + res.buildingRelationList[i].appListUrl
+    }
+
+    // '所属大厦' - Intro 右上角类型标题 ———— 判断楼盘类型
+    for (var i = 0; i < res.buildingRelationList.length; i++) {
+        res.buildingRelationList[i].badge = '写字楼'
+    }
+
     // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
     let buildingRelationList_length = res.buildingRelationList.length
     // console.log('buildingRelationList数组的length值' + buildingRelationList_length)                                      // ( 测试取值 - 成功 )
@@ -145,18 +155,6 @@ export const addOfficeBuildingInfo =( state,res ) => {
     state.officeBuilding.status12Search     = res.status12Search                                                            // 待租List
     state.officeBuilding.status3Search      = res.status3Search                                                             // 待售List
 
-
-    // // 修改'工位'数组内 图片对象的地址( 全拼 )
-    // for( let i=0; i<res.typeBSearch.length; i++ ) {
-    //     // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
-    //     if ( res.typeBSearch[i].appPic == "" ) {
-    //         res.typeBSearch[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"                    // 替换为 空图片链接
-    //     } else {
-    //         res.typeBSearch[i].imgUrl = res.picUrl + res.typeBSearch[i].appPic                                              // 拼接'工位'小图片 图片地址
-    //     }
-    // }
-
-
     // 修改'待租房源'数组内 图片对象的地址( 全拼 )
     for( let i=0; i<res.status12Search.length; i++ ) {
         // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
@@ -174,6 +172,15 @@ export const addOfficeBuildingInfo =( state,res ) => {
         } else {
             res.status3Search[i].imgUrl = res.picUrl + res.status3Search[i].appPic                                        // 拼接'待售房源'小图片 图片地址
         }
+    }
+
+    // 修改'所属大厦'( list-intro ) 数组内 图片对象的地址( 全拼 )
+    for( let i=0; i<res.buildingRelationList.length; i++ ) {
+        res.buildingRelationList[i].imgUrl = res.picUrl + res.buildingRelationList[i].appListUrl
+    }
+    // '所属大厦' - Intro 右上角类型标题 ———— 判断楼盘类型
+    for (var i = 0; i < res.buildingRelationList.length; i++) {
+        res.buildingRelationList[i].badge = '联合办公'
     }
 
     // 做判断 ( 如果为空,将DIV设置隐藏状态 - 对 'buildingRelationList'数组的length指数做判断: 如果为0,设置状态为隐藏 )
