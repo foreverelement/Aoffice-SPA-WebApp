@@ -9,8 +9,15 @@
     </div>
 </template>
 <script>
+// import  { mapGetters } from 'vuex'
+
 export default {
     props: ['AppBar_title']
+    // data() {
+    //     return {
+    //         title: this.$props.name
+    //     }
+    // }
     ,methods: {
         // 目的: 执行跳转
         returnIndex: () => {

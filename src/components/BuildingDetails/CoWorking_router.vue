@@ -5,7 +5,9 @@
         <CssLoading v-if="getCoWorkingInfo.judgeShow" />
         <!-- 当加载动画消失时 显示以下内容 -->
         <div v-else>
-            <DBAppBar :AppBar_title = title />
+            <!---->
+            <!--<DBAppBar :AppBar_title = title />-->
+            <DBAppBar :AppBar_title = getCoWorkingInfo.buildingDetails.name />
             <Swiper :swiper_arr = getCoWorkingInfo.imgUrl_Arr />
             <div class="intro">
                 <h2> {{ getCoWorkingInfo.buildingDetails.name }} </h2>
@@ -101,26 +103,30 @@
             <!-- 大厦周边 -->
             <div class="contentBox">
                 <Title :title_info = around />
+                <Map :building_centrePoint = getCoWorkingInfo.buildingDetails />
             </div>
         </div>
     </div>
 </template>
 <script>
-import  { mapActions, mapGetters } from 'vuex'
-import  DBAppBar            from    './BuildingDetails_AppBar.vue'      // 通用头部
-import  Intro               from    './BuildingDetails_Intro.vue'       // Intro 信息介绍
-import  CssLoading          from    '../Auto/CssLoading_1.vue'          // 引入加载动画
-import  Title               from    '../Auto/Title.vue'                 // 引入标题
-import  Swiper              from    '../Discover/Swiper.vue'            // 引入轮播图
-import  DetailsList         from    './BuildingDetails_List.vue'        // 引入 独立空间 + 工位 的列表
+import  { mapActions, mapGetters }  from    'vuex'
+import  DBAppBar                    from    './BuildingDetails_AppBar.vue'      // 通用头部
+import  Intro                       from    './BuildingDetails_Intro.vue'       // Intro 信息介绍
+import  CssLoading                  from    '../Auto/CssLoading_1.vue'          // 引入加载动画
+import  Title                       from    '../Auto/Title.vue'                 // 引入标题
+import  Swiper                      from    '../Discover/Swiper.vue'            // 引入轮播图
+import  DetailsList                 from    './BuildingDetails_List.vue'        // 引入 独立空间 + 工位 的列表
+import  Map                         from    './BuildingDetails_Map.vue'         // 引入 地图组件 ( 房源详情图 )
 
-const   components = { DBAppBar, Intro, CssLoading, Title, Swiper, DetailsList }
+const   components = { DBAppBar, Intro, CssLoading, Title, Swiper, DetailsList, Map }
 
 export default {
     data() {
         return {
-            title: this.$route.params.id
-            ,titleInfo: {
+            // title: this.$route.params.id
+            // title: this.$store.state.coWorking.buildingDetails.name
+            // ,
+            titleInfo: {
                 title: '联合办公'
                 ,backgroundColor: '#FFF'
             }
