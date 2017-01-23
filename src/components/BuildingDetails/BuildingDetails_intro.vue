@@ -50,6 +50,7 @@ export default {
                 @extend %flexCenter
                 @extend %ABS
                 right: 0
+                top: 0
                 +REM(padding,4px)
                 +REM(padding-left,10px)
                 +REM(padding-right,10px)
@@ -64,8 +65,12 @@ export default {
                 +introMixin(5%,$text-size,rgba($F,.77),normal)
         // 下部分 文字详细描述部分
         .buildingDetails--text
-            +REM(padding,$autoMargin/2)
+            +REM(padding-top,$autoMargin)
+            +REM(padding-bottom,$autoMargin)
+            +REM(margin-bottom,$autoMargin)
+            @extends %auto--borderBottomSoild
             >p
                 +REM(font-size,$text-size)
-                color: $title-color
+                color: $badgeFont-color
+                +REM(line-height,$text-size*2)
 </style>
