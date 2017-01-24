@@ -10,9 +10,7 @@ export const addState = ({commit}) => {
     params.append('page', '1');
     axios.post('http://app.aplusoffice.cn/api/index', params)
     .then(function (response) {
-        let get_data = response.data
-        // console.log('response值' + response)
-        console.dir(response)
+        let get_data = response.data.resultData
         // console.log('get_data值' + get_data)
         console.dir(get_data)
         commit('addState',get_data)
@@ -83,13 +81,21 @@ export const setCoWorkingInfo = ({commit}) => {
     })
 }
 //获得 "办公楼详情" - 数据
-export const setOfficeBuildingInfo = ({commit}) => {
-     // 静态json
-    axios.post( './static/buildingDetails_OfficeBuilding_1.json', {
-        // code: 'ig0001'
-    })
+// ({ dispatch }, username)
+export const setOfficeBuildingInfo = ({commit},codeId) => {
+    // 静态json
+    // axios.post( './static/buildingDetails_OfficeBuilding_1.json', {
+    //     // code: 'ig0001'
+    // })
+
+    // 动态
+    var params = new URLSearchParams();
+    params.append('code','B000000011');
+    axios.post('http://app.aplusoffice.cn/api/building/getBuildingByCode', params)
+
     .then(function (response) {
         let set_OfficeBuildingInfo = response.data.resultData
+        console.dir(set_OfficeBuildingInfo)
         commit('addOfficeBuildingInfo',set_OfficeBuildingInfo)
     })
     .catch(function (error) {

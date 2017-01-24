@@ -3,7 +3,7 @@
     <div class="buildingList">
         <div class="building--box" v-for="item in hotBuildingList_Arr[0]">
             <!-- 建筑 - 简介 -->
-            <div class="building--intro" v-bind:style="{ backgroundImage: 'url(' + item.appListUrl + ')' }" @click = 'toBuildingDetails( item.code, item.type )'>
+            <div class="building--intro" v-bind:style="{ backgroundImage: 'url(' + item.appListUrl.imgUrl + ')' }" @click = 'toBuildingDetails( item.code, item.type )'>
                 <div class="badge"> {{ item.badge }} </div>
                 <h2> {{ item.name }} </h2>
                 <p> {{ item.subTitle }} </p>

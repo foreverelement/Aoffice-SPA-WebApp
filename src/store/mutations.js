@@ -1,13 +1,29 @@
 export const addState = (state,res) => {
-    // let appTopImgUrl_Arr = []
-    // for (let i=0; i<appTopImg.length; i++){
-        // 拼接具体地址
-    // }
-    state.bannerImg_Arr.push(res.appTopImg)                                                                         // 推 商品细节
-    state.hotBuildingList_Arr.push(res.hotBuildingList)                                                             // 推 热门房源
+    let appTopImgUrl_Arr    = []
+    let hotBuildingImg_Arr  = []
+
+    // 拼接顶部轮播图 图片地址
+    for (let i = 0; i < res.appTopImg.length; i++){                                                                 // 推 家具 - 详情图片数组
+        function AppTopImg(imgUrl) {
+            this.imgUrl = "http://images.aplusoffice.cn/" + imgUrl
+        }
+        const appTopImg_Obj = new AppTopImg( res.appTopImg[i] )
+        appTopImgUrl_Arr.push(appTopImg_Obj)                                                                        // 将构造函数的对象推入 store的数组中
+    }
+    state.bannerImg_Arr = appTopImgUrl_Arr
+    // 拼接顶部轮播图 图片地址
+    for (var i = 0; i < res.building.length; i++) {
+        function BuildingImg(imgUrl) {
+            this.imgUrl = "http://images.aplusoffice.cn/" + imgUrl
+        }
+        const building_Obj = new BuildingImg( res.building[i].appListUrl )
+        res.building[i].appListUrl = building_Obj                                                                       // 将构造函数的对象推入 store的数组中
+    }
+
+    state.hotBuildingList_Arr.push(res.building)                                                                    // 推 热门房源
     // 判断楼盘类型
-    for (var i = 0; i < res.hotBuildingList.length; i++) {
-        if(res.hotBuildingList[i].type=='A'){
+    for (var i = 0; i < res.building.length; i++) {
+        if(res.building[i].type=='A'){
             state.hotBuildingList_Arr[0][i]['badge']        = '写字楼'
             state.hotBuildingList_Arr[0][i]['judgeShow']    = true
         }else{
