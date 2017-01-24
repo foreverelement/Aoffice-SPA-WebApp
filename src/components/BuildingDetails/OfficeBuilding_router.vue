@@ -5,7 +5,7 @@
         <CssLoading v-if="getOfficeBuildingInfo.judgeShow" />
         <!-- 当加载动画消失时 显示以下内容 -->
         <div v-else>
-            <DBAppBar :AppBar_title = title />
+            <DBAppBar :AppBar_title = getOfficeBuildingInfo.buildingDetails.name />
             <Swiper :swiper_arr = getOfficeBuildingInfo.imgUrl_Arr />
             <!-- 大厦详情 -->
             <div class="intro">
@@ -100,6 +100,7 @@
             <!-- 大厦周边 -->
             <div class="contentBox">
                 <Title :title_info = around />
+                <Map :building_centrePoint = getOfficeBuildingInfo.buildingDetails />
             </div>
         </div>
     </div>
@@ -113,13 +114,14 @@ import  CssLoading          from    '../Auto/CssLoading_1.vue'          // 引�
 import  Title               from    '../Auto/Title.vue'                 // 引入标题
 import  Swiper              from    '../Discover/Swiper.vue'            // 引入轮播图
 import  DetailsList         from    './BuildingDetails_List.vue'        // 引入 独立空间 + 工位 的列表
-const   components = { DBAppBar, Intro, CssLoading, Title, Swiper, DetailsList }
+import  Map                         from    './BuildingDetails_Map.vue'         // 引入 地图组件 ( 房源详情图 )
+
+const   components = { DBAppBar, Intro, CssLoading, Title, Swiper, DetailsList, Map }
 
 export default {
     data() {
         return {
-            title: this.$route.params.id
-            ,titleInfo: {
+            titleInfo: {
                 title: '大厦简介'
                 ,backgroundColor: '#FFF'
             }

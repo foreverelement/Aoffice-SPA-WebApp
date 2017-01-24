@@ -122,9 +122,6 @@ const   components = { DBAppBar, Intro, CssLoading, Title, Swiper, DetailsList, 
 export default {
     data() {
         return {
-            // title: this.$route.params.id
-            // title: this.$store.state.coWorking.buildingDetails.name
-            // ,
             titleInfo: {
                 title: '联合办公'
                 ,backgroundColor: '#FFF'
