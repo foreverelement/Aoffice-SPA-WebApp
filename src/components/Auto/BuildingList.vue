@@ -46,9 +46,9 @@ export default {
     font-weight: $weight
 
 .buildingList
-    /*+REM(margin-bottom,80px)*/
     .building--box
-        +REM(margin-bottom,18px)
+        +REM(margin-top,$autoMargin)
+        +REM(margin-bottom,$autoMargin)
         +bC($F)
         border-bottom: 1px solid rgba($badgeFont-color,.4)
         .building--intro

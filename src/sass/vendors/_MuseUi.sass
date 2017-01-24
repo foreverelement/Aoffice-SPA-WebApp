@@ -63,3 +63,34 @@
 /* 左侧抽屉内容的遮罩样式 */
 .mu-overlay
     z-index: 1 !important
+
+// 房源页 - 顶部Tabs文字颜色
+#houseResource
+    .mu-tab-text
+        +REM(font-size,$badge-size)
+        color: $badgeFont-color !important
+    .mu-tab-active .mu-tab-text
+        color: $title-color !important
+// 房源页 - 顶部Tabs高亮线
+#houseResource span.mu-tab-link-highlight
+    //background-color: $theme-color !important
+    background-color: $theme-color !important
+#houseResource
+    .mu-tabs
+        // 控制图标位置
+        i.mu-icon
+            position: absolute
+            left: 10%
+            top: -40%
+            margin: 0
+            margin-top: 45%
+            color: $theme-color !important
+        div.has-icon
+            @extends %dib
+            margin-top: 0 !important
+            +REM(margin-left,$autoMargin*.75)
+    // 顶部AppBar样式
+    .mu-appbar
+        +bC($F)
+    .mu-paper-1
+        box-shadow: none
