@@ -68,9 +68,13 @@ export default {
             +REM(padding-top,$autoMargin)
             +REM(padding-bottom,$autoMargin)
             +REM(margin-bottom,$autoMargin)
-            @extends %auto--borderBottomSoild
+            border-bottom: 1px solid rgba($badgeFont-color,.3)
             >p
                 +REM(font-size,$text-size)
                 color: $badgeFont-color
                 +REM(line-height,$text-size*2)
+        // 最后一个box的底部文字不设置边框线
+        &:last-child
+            .buildingDetails--text
+                border: none
 </style>

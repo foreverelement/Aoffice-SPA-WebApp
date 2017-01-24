@@ -6,7 +6,6 @@
         <!-- 当加载动画消失时 显示以下内容 -->
         <div v-else>
             <!---->
-            <!--<DBAppBar :AppBar_title = title />-->
             <DBAppBar :AppBar_title = getCoWorkingInfo.buildingDetails.name />
             <Swiper :swiper_arr = getCoWorkingInfo.imgUrl_Arr />
             <div class="intro">

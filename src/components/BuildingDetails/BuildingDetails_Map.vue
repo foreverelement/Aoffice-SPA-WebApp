@@ -1,7 +1,7 @@
 <!-- 办公楼 / 联合办公 - 大厦周边地图 -->
 <template>
     <div class="buildingDetails_around">
-        <div id="buildingDetails--map" data-point-longitude=" {{ building_centrePoint.longitude }} "  data-point-latitude=" {{ building_centrePoint.latitude }} "  ></div>
+        <div id="buildingDetails--map" v-bind:data-point-longitude="building_centrePoint.longitude" v-bind:data-point-latitude="building_centrePoint.latitude" ></div>
         <!-- 标题文字 -->
         <div class="around__title">
             <div class="title--flexbox">
@@ -29,9 +29,14 @@ export default {
         ,asyncLoadMap: function(){
             // 不能立刻执行,因为ajax内的数据还没有塞入,所以会是空值
             setTimeout(() => {
+                // 获取页面经纬度
+                const mapObj            = document.getElementById("buildingDetails--map")                                                                       // 获取对象
+                const mapLongitude      = parseFloat(mapObj.getAttribute("data-point-longitude"))                                                               // 保存经度( 浮点型 )
+                const mapLatitude       = parseFloat(mapObj.getAttribute("data-point-latitude"))                                                                // 保存纬度( 浮点型 )
+
                 // 百度地图API功能
                 const buildingMap           = new BMap.Map("buildingDetails--map")
-                const buildingMap_Point     = new BMap.Point(120.384459,36.071709)
+                const buildingMap_Point     = new BMap.Point(mapLongitude,mapLatitude)
                 const buildingMap_Icon      = new BMap.Icon("http://www.aplusoffice.cn/images/resourceMap/ico-pin-orange-24-px@2x.png", new BMap.Size(50,50))
                 const buildingMap_marker    = new BMap.Marker(buildingMap_Point,{icon:buildingMap_Icon})                                                       // 创建自定义标注(将样式加入)
                 buildingMap.centerAndZoom(buildingMap_Point, 16)
