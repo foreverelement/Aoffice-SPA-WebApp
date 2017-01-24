@@ -1,5 +1,9 @@
 export const addState = (state,res) => {
-    state.bannerImg_Arr.push(res.bannerImg)                                                                         // 推 商品细节
+    // let appTopImgUrl_Arr = []
+    // for (let i=0; i<appTopImg.length; i++){
+        // 拼接具体地址
+    // }
+    state.bannerImg_Arr.push(res.appTopImg)                                                                         // 推 商品细节
     state.hotBuildingList_Arr.push(res.hotBuildingList)                                                             // 推 热门房源
     // 判断楼盘类型
     for (var i = 0; i < res.hotBuildingList.length; i++) {

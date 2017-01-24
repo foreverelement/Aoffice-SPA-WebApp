@@ -4,11 +4,17 @@ axios.defaults.headers.post['Content-Type'] = 'application/json'
 import * as types from './mutations'
 
 export const addState = ({commit}) => {
-    axios.post('./static/data.json', {
-        // code: ''
-    })
+    // axios.post('./static/data.json')                         // 本地
+    var params = new URLSearchParams();
+    params.append('cityCode', '3702');
+    params.append('page', '1');
+    axios.post('http://app.aplusoffice.cn/api/index', params)
     .then(function (response) {
         let get_data = response.data
+        // console.log('response值' + response)
+        console.dir(response)
+        // console.log('get_data值' + get_data)
+        console.dir(get_data)
         commit('addState',get_data)
     })
     .catch(function (error) {
