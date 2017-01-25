@@ -233,11 +233,13 @@ $autoMargin: 16px
             >p
                 flex: 1
                 @extend %flexCenter             // 保持居中
-                +REM(font-size,$badge-size)
+                +REM(font-size,$badge-size*.75)
                 >b
                     color: $theme-color
-            p.priceDay
+            p.priceMonth, p.priceDay
                 flex: 1.5
+            p.decorationStr
+                flex: .5
     // 提交表单 样式
     .mu-text-field.focus-state
         color: $theme-color !important

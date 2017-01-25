@@ -90,8 +90,8 @@ export const setOfficeBuildingInfo = ({commit},codeId) => {
 
     // 动态
     var params = new URLSearchParams();
-    params.append('code','B000000011');
-    axios.post('http://app.aplusoffice.cn/api/building/getBuildingByCode', params)
+    params.append('code','B000000008');
+    axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
 
     .then(function (response) {
         let set_OfficeBuildingInfo = response.data.resultData

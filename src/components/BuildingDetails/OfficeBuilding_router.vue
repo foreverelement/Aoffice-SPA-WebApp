@@ -52,13 +52,13 @@
                         <!-- 面积 -->
                         <p> {{ item.area }}m² </p>
                         <!-- 月 价格 -->
-                        <p> <b> {{ item.priceMonth }} </b> <spsn>元/月</spsn></p>
+                        <p class="priceMonth"> <b> {{ item.priceMonth }} </b> <spsn>元/月</spsn></p>
                         <!-- 平方米 日 价格 -->
                         <p class="priceDay"> <b> {{ item.priceDay }} </b><spsn>元/m²/日</spsn></p>
                         <!-- 待租状态 -->
                         <!--<p> {{ item.statusStr }} </p>-->
                         <!-- 装修类型 -->
-                        <p> {{ item.decorationStr }} </p>
+                        <p class="decorationStr"> {{ item.decorationStr }} </p>
                     </li>
                 </ul>
             </div>

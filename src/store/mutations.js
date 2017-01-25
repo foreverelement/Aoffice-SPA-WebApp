@@ -177,21 +177,11 @@ export const addOfficeBuildingInfo =( state,res ) => {
 
     // 修改'待租房源'数组内 图片对象的地址( 全拼 )
     for( let i=0; i<res.status12Search.length; i++ ) {
-        // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
-        if ( res.status12Search[i].appPic == "" ) {
-            res.status12Search[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"               // 替换为 空图片链接
-        } else {
-            res.status12Search[i].imgUrl = res.picUrl + res.status12Search[i].appPic                                      // 拼接'待租房源'小图片 图片地址
-        }
+        res.status12Search[i].imgUrl = res.picUrl + res.status12Search[i].appPic                                      // 拼接'待租房源'小图片 图片地址
     }
     // 修改'待售房源'数组内 图片对象的地址( 全拼 )
     for( let i=0; i<res.status3Search.length; i++ ) {
-        // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
-        if ( res.status3Search[i].appPic == "" ) {
-            res.status3Search[i].imgUrl = "http://images.aplusoffice.cn/images/resource2/default_list.jpg"                // 替换为 空图片链接
-        } else {
-            res.status3Search[i].imgUrl = res.picUrl + res.status3Search[i].appPic                                        // 拼接'待售房源'小图片 图片地址
-        }
+        res.status3Search[i].imgUrl = res.picUrl + res.status3Search[i].appPic                                        // 拼接'待售房源'小图片 图片地址
     }
 
     // 修改'所属大厦'( list-intro ) 数组内 图片对象的地址( 全拼 )

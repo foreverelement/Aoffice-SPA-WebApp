@@ -107,6 +107,7 @@ npm run build
     - [ ] 房源详情页 地图禁止放大( 双击 )
     - [ ] 首页 state结构 和 绑定需要优化( 调整mutations.js )
     - [ ] HTML 房源详情页 特殊接口地址
+    - [ ] 房源详情页 list列表如果为空,添加隐藏状态
 - [ ] **Aoffice-SPA-WebApp-Vue性能优化**
     - [ ] 可复用组件改为`render`组件形式
     - [ ] 优化项目结构列表
@@ -125,6 +126,8 @@ npm run build
 
 * 外出考察详情
     > http://192.168.1.250:8082/api/es/getInvestigate
+* 房源详情页数据
+    > http://app.aplusoffice.cn/api/building/getH5BuildingByCode
 
 ***
 > test Service_furniture_router.vue
