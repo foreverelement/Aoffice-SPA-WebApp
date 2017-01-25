@@ -19,45 +19,55 @@
 ```bash
 App.vue ( 根节点 )
     |
-    |- Discover.vue                     ( "发现" )
+    |- Discover.vue                         ( "发现" )
         |
-        |- Swiper.vue                   ( Banner轮播组件 )
+        |- DiscoverAppBar.vue               ( "发现" AppBar独有组件 )
         |
-        |- EnterpriseService.vue        ( "企业服务"组件 )
+        |- Swiper.vue                       ( Banner轮播组件 )
+        |
+        |- EnterpriseService.vue            ( "企业服务"组件 )
             |
-            |- Title.vue                ( 通用标题组件 —— "企业服务" )
+            |- Title.vue                    ( 通用标题组件 —— "企业服务" )
             |
-            |- EnterpriseService_box    ( 通用 "企业服务"组件 —— 内容盒子 )
+            |- EnterpriseService_box        ( 通用 "企业服务"组件 —— 内容盒子 )
         |
-        |- Title.vue                    ( 通用标题组件 —— "热门房源" )
+        |- Title.vue                        ( 通用标题组件 —— "热门房源" )
         |
-        |- BuildingList.vue             ( 通用楼盘组件 —— "热门房源" )
+        |- BuildingList.vue                 ( 通用楼盘组件 —— "热门房源" )
+            |
+            |- BuildingList_details.vue     ( 通用楼盘组件 —— "细节展示" )
     |
-    |- HouseResource.vue                ( "房源" )
+    |- HouseResource.vue                    ( "房源" )
         |
-        |- BuildingList.vue             ( 通用楼盘组件 —— "全部房源" )
-    |
-    |- Map.vue                          ( "地图" )
-    |
-    |- Service.vue                      ( "服务" )
+        |- Auto_AppBar.vue                  ( 通用组件 —— AppBar )
         |
-        |- Service_router.vue           ( "服务" - 路由页面 [ 上侧 通用标题组件; 下侧内容 根据  $route.params.id  传递来的ID值进行条件渲染  ] )
+        |- Building_Tabs.vue                ( "房源" 切换Tabs )
+        |
+        |- BuildingList.vue                 ( 通用楼盘组件 —— "全部房源" )
             |
-            |- FindProperties.vue       ( "服务" - 条件渲染: "委托找房"内容 )
-            |
-            |- PutInProperties.vue      ( "服务" - 条件渲染："投放房源"内容 )
-            |
-            |- Furniture.vue           ( "服务" - 条件渲染："办公家具"内容 )
-            |
-            |- Decoration.vue           ( "服务" - 条件渲染："办公装修"内容 )
-            |
-            |- Research.vue             ( "服务" - 条件渲染："外出考察"内容 )
-            |
-            |- Training.vue             ( "服务" - 条件渲染："员工培训"内容 —— 静态页 )
-            |
-            |- Computer.vue             ( "服务" - 条件渲染："办公电脑"内容 —— 静态页 )
+            |- BuildingList_details.vue     ( 通用楼盘组件 —— "细节展示" )
     |
-    |- 404.vue                          ( "404" )
+    |- Map.vue                              ( "地图" )
+    |
+    |- Service.vue                          ( "服务" )
+        |
+        |- Service_router.vue               ( "服务" - 路由页面 [ 上侧 通用标题组件; 下侧内容 根据  $route.params.id  传递来的ID值进行条件渲染  ] )
+            |
+            |- FindProperties.vue           ( "服务" - 条件渲染: "委托找房"内容 )
+            |
+            |- PutInProperties.vue          ( "服务" - 条件渲染："投放房源"内容 )
+            |
+            |- Furniture.vue                ( "服务" - 条件渲染："办公家具"内容 )
+            |
+            |- Decoration.vue               ( "服务" - 条件渲染："办公装修"内容 )
+            |
+            |- Research.vue                 ( "服务" - 条件渲染："外出考察"内容 )
+            |
+            |- Training.vue                 ( "服务" - 条件渲染："员工培训"内容 —— 静态页 )
+            |
+            |- Computer.vue                 ( "服务" - 条件渲染："办公电脑"内容 —— 静态页 )
+    |
+    |- 404.vue                              ( "404" )
 ```
 
 ## Build Setup / 开发流程
