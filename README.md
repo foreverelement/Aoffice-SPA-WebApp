@@ -200,7 +200,7 @@ npm run build
                 "areaStr": "1.0"
             }
         ],
-        "status12Search": [           //  待租LIST
+        "status12Search": [                         // 待租LIST
             {
                 "code": "R000000080",
                 "type": "C",
@@ -225,8 +225,8 @@ npm run build
                 "areaStr": "94.82"
             }
         ],
-        "status3Search": [],    // ------------待售LIST
-        "buildingRelationList": [         // 联合办公或者所属大夏
+        "status3Search": [],                        // 待售LIST
+        "buildingRelationList": [                   // 联合办公或者所属大夏
             {
                 "code": "B000000008",
                 "name": "长江中心A座",
@@ -265,20 +265,56 @@ npm run build
             "propertyCompany": "长江物业；管理费：7元/平米/月",
             "floorHeight": "净高2.6m",
             "parkingNum": "地下车位数：500个",
-            "longitude": 120.188076,    //  ----经度
-            "latitude": 35.9578795,     //  ----维度
-            "areaMin": 1,               //  ----最小面积
-            "areaMax": 165,             //  ----最大面积
+            "longitude": 120.188076,                //  经度
+            "latitude": 35.9578795,                 //  维度
+            "areaMin": 1,                           //  最小面积
+            "areaMax": 165,                         //  最大面积
             "priceMonthMin": null,
-            "priceDayMin": 3,              // ----天最小
-            "priceDayMax": 23.33,         //  -----天最大
+            "priceDayMin": 3,                       // 天最小
+            "priceDayMax": 23.33,                   //  天最大
             "parentCode": "B000000008",
-            "amountA": 0,        //  ------独立空间数量
-            "amountB": 40,        // ------工位数量
-            "city": "开发区",      // ------城市
-            "reg": "长江中路517号",  // ------区
-            "road": ""           //  --------路
+            "amountA": 0,                           //  ------独立空间数量
+            "amountB": 40,                          // ------工位数量
+            "city": "开发区",                        // ------城市
+            "reg": "长江中路517号",                  // ------区
+            "road": ""                              //  --------路
         }
     }
 }
 ```
+
+### 关于Axios跨域 提交参数总是失败问题测试结果( 通过一下代码测试百度音乐返回数据 )
+```js
+// 测试开放接口数据( 参数是否提交成功: 已成功! )
+axios.get('http://api.jirengu.com/fm/getSong.php/', qs.stringify({
+    // axios.post('http://localhost:3003/clients', qs.stringify({
+    'channel': "333"
+}))
+.then(function (response) {
+    let get_data = response
+    console.log('get_data值' + get_data)
+    console.dir(get_data)
+    // commit('addState',get_data)
+})
+.catch(function (error) {
+    console.log(error)
+});
+
+
+// 在一个Vuex的actions.js 的 任务中添加以上代码 ,当触发事件时执行这个请求
+```
+
+> 经过测试 这个请求可以返回正确的数据. 所以服务器端需要修改配置
+
+
+#### 参考链接:
+
+[How does Access-Control-Allow-Origin header work?](http://stackoverflow.com/questions/10636611/how-does-access-control-allow-origin-header-work)
+
+[cannot get cross-site POST to work #191](https://github.com/mzabriskie/axios/issues/191)
+
+[npm.js Axios](https://www.npmjs.com/package/axios)
+
+[Axios 中文说明](https://www.kancloud.cn/yunye/axios/234845)
+
+[Axios请求文档](https://zq99299.gitbooks.io/vue-note/chapter/axios.html)
