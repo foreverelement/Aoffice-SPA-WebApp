@@ -160,7 +160,7 @@ export default {
             // this.$store.dispatch('checkout', products)
             this.$store.dispatch({
                 type: 'setOfficeBuildingInfo',
-                codeId: 'B000000008'
+                codeId: this.$route.params.id
             })
         }
         // 目的: 通过读取图片的宽度，将List 图片的高度设为相同尺寸.保持比例为 1:1
