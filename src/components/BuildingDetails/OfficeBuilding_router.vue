@@ -108,12 +108,12 @@
 
 <script>
 import  { mapActions, mapGetters } from 'vuex'
-import  DBAppBar            from    './BuildingDetails_AppBar.vue'      // 通用头部
-import  Intro               from    './BuildingDetails_Intro.vue'       // Intro 信息介绍
-import  CssLoading          from    '../Auto/CssLoading_1.vue'          // 引入加载动画
-import  Title               from    '../Auto/Title.vue'                 // 引入标题
-import  Swiper              from    '../Discover/Swiper.vue'            // 引入轮播图
-import  DetailsList         from    './BuildingDetails_List.vue'        // 引入 独立空间 + 工位 的列表
+import  DBAppBar            from    './BuildingDetails_AppBar.vue'              // 通用头部
+import  Intro               from    './BuildingDetails_Intro.vue'               // Intro 信息介绍
+import  CssLoading          from    '../Auto/CssLoading_1.vue'                  // 引入加载动画
+import  Title               from    '../Auto/Title.vue'                         // 引入标题
+import  Swiper              from    '../Discover/Swiper.vue'                    // 引入轮播图
+import  DetailsList         from    './BuildingDetails_List.vue'                // 引入 独立空间 + 工位 的列表
 import  Map                         from    './BuildingDetails_Map.vue'         // 引入 地图组件 ( 房源详情图 )
 
 const   components = { DBAppBar, Intro, CssLoading, Title, Swiper, DetailsList, Map }
@@ -153,7 +153,16 @@ export default {
     }
     ,methods:{
         // 目的: 通过ajax获取联合办公数据
-        ...mapActions(['setOfficeBuildingInfo'])        // 执行异步
+        // ...mapActions(['setOfficeBuildingInfo'])        // 执行异步
+        // 目的: 测试触发Action ( 带上参数 )
+        // setOfficeBuildingInfo ( products ) {             // 函数带参数
+        setOfficeBuildingInfo () {                // 函数不带参数( 测试 )
+            // this.$store.dispatch('checkout', products)
+            this.$store.dispatch({
+                type: 'setOfficeBuildingInfo',
+                codeId: 'B000000008'
+            })
+        }
         // 目的: 通过读取图片的宽度，将List 图片的高度设为相同尺寸.保持比例为 1:1
         ,heightRevise: function(){
             // 不能立刻执行,因为ajax内的数据还没有塞入,所以会是空值

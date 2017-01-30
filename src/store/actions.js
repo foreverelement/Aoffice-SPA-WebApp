@@ -122,24 +122,27 @@ export const setCoWorkingInfo = ({commit}) => {
 }
 //获得 "办公楼详情" - 数据
 // ({ dispatch }, username)
-export const setOfficeBuildingInfo = ({commit},codeId) => {
+export const setOfficeBuildingInfo = ({commit},Obj) => {
     // 静态json
     // axios.post( './static/buildingDetails_OfficeBuilding_1.json', {
     //     // code: 'ig0001'
     // })
 
     // 动态
-    // var params = new URLSearchParams();
+    var params = new URLSearchParams();
     // params.append('code','B000000008');
-    // axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
-    // .then(function (response) {
-    //     let set_OfficeBuildingInfo = response.data.resultData
-    //     console.dir(set_OfficeBuildingInfo)
-    //     commit('addOfficeBuildingInfo',set_OfficeBuildingInfo)
-    // })
-    // .catch(function (error) {
-    //     console.log(error)
-    // })
+    console.log(Obj.codeId)
+    params.append('code',Obj.codeId);
+    axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
+    .then(function (response) {
+        let set_OfficeBuildingInfo = response.data.resultData
+        // console.dir(set_OfficeBuildingInfo)
+
+        commit('addOfficeBuildingInfo',set_OfficeBuildingInfo)
+    })
+    .catch(function (error) {
+        console.log(error)
+    })
 
     // 使用QS( 未成功 )
     // axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', qs.stringify({ 'code': 'B000000008' }))
@@ -153,18 +156,18 @@ export const setOfficeBuildingInfo = ({commit},codeId) => {
     //     console.log(error)
     // });
 
-    // 测试开放接口数据( 参数是否提交成功: 已成功! )
-    axios.get('http://api.jirengu.com/fm/getSong.php/', qs.stringify({
-        // axios.post('http://localhost:3003/clients', qs.stringify({
-        'channel': "333"
-    }))
-    .then(function (response) {
-        let get_data = response
-        console.log('get_data值' + get_data)
-        console.dir(get_data)
-        // commit('addState',get_data)
-    })
-    .catch(function (error) {
-        console.log(error)
-    });
+    // 测试外部免费接口数据( 参数是否提交成功: 已成功! )
+    // axios.get('http://api.jirengu.com/fm/getSong.php/', qs.stringify({
+    //     // axios.post('http://localhost:3003/clients', qs.stringify({
+    //     'channel': "333"
+    // }))
+    // .then(function (response) {
+    //     let get_data = response
+    //     console.log('get_data值' + get_data)
+    //     console.dir(get_data)
+    //     // commit('addState',get_data)
+    // })
+    // .catch(function (error) {
+    //     console.log(error)
+    // });
 }
