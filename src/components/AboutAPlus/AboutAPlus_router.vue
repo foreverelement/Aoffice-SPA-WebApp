@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import  ContentMarginTop        from    '../Auto/ContentMarginTop.vue'
-
 import  NewFeatures             from    './NewFeatures.vue'
 import  FAQ                     from    './FAQ.vue'
 import  AboutUs                 from    './AboutUs.vue'
@@ -27,7 +25,7 @@ import  Cooperation             from    './Cooperation.vue'
 import  PrivacyPolicy           from    './PrivacyPolicy.vue'
 import  CopyrightInfo           from    './CopyrightInfo.vue'
 
-const   components = { ContentMarginTop,NewFeatures,FAQ,AboutUs,Cooperation,PrivacyPolicy,CopyrightInfo }
+const   components = { NewFeatures,FAQ,AboutUs,Cooperation,PrivacyPolicy,CopyrightInfo }
 
 export default {
     data() {

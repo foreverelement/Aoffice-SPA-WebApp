@@ -169,6 +169,7 @@ export default {
 @import '../../../sass/main'
 
 #Service_Training
+    +REM(margin-top,$autoMargin)
     .training--info                                                                                         // '培训'信息容器
         +auto--contentBox($autoMargin,$title-color-light,$title-size,$badgeFont-color,$text-size)
         +REM(margin-top,$autoMargin)

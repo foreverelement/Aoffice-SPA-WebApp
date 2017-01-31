@@ -6,8 +6,6 @@
             <h2> {{ title }} </h2>
             <mu-icon-button icon='sms' slot="right"/>
         </mu-appbar>
-        <!-- 通用填充组件 - 避免顶部标题遮挡 -->
-        <ContentMarginTop />
         <!-- 内容条件渲染 -->
         <FindProperties     v-if="this.$route.params.id === 'findProperties'" />
         <PutInProperties    v-else-if="this.$route.params.id === 'putInProperties'" />
@@ -20,7 +18,6 @@
 </template>
 
 <script>
-import  ContentMarginTop    from    '../Auto/ContentMarginTop.vue'
 import  FindProperties      from    './Router-views/FindProperties.vue'
 import  PutInProperties     from    './Router-views/PutInProperties.vue'
 import  Furniture           from    './Router-views/Furniture.vue'
@@ -29,7 +26,7 @@ import  Research            from    './Router-views/Research.vue'
 import  Training            from    './Router-views/Training.vue'
 import  Computer            from    './Router-views/Computer.vue'
 
-const   components = { ContentMarginTop,FindProperties,PutInProperties,Furniture,Decoration,Research,Training,Computer }
+const   components = { FindProperties,PutInProperties,Furniture,Decoration,Research,Training,Computer }
 
 export default {
     data() {

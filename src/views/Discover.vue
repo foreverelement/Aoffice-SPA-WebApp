@@ -16,7 +16,7 @@ import  Swiper                  from    '../components/Discover/Swiper.vue'
 import  EnterpriseService       from    '../components/Discover/EnterpriseService.vue'
 import  Title                   from    '../components/Auto/Title.vue'
 import  BuildingList            from    '../components/Auto/BuildingList.vue'
-import  DiscoverAppBar          from    '../components/Auto/DiscoverAppBar.vue'
+import  DiscoverAppBar          from    '../components/Discover/DiscoverAppBar.vue'
 const   components = { Swiper,EnterpriseService,Title,BuildingList,DiscoverAppBar }
 
 export default {
@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 @import '../sass/main'
 
 #discover

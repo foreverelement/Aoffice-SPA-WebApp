@@ -153,8 +153,13 @@ export default {
         this.heightRevise()                         // 更改List 图片高度
     }
     ,methods:{
-        // 目的: 通过ajax获取联合办公数据
-        ...mapActions(['setCoWorkingInfo'])         // 执行异步
+        // 目的: 测试触发Action ( 带上参数 )
+        setCoWorkingInfo () {
+            this.$store.dispatch({
+                type: 'setCoWorkingInfo',
+                codeId: this.$route.params.id                                       // 参数为路由传递过来的ID
+            })
+        }
         // 目的: 通过读取图片的宽度，将List 图片的高度设为相同尺寸.保持比例为 1:1
         ,heightRevise: function(){
             // 不能立刻执行,因为ajax内的数据还没有塞入,所以会是空值
@@ -162,7 +167,7 @@ export default {
                 let img_Arr     = document.getElementsByClassName('listImg')
                 let img_width   = img_Arr[0].offsetWidth                            // 只需要获取第一个对象的宽度即可
                 for (let i = 0; i < img_Arr.length; i++){
-                    img_Arr[i].style.height = img_width + 'px'                    // 修改高度
+                    img_Arr[i].style.height = img_width + 'px'                      // 修改高度
                 }
             }, 4500)
         }
@@ -173,7 +178,7 @@ export default {
     ,components: components
 }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 @import '../../sass/main'
 
 .co-working_router

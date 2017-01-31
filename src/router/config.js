@@ -8,6 +8,7 @@ import discover                     from '../views/Discover.vue'                
 import houseResource                from '../views/HouseResource.vue'                               // "房源" 页面
 import map                          from '../views/Map.vue'                                         // "地图" 页面
 import service                      from '../views/Service.vue'                                     // "服务" 页面
+import search                       from '../views/Search.vue'                                      // "搜索" 页面
 // 关于艾迦办公
 import aboutAPlus_router            from '../components/AboutAPlus/AboutAPlus_router.vue'           // '关于艾迦办公' - 路由模块
 // 服务版块
@@ -100,6 +101,12 @@ const router = new VueRouter({
                     path: '/co-working/:id',
                     components: {
                         AppContent      : CoWorking_router
+                    }
+                }
+                ,{                                                                               // 搜索页
+                    path: '/search',
+                    components: {
+                        AppContent      : search
                     }
                 }
             ]

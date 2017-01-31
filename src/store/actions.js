@@ -93,31 +93,30 @@ export const getResearchInfo = ({commit}) => {
 }
 
 //获得 "联合办公" - 数据
-export const setCoWorkingInfo = ({commit}) => {
-
-    // Axios默认方法 ( 无法使用 )
-    // axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', {
-    //     code: 'B000000008'
+export const setCoWorkingInfo = ({commit},Obj) => {
+     // 静态json
+    // axios.post( './static/buildingDetails_CoWorking_1.json', {
+    //     // code: 'ig0001'
     // })
     // .then(function (response) {
-    //     let set_OfficeBuildingInfo = response.data.resultData
-    //     console.dir(set_OfficeBuildingInfo)
-    //     commit('addOfficeBuildingInfo',set_OfficeBuildingInfo)
+    //     let set_CoWorkingInfo = response.data.resultData
+    //     commit('addCoWorkingInfo',set_CoWorkingInfo)
     // })
     // .catch(function (error) {
     //     console.log(error);
     // })
 
-     // 静态json
-    axios.post( './static/buildingDetails_CoWorking_1.json', {
-        // code: 'ig0001'
-    })
+    // 动态
+    var params = new URLSearchParams();
+    // console.log(Obj.codeId)
+    params.append('code',Obj.codeId);
+    axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
     .then(function (response) {
         let set_CoWorkingInfo = response.data.resultData
         commit('addCoWorkingInfo',set_CoWorkingInfo)
     })
     .catch(function (error) {
-        console.log(error);
+        console.log(error)
     })
 }
 //获得 "办公楼详情" - 数据
@@ -130,8 +129,7 @@ export const setOfficeBuildingInfo = ({commit},Obj) => {
 
     // 动态
     var params = new URLSearchParams();
-    // params.append('code','B000000008');
-    console.log(Obj.codeId)
+    // console.log(Obj.codeId)
     params.append('code',Obj.codeId);
     axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
     .then(function (response) {

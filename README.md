@@ -3,16 +3,17 @@
 > 本页面需要在服务器环境下通过域名访问,勿直接浏览静态页面
 
 ### 使用技术:
-| 技术名称        | 作用   |  版本  |
-| --------   | -----:  | :----:  |
-| Vuejs     | 框架 |   2.6.0     |
-| Vuex        |  状态管理   |   2.1.1   |
-| Vue-router        |    路由管理    |  2.1.1  |
-| Axios        |    交互处理   |  0.15.3  |
-| Sass (node-sass)       |    样式预处理器    |  4.1.1  |
-| Webpack        |    模块打包    |  1.13.2  |
-| Babel        |    ES6转译ES5    |  6.0.0  |
-| Yarn        |    模块依赖安装    |  0.17.6  |
+| 技术名称                                           | 作用           |  版本  |
+| --------                                          | -----:         | :----:  |
+| Vuejs                                             | 框架            |   2.1.10     |
+| Vuex                                              | 状态管理        |   2.1.1   |
+| Vue-router                                        | 路由管理        |  2.1.3  |
+| Axios                                             | 交互处理        |  0.15.3  |
+| Sass (node-sass)                                  | 样式预处理器     |  4.1.1  |
+| Webpack                                           | 模块打包         |  1.13.2  |
+| Babel                                             | ES6转译ES5      |  6.0.0  |
+| Yarn                                              | 模块依赖安装     |  0.17.6  |
+| [Muse UI](https://museui.github.io/#/index)       | UI框架          |  2.0.0-rc.5  |
 
 ## Components Structure / 组件结构说明:
 
@@ -91,16 +92,6 @@ npm run build
 
 ***
 
-### UI组件库将 使用 [Muse UI](https://museui.github.io/#/index)
-
-### 当制作多页面时,将引入`路由` [vue-router 2](http://router.vuejs.org/zh-cn/) 来制作SPA单页面应用
-
-***
-
-## 测试机器: iPhone 6s
-
-## 测试浏览器: Chrome/Safari/FireFox/微信
-
 - [ ] **Aoffice-SPA-WebApp-Vue待完成内容**
     - [ ] 家具详情 - 接口数据
     - [ ] 外出考察详情 - 接口数据
@@ -118,6 +109,7 @@ npm run build
     - [ ] 首页 state结构 和 绑定需要优化( 调整mutations.js )
     - [ ] HTML 房源详情页 特殊接口地址
     - [ ] 房源详情页 list列表如果为空,添加隐藏状态
+    - [ ] 房源详情页 当交互完成时再执行高度修正事件( 不要使用计时器判断 )
 - [ ] **Aoffice-SPA-WebApp-Vue性能优化**
     - [ ] 可复用组件改为`render`组件形式
     - [ ] 优化项目结构列表
@@ -131,17 +123,8 @@ npm run build
 ***
 
 ## API接口目录
-* 获取家具详情
-    > http://192.168.1.250:8082/api/es/furniture
-
-* 外出考察详情
-    > http://192.168.1.250:8082/api/es/getInvestigate
 * 房源详情页数据
     > http://app.aplusoffice.cn/api/building/getH5BuildingByCode
-
-***
-> test Service_furniture_router.vue
-
 ***
 
 ## 命名约定

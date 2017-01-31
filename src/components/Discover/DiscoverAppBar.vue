@@ -2,7 +2,10 @@
 <template>
     <mu-appbar id="discoverAppBar" >
         <mu-icon-button icon='list' slot="left" @click="toggle(true)" />
-        <mu-text-field icon="search" class="appbar-search-field"  slot="right" />
+        <!-- 搜索按钮 -->
+        <div class="discoverAppBar__search" @click="toSearch()">
+            <mu-icon-button icon='search' />
+        </div>
         <mu-icon-button icon='chat' slot="right" />
         <!-- 隐藏左侧 -->
         <mu-drawer :open="open" :docked="docked" class="left--box" @close="toggle()">
@@ -27,10 +30,13 @@ export default {
     },
     methods: {
         toggle (flag) {
-            this.open = !this.open
+            this.open   = !this.open
             this.docked = !flag
-        },
-        toAboutInfo: function(pageName) {
+        }
+        ,toSearch: function() {
+            location.href = '#/search/'
+        }
+        ,toAboutInfo: function(pageName) {
             location.href = '#/aboutAPlus/' + pageName
         }
     }
@@ -55,17 +61,19 @@ export default {
     position: fixed
     +bC(rgba($F,.1))
     opacity: 1
-    .mu-icon                                                                      // 两侧按钮样式
+    .mu-icon                                                                        // 两侧按钮样式
         color: $F !important
     .mu-appbar-title
-        width: 0 !important
+        width: 72% !important
+    // 搜索class( 使用文本框无法触发@click事件 )
+    .discoverAppBar__search
+        @extend %flexCenter                                                         // 控制居中
     .left
-        position: absolute                                                          // 相对定位( 左侧按钮 )
         left: 0
         width: 14%
     .right
-        width: 84%
-        margin-left: -3%
+        right: 0
+        width: 14%
         .mu-text-field                                                              // 相对定位( 中间输入框 )
             position: absolute
             left: 15%

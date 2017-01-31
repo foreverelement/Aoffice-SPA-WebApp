@@ -107,14 +107,14 @@
 </template>
 
 <script>
-import  { mapActions, mapGetters } from 'vuex'
-import  DBAppBar            from    './BuildingDetails_AppBar.vue'              // 通用头部
-import  Intro               from    './BuildingDetails_Intro.vue'               // Intro 信息介绍
-import  CssLoading          from    '../Auto/CssLoading_1.vue'                  // 引入加载动画
-import  Title               from    '../Auto/Title.vue'                         // 引入标题
-import  Swiper              from    '../Discover/Swiper.vue'                    // 引入轮播图
-import  DetailsList         from    './BuildingDetails_List.vue'                // 引入 独立空间 + 工位 的列表
-import  Map                         from    './BuildingDetails_Map.vue'         // 引入 地图组件 ( 房源详情图 )
+import  { mapActions, mapGetters }  from    'vuex'
+import  DBAppBar                    from    './BuildingDetails_AppBar.vue'              // 通用头部
+import  Intro                       from    './BuildingDetails_Intro.vue'               // Intro 信息介绍
+import  CssLoading                  from    '../Auto/CssLoading_1.vue'                  // 引入加载动画
+import  Title                       from    '../Auto/Title.vue'                         // 引入标题
+import  Swiper                      from    '../Discover/Swiper.vue'                    // 引入轮播图
+import  DetailsList                 from    './BuildingDetails_List.vue'                // 引入 独立空间 + 工位 的列表
+import  Map                         from    './BuildingDetails_Map.vue'                 // 引入 地图组件 ( 房源详情图 )
 
 const   components = { DBAppBar, Intro, CssLoading, Title, Swiper, DetailsList, Map }
 
@@ -148,16 +148,12 @@ export default {
         }
     }
     ,mounted: function() {
-        this.setOfficeBuildingInfo()                    // 获取store内 联合办公数据
-        this.heightRevise()                             // 更改List 图片高度
+        this.setOfficeBuildingInfo()                                                // 获取store内 联合办公数据
+        this.heightRevise()                                                         // 更改List 图片高度
     }
     ,methods:{
-        // 目的: 通过ajax获取联合办公数据
-        // ...mapActions(['setOfficeBuildingInfo'])        // 执行异步
         // 目的: 测试触发Action ( 带上参数 )
-        // setOfficeBuildingInfo ( products ) {             // 函数带参数
-        setOfficeBuildingInfo () {                // 函数不带参数( 测试 )
-            // this.$store.dispatch('checkout', products)
+        setOfficeBuildingInfo () {
             this.$store.dispatch({
                 type: 'setOfficeBuildingInfo',
                 codeId: this.$route.params.id
@@ -170,7 +166,7 @@ export default {
                 let img_Arr     = document.getElementsByClassName('listImg')
                 let img_width   = img_Arr[0].offsetWidth                            // 只需要获取第一个对象的宽度即可
                 for (let i = 0; i < img_Arr.length; i++){
-                    img_Arr[i].style.height = img_width + 'px'                    // 修改高度
+                    img_Arr[i].style.height = img_width + 'px'                      // 修改高度
                 }
             }, 4500)
         }
@@ -182,7 +178,7 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @import '../../sass/main'
 
 .office-building_router

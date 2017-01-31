@@ -115,7 +115,6 @@ export const addCoWorkingInfo =( state,res ) => {
         coWorkingImgUrl_Arr.push( coWorkingImgUrl_Obj )                                                                     // 将构造函数的对象推入 store的数组中
     }
     state.coWorking['imgUrl_Arr'] = coWorkingImgUrl_Arr                                                                     // 最后将生成的轮播图数组推入 state.furnitureInfo 对象中
-
     // 修改'独立空间'数组内 图片对象的地址( 全拼 )
     for( let i=0; i<res.typeASearch.length; i++ ) {
         // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
@@ -126,7 +125,6 @@ export const addCoWorkingInfo =( state,res ) => {
             res.typeASearch[i].imgUrl = res.picUrl + res.typeASearch[i].appPic                                              // 拼接'独立空间'小图片 图片地址
         }
     }
-
     // 修改'工位'数组内 图片对象的地址( 全拼 )
     for( let i=0; i<res.typeBSearch.length; i++ ) {
         // 图片地址 是否为空 进行判断 ( 如果为空: 设置默认空图片地址链接; 如果不为空: 拼接图片链接 )
