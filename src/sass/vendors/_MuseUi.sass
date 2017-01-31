@@ -94,3 +94,13 @@
         +bC($F)
     .mu-paper-1
         box-shadow: none
+// 设置'搜索页'的搜索框样式( 背景色 与 文字颜色 )
+#search__appBar
+    // 将两个状态线设置隐藏
+    .mu-text-field-line, .mu-text-field-focus-line, .focus
+        +bC($base-color)
+    // 设置'取消'按钮两侧的padding为0
+    .mu-flat-button-label
+        padding: 0 !important
+    .mu-flat-button
+        min-width: auto !important
