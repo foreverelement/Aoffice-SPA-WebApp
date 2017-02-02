@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 @import '../../sass/main'
 @import '../../sass/vendors/Swiper.min'
 

@@ -154,7 +154,7 @@ export default {
     }
     ,methods:{
         // 目的: 测试触发Action ( 带上参数 )
-        setCoWorkingInfo () {
+        setCoWorkingInfo() {
             this.$store.dispatch({
                 type: 'setCoWorkingInfo',
                 codeId: this.$route.params.id                                       // 参数为路由传递过来的ID

@@ -6,8 +6,9 @@
 <script>
 export default {
     mounted: function () {
-        this.setMap_height();
-        this.asyncLoadMap();
+        this.setMap_height()
+        this.asyncLoadMap()
+        this.setBottomBtnState(2)
     },
     methods: {
         setMap_height: function(){
@@ -21,17 +22,23 @@ export default {
         },
         asyncLoadMap: function() {
             setTimeout(() => {
-                const miniMap = new BMap.Map("map", {enableMapClick:false});                                                  // 创建Map实例(关闭底图可点功能)
-                const miniMapPoint = new BMap.Point(120.384459,36.071709);                                                // 标点位置(华润大厦)
-                // var miniMapIcon = new BMap.Icon("./dist/images/ico-pin-orange-24-px@2x.png", new BMap.Size(65,80));  // 自定义标注样式
-                // var miniMapCustomMarker = new BMap.Marker(miniMapPoint,{icon:miniMapIcon});                          // 创建自定义标注(将样式加入)
+                const miniMap = new BMap.Map("map", {enableMapClick:false});                                            // 创建Map实例(关闭底图可点功能)
+                const miniMapPoint = new BMap.Point(120.384459,36.071709);                                              // 标点位置(华润大厦)
                 miniMap.centerAndZoom(miniMapPoint,15);                                                                 // 创建地图中心点,层级15级（并不显示标记）
-                // miniMap.disableDragging();                                                                           //禁止拖拽
                 miniMap.addControl(new BMap.NavigationControl({
                     anchor: BMAP_ANCHOR_TOP_RIGHT,
                     type: BMAP_NAVIGATION_CONTROL_SMALL
                 }));
-            }, 50)
+            },50)
+        }
+        // 改变底部按钮状态样式
+        ,setBottomBtnState(state) {
+            let bottomBtn_Arr = document.getElementsByClassName("mu-buttom-item")
+            // 清空状态
+            for( let i = 0; i < bottomBtn_Arr.length; i++ ) {
+                bottomBtn_Arr[i].setAttribute("class","mu-buttom-item router-link-active")
+            }
+            bottomBtn_Arr[state].setAttribute("class","mu-buttom-item router-link-active mu-bottom-item-active")        // 改变"发现"按钮的状态
         }
     }
 }

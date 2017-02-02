@@ -44,7 +44,7 @@
 export default { props: ['building_details'] }
 </script>
 
-<style lang="sass?indentedSyntax" scoped>
+<style lang="sass" scoped>
 @import '../../sass/main'
 %details-fontStyle
     +REM(font-size,$badge-size)

@@ -87,6 +87,7 @@ export default {
     },
     mounted: function () {
         this.heightRevise()
+        this.setBottomBtnState(3)
     },
     methods: {
         // 目的: 通过读取图片的宽度，将service-Box盒子的高度设为相同高度.保持比例为 1:1
@@ -104,6 +105,15 @@ export default {
         // 目的: 执行跳转
         toUrl: function (message) {
             location.href='#/service/' + message
+        }
+        // 改变底部按钮状态样式
+        ,setBottomBtnState(state) {
+            let bottomBtn_Arr = document.getElementsByClassName("mu-buttom-item")
+            // 清空状态
+            for( let i = 0; i < bottomBtn_Arr.length; i++ ) {
+                bottomBtn_Arr[i].setAttribute("class","mu-buttom-item router-link-active")
+            }
+            bottomBtn_Arr[state].setAttribute("class","mu-buttom-item router-link-active mu-bottom-item-active")        // 改变"发现"按钮的状态
         }
     }
 }

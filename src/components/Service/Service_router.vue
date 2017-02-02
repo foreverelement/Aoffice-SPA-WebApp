@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '../../sass/main.sass'
+@import '../../sass/main'
 
 #service_router
     /* 设置MuseUI - App Bar样式 */

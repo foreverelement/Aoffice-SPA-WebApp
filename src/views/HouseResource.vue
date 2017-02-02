@@ -15,7 +15,21 @@ import  Auto_AppBar             from        '../components/Auto/Auto_AppBar.vue'
 const   components  = { BuildingList, BuildingTabs, Auto_AppBar }
 
 export default {
-    components: components
+    mounted: function() {
+        this.setBottomBtnState(1)
+    }
+    ,methods: {
+        // 改变底部按钮状态样式
+        setBottomBtnState(state) {
+            let bottomBtn_Arr = document.getElementsByClassName("mu-buttom-item")
+            // 清空状态
+            for( let i = 0; i < bottomBtn_Arr.length; i++ ) {
+                bottomBtn_Arr[i].setAttribute("class","mu-buttom-item router-link-active")
+            }
+            bottomBtn_Arr[state].setAttribute("class","mu-buttom-item router-link-active mu-bottom-item-active")        // 改变"发现"按钮的状态
+        }
+    }
+    ,components: components
 }
 </script>
 
