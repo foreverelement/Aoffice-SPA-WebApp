@@ -31,6 +31,10 @@ export const addState = (state,res) => {
             state.hotBuildingList_Arr[0][i]['judgeShow']    = false
         }
     }
+    setTimeout(function() {
+        console.log('改变')
+        state.loadingState['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
+    },6000)
 }
 
 // 后期将modules 分出

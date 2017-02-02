@@ -1,7 +1,14 @@
 <template>
     <div id="index">
-        <router-view name="AppContent">      </router-view>
-        <router-view name="AppBottomNav">    </router-view>
+        <!-- 初始加载动画 -->
+        <div v-if="this.$store.state.loadingState.judgeShow">
+            <h1> 正在加载... </h1>
+        </div>
+        <!-- 完成加载动画 -->
+        <div v-else>
+            <router-view name="AppContent">      </router-view>
+            <router-view name="AppBottomNav">    </router-view>
+        </div>
     </div>
 </template>
 
@@ -16,14 +23,12 @@ export default {
 }
 </script>
 
-<style lang="sass?indentedSyntax">
-@import './sass/main.sass'
+<style lang="sass">
+@import './sass/main'
 @import './sass/vendors/MuseUi'
 
 body
     @extend %clearScroll
-#index
-    /*+REM(margin-bottom,80px)*/
 #app
     position: relative
 </style>

@@ -15,6 +15,26 @@
 | Yarn                                              | 模块依赖安装     |  0.17.6  |
 | [Muse UI](https://museui.github.io/#/index)       | UI框架          |  2.0.0-rc.5  |
 
+## Build Setup / 开发流程
+
+``` bash
+# install dependencies/拉取项目,在项目路径下执行
+# 国内环境建议使用cnpm install
+npm install
+
+# *推荐Yarn
+yarn install
+
+# serve with hot reload at localhost:8080
+# npm安装依赖后,运行node服务器,打开 localhost:80 预览 (已运行热更新功能)
+npm run dev
+
+# build for production with minification
+# 当修改代码后,需要手动打包发布时,运行npm run build命令进行打包
+npm run build
+```
+
+
 ## Components Structure / 组件结构说明:
 
 ```bash
@@ -70,27 +90,6 @@ App.vue ( 根节点 )
     |
     |- 404.vue                              ( "404" )
 ```
-
-## Build Setup / 开发流程
-
-``` bash
-# install dependencies/拉取项目,在项目路径下执行
-# 国内环境建议使用cnpm install
-npm install
-
-# *推荐Yarn
-yarn install
-
-# serve with hot reload at localhost:8080
-# npm安装依赖后,运行node服务器,打开 localhost:80 预览 (已运行热更新功能)
-npm run dev
-
-# build for production with minification
-# 当修改代码后,需要手动打包发布时,运行npm run build命令进行打包
-npm run build
-```
-
-***
 
 - [ ] **Aoffice-SPA-WebApp-Vue待完成内容**
     - [x] 家具详情 - 接口数据
