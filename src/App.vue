@@ -1,7 +1,7 @@
 <template>
     <div id="index">
         <!-- 初始加载动画 -->
-        <div v-if="this.$store.state.loadingState.judgeShow" id="loading" >
+        <div v-if="this.$store.state.loadingState.judgeShow" id="loading">
             <img :src="loadingStyle.imgUrl" class="animated bounceInDown">
         </div>
         <!-- 完成加载动画 -->
@@ -27,7 +27,6 @@ export default {
         this.addState()
         this.addLoadingAnimation()                         // 添加Loading动画
     }
-    // ,methods: mapActions([ 'addState' ])
     ,methods: {
         // 目的: 触发Action 获取首页数据
         addState() {
@@ -57,6 +56,5 @@ body
     position: relative
 #loading img
     width: 100%
-    height: 100%
     object-fit: cover
 </style>

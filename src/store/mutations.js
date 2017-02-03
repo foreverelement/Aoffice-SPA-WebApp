@@ -33,7 +33,7 @@ export const addState = (state,res) => {
     }
     setTimeout(function() {
         state.loadingState['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
-    },4000)
+    },7000)
 }
 
 // 后期将modules 分出
@@ -215,4 +215,9 @@ export const addOfficeBuildingInfo =( state,res ) => {
     setTimeout(function() {
         state.officeBuilding['judgeShow'] = false                                                                           // 当有数据时,设置加载动画状态为false
     },2000)
+}
+
+// 地图初始数据
+export const addRegionPointList =( state,res ) => {
+    state.regionPointList = res                                                                                             // 将数组直接赋给state
 }

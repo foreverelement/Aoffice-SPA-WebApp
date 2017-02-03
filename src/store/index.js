@@ -8,9 +8,12 @@ import  * as mutations      from './mutations'
 Vue.use(Vuex)
 // 状态树
 const state = {
-    loadingState: {
+    city: {                                             // 查询城市
+        cityCode: '3702'
+    }
+    ,loadingState: {
         judgeShow: true
-    }                                    // 加载动画状态
+    }                                                   // 加载动画状态
     ,bannerImg_Arr: []                                  // "发现" - banner图片数组
     ,hotBuildingList_Arr: []                            // "发现" - "热门房源"内容
     ,furnitureInfo: {
@@ -41,6 +44,7 @@ const state = {
         buildingRelationList_judgeShow: true,
         nameInfo: '0'
     }
+    ,regionPointList: []                                // '地图' 初始数据( 地区时间 )
 }
 const store = new Vuex.Store({
     state,
