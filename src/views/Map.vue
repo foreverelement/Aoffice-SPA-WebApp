@@ -25,33 +25,68 @@ export default {
             setTimeout(() => {
                 const miniMap = new BMap.Map("map", {enableMapClick:false});                // 创建Map实例(关闭底图可点功能)
                 const miniMapPoint = new BMap.Point(120.378522,36.113888);                   // 标点位置( 青岛中心 )
-                miniMap.centerAndZoom(miniMapPoint,10);                                     // 创建地图中心点,层级15级（并不显示标记）
+                miniMap.centerAndZoom(miniMapPoint,11);                                     // 创建地图中心点,层级15级（并不显示标记）
                 miniMap.addControl(new BMap.NavigationControl({
                     anchor: BMAP_ANCHOR_TOP_RIGHT,
                     type: BMAP_NAVIGATION_CONTROL_SMALL
                 }));
-
-                // 地图覆盖物判断添加事件 ( 行政区 + 商圈 + 具体覆盖物 )
-
-                // ObjGroup,setZoom 参数
-                const addRangeOverlay = () => {
-                    /* map.clearOverlays();                                                        // 清理地图上面所有点
+                /* 地图覆盖物判断添加事件 —— 调用 */
+                // 地图缩放监听
+                const lastLevel
+                miniMap.addEventListener("zoomstart",function(){
+                    lastLevel = this.getZoom();
+                })
+                miniMap.addEventListener("zoomend", function(){
+                    let zoomLevel = this.getZoom();     //　当前地图级别
+                    if (zoomLevel >= 15){                                                           // 输出3级地图内容:详细覆盖
+                        addBuilding(BuildingModel,17);
+                        // console.log("输出3级地图内容:详细覆盖");
+                    }else if (zoomLevel >= 14){
+                        addRangeOverlay(businessCirclePoint,16);
+                        // console.log("输出2级地图内容:商圈");                                      // 商圈自定义覆盖物
+                    }else{
+                        if (!lastLevel < 14) {
+                            addRangeOverlay(RegionPoint,14);                                        // 输出行政区自定义覆盖物
+                            // console.log("输出1级地图内容:行政区");
+                        }
+                    }
+                });
+                // 地图覆盖物判断添加事件 —— 声明常量 ( 行政区 + 商圈 + 具体覆盖物 )
+                const buildingOverlayArr = []                                                       // 声明常量
+                const addRangeOverlay = ( ObjGroup,setZoom ) => {                                   // 1级 + 2级 通用添加覆盖物事件
+                    miniMap.clearOverlays()                                                         // 清理地图上面所有点
                     for (let i = 0; i < ObjGroup.length; i++) {
-                        let arr = new Object();
-                        arr = ObjGroup[i];
+                        let arr = new Object()
+                            arr = ObjGroup[i]
                         let code = arr.code,
                             url = arr.url,
-                            text = arr.name + "<br />" + arr.resourceAmount + "套";              // 拼接字符串
-                        let zoom = setZoom;                                                      // 获取地图层级
+                            text = arr.name + "<br />" + arr.resourceAmount + "套"                   // 拼接字符串
+                        let zoom = setZoom                                                          // 获取地图层级
                         let RangeOverlay = new rangeOverlay(
                             new BMap.Point(arr.latitude,arr.longitude),text,code,url,zoom
-                        );
-                        map.addOverlay(RangeOverlay);
-                    } */
-                    console.log(miniMap)
+                        )
+                        miniMap.addOverlay(RangeOverlay)
+                    }
                 }
-                // 测试运行
-                addRangeOverlay();
+                const addBuilding = ( ObjGroup,setZoom ) => {
+                    miniMap.clearOverlays()                                                         // 清理地图上面所有点
+                    for (let i = 0; i < ObjGroup.length; i++) {
+                        let buildingArr = new Object()
+                            buildingArr = ObjGroup[i]
+                        let zoom = setZoom                                                         // 获取地图层级
+                        // 拼接属性文字内容
+                        let text = "￥" + buildingArr.priceBeginning +  " 起",
+                            mouseoverTxt = buildingArr.name + " " + buildingArr.resourceAmount + "套"
+                        buildingOverlayArr[i] = BuildingOverlay = new buildingOverlay(
+                            new BMap.Point(buildingArr.latitude,buildingArr.longitude),text,mouseoverTxt,buildingArr.code,i,zoom    // i = 序号
+                        )
+                        miniMap.addOverlay(BuildingOverlay)
+                        buildingOverlayArr[i] = BuildingOverlay
+                    }
+                }
+                // 测试运行(实际项目不使用 - 而是条件调用)
+                addRangeOverlay()
+                addBuilding()
             },50)
         }
         // 目的: 获取地图地区所有数据

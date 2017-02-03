@@ -44,8 +44,10 @@ export const addState = ({commit}) => {
     });
 }
 
-// 后期将modules 分出
+/* 后期将modules 分出 */
+// 家居信息
 export const getFurnitureInfo = ({commit}) => {
+    // 本地数据
     axios.post('./static/furnitureInfo_1.json', {
     // axios.post('http://192.168.1.30:8282/aoffice_app/api/es/getInvestigate?icode=ig0001' , {
         // icode: 'ig0001'
@@ -74,20 +76,28 @@ export const getResearchInfo = ({commit}) => {
     //     console.log(error);
     // })
 
-    // http://app.aplusoffice.cn/api
+    // axios跨域解决方案( 原生方法 )
+    // var params = new URLSearchParams();
+    // params.append('code', 'ig0003');
+    // axios.post('http://app.aplusoffice.cn/api/es/getInvestigate', params)
+    // .then(function (response) {
+    //     let get_ResearchInfoData = response.data.resultData
+    //     // console.log(response)
+    //     commit('addResearchInfo',get_ResearchInfoData)
+    // })
+    // .catch(function (error) {
+    //     console.log(error);
+    // })
 
-    // axios跨域解决方案( 测试成功 )
-    var params = new URLSearchParams();
-    params.append('code', 'ig0003');
-    axios.post('http://app.aplusoffice.cn/api/es/getInvestigate', params)
+    // 使用QS获取数据
+    axios.post('http://app.aplusoffice.cn/api/es/getInvestigate',qs.stringify({ 'code': 'ig0003' }))
     .then(function (response) {
         let get_ResearchInfoData = response.data.resultData
-        console.log(response)
         commit('addResearchInfo',get_ResearchInfoData)
     })
     .catch(function (error) {
-        console.log(error);
-    })
+        console.log(error)
+    });
 }
 
 //获得 "联合办公" - 数据
@@ -104,18 +114,27 @@ export const setCoWorkingInfo = ({commit},Obj) => {
     //     console.log(error);
     // })
 
-    // 动态
-    var params = new URLSearchParams();
-    // console.log(Obj.codeId)
-    params.append('code',Obj.codeId);
-    axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
+    // Axios原生方法传参( 不支持ios )
+    // var params = new URLSearchParams();
+    // params.append('code',Obj.codeId);
+    // axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
+    // .then(function (response) {
+    //     let set_CoWorkingInfo = response.data.resultData
+    //     commit('addCoWorkingInfo',set_CoWorkingInfo)
+    // })
+    // .catch(function (error) {
+    //     console.log(error)
+    // })
+
+    // 使用QS获取数据
+    axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode',qs.stringify({ 'code': Obj.codeId }))
     .then(function (response) {
         let set_CoWorkingInfo = response.data.resultData
         commit('addCoWorkingInfo',set_CoWorkingInfo)
     })
     .catch(function (error) {
         console.log(error)
-    })
+    });
 }
 //获得 "办公楼详情" - 数据
 export const setOfficeBuildingInfo = ({commit},Obj) => {
@@ -124,37 +143,20 @@ export const setOfficeBuildingInfo = ({commit},Obj) => {
     //     // code: 'ig0001'
     // })
 
-    // 动态( 成功 )
+    // Axios原生方法传参( 不支持ios )
     // var params = new URLSearchParams();
-    // // console.log(Obj.codeId)
     // params.append('code',Obj.codeId);
     // axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
     // .then(function (response) {
     //     let set_OfficeBuildingInfo = response.data.resultData
     //     // console.dir(set_OfficeBuildingInfo)
-
     //     commit('addOfficeBuildingInfo',set_OfficeBuildingInfo)
     // })
     // .catch(function (error) {
     //     console.log(error)
     // })
 
-    // 测试外部免费接口数据( 参数是否提交成功: 已成功! )
-    // axios.get('http://api.jirengu.com/fm/getSong.php/', qs.stringify({
-    //     // axios.post('http://localhost:3003/clients', qs.stringify({
-    //     'channel': "333"
-    // }))
-    // .then(function (response) {
-    //     let get_data = response
-    //     console.log('get_data值' + get_data)
-    //     console.dir(get_data)
-    //     // commit('addState',get_data)
-    // })
-    // .catch(function (error) {
-    //     console.log(error)
-    // });
-
-    // 测试后台
+    // qs方法传参数
     axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', qs.stringify({
         'code': Obj.codeId
     }))
@@ -167,37 +169,31 @@ export const setOfficeBuildingInfo = ({commit},Obj) => {
     .catch(function (error) {
         console.log(error)
     });
-
-    // 测试后台动态
-    // var params = new URLSearchParams();
-    // // params.append('test','333');
-    // // params.append('aaa','AAA');
-    // params.append('code',Obj.codeId);
-    // // axios.post('http://192.168.1.3:8282/aoffice_app/api/test/json', params)
-    // axios.post('http://app.aplusoffice.cn/api/building/getH5BuildingByCode', params)
-    // .then(function (response) {
-    //     let set_OfficeBuildingInfo = response.data.resultData
-    //     console.dir(set_OfficeBuildingInfo)
-    //     commit('addOfficeBuildingInfo',set_OfficeBuildingInfo)
-    // })
-    // .catch(function (error) {
-    //     console.log(error)
-    // })
 }
 
 // 地图初始数据
 export const getRegionPointList = ({commit},Obj) => {
-    // 动态
-    var params = new URLSearchParams();
-    params.append('cityCode',Obj.cityCode);
-    axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', params)
+    // Axios原生方法传参( 不支持ios )
+    // var params = new URLSearchParams();
+    // params.append('cityCode',Obj.cityCode);
+    // axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', params)
+    // .then(function (response) {
+    //     let set_RegionPointList = response.data.resultData
+    //     // console.dir(set_RegionPointList)
+    //     commit('addRegionPointList',set_RegionPointList)
+    // })
+    // .catch(function (error) {
+    //     console.log(error)
+    // })
+
+    // qs方法传参数
+    axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', qs.stringify({ 'cityCode': Obj.codeId }))
     .then(function (response) {
         let set_RegionPointList = response.data.resultData
-        // console.dir(set_RegionPointList)
+        // console.log('set_OfficeBuildingInfo值' + set_OfficeBuildingInfo)
         commit('addRegionPointList',set_RegionPointList)
     })
     .catch(function (error) {
         console.log(error)
-    })
-
+    });
 }
