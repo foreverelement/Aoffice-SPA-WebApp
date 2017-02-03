@@ -1,7 +1,9 @@
-import Vue from 'vue'
-import store from './store'
-import router from './router/config.js'
-import MuseUI from 'muse-ui'
+import Vue      from 'vue'
+import store    from './store'
+import router   from './router/config.js'
+import Animate  from 'animate.css'
+import MuseUI   from 'muse-ui'
+import 'animate.css/animate.min.css'
 import 'muse-ui/dist/muse-ui.css'
 require('./assets/iconfont/material-icons.css')
 

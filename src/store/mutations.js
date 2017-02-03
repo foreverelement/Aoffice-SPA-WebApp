@@ -32,9 +32,8 @@ export const addState = (state,res) => {
         }
     }
     setTimeout(function() {
-        console.log('改变')
         state.loadingState['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
-    },6000)
+    },4000)
 }
 
 // 后期将modules 分出

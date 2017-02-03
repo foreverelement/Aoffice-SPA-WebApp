@@ -153,7 +153,7 @@ export default {
         this.heightRevise()                         // 更改List 图片高度
     }
     ,methods:{
-        // 目的: 测试触发Action ( 带上参数 )
+        // 目的: 触发Action  获取联合办公数据( 带参数 )
         setCoWorkingInfo() {
             this.$store.dispatch({
                 type: 'setCoWorkingInfo',
