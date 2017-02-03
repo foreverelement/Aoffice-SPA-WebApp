@@ -174,26 +174,26 @@ export const setOfficeBuildingInfo = ({commit},Obj) => {
 // 地图初始数据
 export const getRegionPointList = ({commit},Obj) => {
     // Axios原生方法传参( 不支持ios )
-    // var params = new URLSearchParams();
-    // params.append('cityCode',Obj.cityCode);
-    // axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', params)
-    // .then(function (response) {
-    //     let set_RegionPointList = response.data.resultData
-    //     // console.dir(set_RegionPointList)
-    //     commit('addRegionPointList',set_RegionPointList)
-    // })
-    // .catch(function (error) {
-    //     console.log(error)
-    // })
-
-    // qs方法传参数
-    axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', qs.stringify({ 'cityCode': Obj.codeId }))
+    var params = new URLSearchParams();
+    params.append('cityCode',Obj.cityCode);
+    axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', params)
     .then(function (response) {
         let set_RegionPointList = response.data.resultData
-        // console.log('set_OfficeBuildingInfo值' + set_OfficeBuildingInfo)
+        // console.dir(set_RegionPointList)
         commit('addRegionPointList',set_RegionPointList)
     })
     .catch(function (error) {
         console.log(error)
-    });
+    })
+
+    // qs方法传参数
+    // axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', qs.stringify({ 'cityCode': Obj.codeId }))
+    // .then(function (response) {
+    //     let set_RegionPointList = response.data.resultData
+    //     console.log('set_RegionPointList值' + set_RegionPointList)
+    //     commit('addRegionPointList',set_RegionPointList)
+    // })
+    // .catch(function (error) {
+    //     console.log(error)
+    // });
 }

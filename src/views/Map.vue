@@ -32,10 +32,10 @@ export default {
                 }));
                 /* 地图覆盖物判断添加事件 —— 调用 */
                 // 地图缩放监听
-                const lastLevel
+                let lastLevel;
                 miniMap.addEventListener("zoomstart",function(){
                     lastLevel = this.getZoom();
-                })
+                });
                 miniMap.addEventListener("zoomend", function(){
                     let zoomLevel = this.getZoom();     //　当前地图级别
                     if (zoomLevel >= 15){                                                           // 输出3级地图内容:详细覆盖
@@ -46,7 +46,7 @@ export default {
                         // console.log("输出2级地图内容:商圈");                                      // 商圈自定义覆盖物
                     }else{
                         if (!lastLevel < 14) {
-                            addRangeOverlay(RegionPoint,14);                                        // 输出行政区自定义覆盖物
+                            addRangeOverlay(getRegionPointList,14);                                        // 输出行政区自定义覆盖物
                             // console.log("输出1级地图内容:行政区");
                         }
                     }
@@ -67,7 +67,7 @@ export default {
                         )
                         miniMap.addOverlay(RangeOverlay)
                     }
-                }
+                };
                 const addBuilding = ( ObjGroup,setZoom ) => {
                     miniMap.clearOverlays()                                                         // 清理地图上面所有点
                     for (let i = 0; i < ObjGroup.length; i++) {
@@ -83,7 +83,7 @@ export default {
                         miniMap.addOverlay(BuildingOverlay)
                         buildingOverlayArr[i] = BuildingOverlay
                     }
-                }
+                };
                 // 测试运行(实际项目不使用 - 而是条件调用)
                 addRangeOverlay()
                 addBuilding()
