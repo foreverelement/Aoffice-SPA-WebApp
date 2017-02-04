@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import  { mapActions, mapGetters }  from    'vuex'
+import  { mapActions }  from    'vuex'
 export default {
     mounted: function () {
         this.setMap_height()
@@ -25,7 +25,7 @@ export default {
         ,asyncLoadMap: function() {
             setTimeout(() => {
                 const miniMap = new BMap.Map("map", {enableMapClick:false});                // 创建Map实例(关闭底图可点功能)
-                const miniMapPoint = new BMap.Point(120.378522,36.113888);                   // 标点位置( 青岛中心 )
+                const miniMapPoint = new BMap.Point(120.323186,36.115521);                   // 标点位置( 青岛中心 )
                 miniMap.centerAndZoom(miniMapPoint,11);                                     // 创建地图中心点,层级15级（并不显示标记）
                 miniMap.addControl(new BMap.NavigationControl({
                     anchor: BMAP_ANCHOR_TOP_RIGHT,
@@ -35,7 +35,6 @@ export default {
                 // 地图缩放监听
                 let administrativeRegion_Arr = [];
                 administrativeRegion_Arr = this.$store.state.regionPointList;
-                // console.dir(administrativeRegion_Arr);
                 let lastLevel;
                 miniMap.addEventListener("zoomstart",function(){
                     lastLevel = this.getZoom();
@@ -55,28 +54,10 @@ export default {
                         }
                     }
                 });
-
-
                 // 地图覆盖物判断添加事件 —— 声明常量 ( 行政区 + 商圈 + 具体覆盖物 )
                 const buildingOverlayArr = []                                                       // 声明常量
-
-
                 const addRangeOverlay = ( ObjGroup,setZoom ) => {                                     // 1级 + 2级 通用添加覆盖物事件
                     miniMap.clearOverlays()                                                         // 清理地图上面所有点
-                    /*
-                    for(let i=0; i<ObjGroup.length; i++){
-                        let arr  = new Object();
-                            arr  = ObjGroup[i];
-                        let code    = arr.code
-                            ,text   = arr.name + "<br />" + arr.resourceAmount + "套"                   // 拼接字符串
-                            ,zoom   = setZoom;
-                        let RangeOverlay = new rangeOverlay(
-                            new BMap.Point(arr.latitude,arr.longitude),text,code,zoom
-                        );
-                        console.log('次数'+ i)
-                        miniMap.addOverlay(RangeOverlay);
-                    }
-                    */
                     for(let i=0; i<ObjGroup.length; i++) {
                         let arr  = new Object();
                             arr  = ObjGroup[i];
@@ -90,17 +71,13 @@ export default {
                         miniMap.addOverlay(RangeOverlay);
                     }
                 };
-
                 // 行政区＋商圈范围覆盖物——１.2级通用
                 function rangeOverlay(point,text,code,zoom){
                     this._point = point;
                     this._text  = text;
                     this._code  = code;
                     this._zoom  = zoom;
-                    // 测试
-                    // console.dir(this._point)
                 }
-
                 rangeOverlay.prototype = new BMap.Overlay();
                 rangeOverlay.prototype.initialize = function(map){
                     this._map = map;
@@ -127,65 +104,15 @@ export default {
                 }
                 rangeOverlay.prototype.draw = function(){
                     var map = this._map;
-
+                    // 我也不知道为什么 需要兑换一下数值才可以输出( 如果不换,坐标会统一到西非那里.. )
                     var pointA = {}
                     pointA.lat = this._point.lng
-                    //console.log(pointA.lat)
                     pointA.lng = this._point.lat
-                    //console.log(pointA.lng)
-                    console.log(pointA)
-                    var pixel = map.pointToOverlayPixel(pointA);
-                    console.log(pixel)
-
-                    var pointA = {}
-                        pointA.lat = this._point.lng
-                        //console.log(pointA.lat)
-                        pointA.lng = this._point.lat
-                        //console.log(pointA.lng)
-                    var testA = map.pointToOverlayPixel(pointA)
-
-                    var pointB = {}
-                        pointB.lat = 36.114399
-                        //console.log(pointB.lat)
-                        pointB.lng = 120.474431
-                        //console.log(pointB.lng)
-                    var testB = map.pointToOverlayPixel(pointB)
-
-                    var pointC = {}
-                        pointC.lat = 36.150804
-                        pointC.lng = 120.439543
-                    var testC = map.pointToOverlayPixel(pointC)
-
-
-                    // console.log(this._point);
-                    // console.log(pixel)
-
-
-                    //console.dir(testA)
-                    //console.dir(testB)
-                    //console.dir(testC)
-
-                    this._div.style.left = pixel.x - 30 + "px";
-                    this._div.style.top  = pixel.y - 30 + "px";
+                    var pixel = map.pointToOverlayPixel(pointA)
+                    this._div.style.left = pixel.x - 40 + "px"
+                    this._div.style.top  = pixel.y - 40 + "px"
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                // 3级 详细覆盖物 事件
                 const addBuilding = ( ObjGroup,setZoom ) => {
                     miniMap.clearOverlays()                                                         // 清理地图上面所有点
                     for (let i = 0; i < ObjGroup.length; i++) {
@@ -202,6 +129,8 @@ export default {
                         buildingOverlayArr[i] = BuildingOverlay
                     }
                 };
+                // 先执行一次覆盖物添加
+                addRangeOverlay(administrativeRegion_Arr,14)
             },50)
         }
         // 目的: 获取地图地区所有数据
@@ -223,13 +152,11 @@ export default {
             bottomBtn_Arr[state].setAttribute("class","mu-buttom-item router-link-active mu-bottom-item-active")        // 改变"发现"按钮的状态
         }
     }
-    ,computed: mapGetters({
-        getRegionPointList: 'getRegionPointList'
-    })
     ,watch: {
         // 如果 question 发生改变，这个函数就会运行
         getRegionPointList: function () {
             this.asyncLoadMap()
+
         }
     }
 }
@@ -239,21 +166,4 @@ export default {
 @import '../sass/main'
 
 #map
-
-.range-overlay
-    position: absolute
-    background-color: #FF5E1B
-    color: #FFF
-    padding: 2px 2px
-    line-height: 18px
-    white-space: nowrap
-    cursor: pointer
-    display: flex
-    justify-content: center
-    align-items: center
-    font-size: 14px
-    font-weight: bold
-    width: 100px
-    height: 100px
-    border-radius: 50%
 </style>
