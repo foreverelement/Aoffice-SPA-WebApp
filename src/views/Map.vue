@@ -4,11 +4,12 @@
 </template>
 
 <script>
+import  { mapActions, mapGetters }  from    'vuex'
 export default {
     mounted: function () {
         this.setMap_height()
-        this.asyncLoadMap()
-        this.getRegionPointList()                                                           // 获取地图地区所有数据
+        // this.asyncLoadMap()
+        this.setRegionPointList()                                                           // 获取地图地区所有数据
         this.setBottomBtnState(2)
     },
     methods: {
@@ -32,6 +33,9 @@ export default {
                 }));
                 /* 地图覆盖物判断添加事件 —— 调用 */
                 // 地图缩放监听
+                let administrativeRegion_Arr = [];
+                administrativeRegion_Arr = this.$store.state.regionPointList;
+                // console.dir(administrativeRegion_Arr);
                 let lastLevel;
                 miniMap.addEventListener("zoomstart",function(){
                     lastLevel = this.getZoom();
@@ -39,35 +43,149 @@ export default {
                 miniMap.addEventListener("zoomend", function(){
                     let zoomLevel = this.getZoom();     //　当前地图级别
                     if (zoomLevel >= 15){                                                           // 输出3级地图内容:详细覆盖
+                        console.log("输出3级地图内容:详细覆盖");
                         addBuilding(BuildingModel,17);
-                        // console.log("输出3级地图内容:详细覆盖");
                     }else if (zoomLevel >= 14){
+                        console.log("输出2级地图内容:商圈");                                         // 商圈自定义覆盖物
                         addRangeOverlay(businessCirclePoint,16);
-                        // console.log("输出2级地图内容:商圈");                                      // 商圈自定义覆盖物
                     }else{
                         if (!lastLevel < 14) {
-                            addRangeOverlay(getRegionPointList,14);                                        // 输出行政区自定义覆盖物
-                            // console.log("输出1级地图内容:行政区");
+                            console.log("输出1级地图内容:行政区");
+                            addRangeOverlay(administrativeRegion_Arr,14);                           // 输出行政区自定义覆盖物
                         }
                     }
                 });
+
+
                 // 地图覆盖物判断添加事件 —— 声明常量 ( 行政区 + 商圈 + 具体覆盖物 )
                 const buildingOverlayArr = []                                                       // 声明常量
-                const addRangeOverlay = ( ObjGroup,setZoom ) => {                                   // 1级 + 2级 通用添加覆盖物事件
+
+
+                const addRangeOverlay = ( ObjGroup,setZoom ) => {                                     // 1级 + 2级 通用添加覆盖物事件
                     miniMap.clearOverlays()                                                         // 清理地图上面所有点
-                    for (let i = 0; i < ObjGroup.length; i++) {
-                        let arr = new Object()
-                            arr = ObjGroup[i]
-                        let code = arr.code,
-                            url = arr.url,
-                            text = arr.name + "<br />" + arr.resourceAmount + "套"                   // 拼接字符串
-                        let zoom = setZoom                                                          // 获取地图层级
+                    /*
+                    for(let i=0; i<ObjGroup.length; i++){
+                        let arr  = new Object();
+                            arr  = ObjGroup[i];
+                        let code    = arr.code
+                            ,text   = arr.name + "<br />" + arr.resourceAmount + "套"                   // 拼接字符串
+                            ,zoom   = setZoom;
                         let RangeOverlay = new rangeOverlay(
-                            new BMap.Point(arr.latitude,arr.longitude),text,code,url,zoom
-                        )
-                        miniMap.addOverlay(RangeOverlay)
+                            new BMap.Point(arr.latitude,arr.longitude),text,code,zoom
+                        );
+                        console.log('次数'+ i)
+                        miniMap.addOverlay(RangeOverlay);
+                    }
+                    */
+                    for(let i=0; i<ObjGroup.length; i++) {
+                        let arr  = new Object();
+                            arr  = ObjGroup[i];
+                        let code    = arr.code
+                            ,text   = arr.name + "<br />" + arr.resourceAmount + "套"                   // 拼接字符串
+                            ,zoom   = setZoom;
+                        let RangeOverlay = new rangeOverlay(
+                            new BMap.Point(arr.latitude,arr.longitude),text,code,zoom
+                        );
+                        // console.log('次数'+ i);
+                        miniMap.addOverlay(RangeOverlay);
                     }
                 };
+
+                // 行政区＋商圈范围覆盖物——１.2级通用
+                function rangeOverlay(point,text,code,zoom){
+                    this._point = point;
+                    this._text  = text;
+                    this._code  = code;
+                    this._zoom  = zoom;
+                    // 测试
+                    // console.dir(this._point)
+                }
+
+                rangeOverlay.prototype = new BMap.Overlay();
+                rangeOverlay.prototype.initialize = function(map){
+                    this._map = map;
+                    var div = this._div = document.createElement("div");
+                    div.setAttribute("id",this._code);
+                    div.setAttribute("class","range-overlay");
+                    div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
+                    // 保存code
+                    var code = this._code,   //　区域代码
+                        point = this._point,
+                        zoom = this._zoom;
+                    div.onclick = function businessCirclePoint(){
+                        // Ajax上传code，并改变中心点
+                        map.setZoom(zoom);      // 根据坐标点进行跳转,改变层级
+                        // console.log("跳转链接" + url);
+                    }
+                    var span = this._span = document.createElement("span");
+                    div.appendChild(span);
+                    div.getElementsByTagName("span")[0].innerHTML =  this._text;
+                    div.onmouseover = function(){ this.style.zIndex = "9"; }
+                    div.onmouseout = function(){ this.style.zIndex = "1"; }
+                    map.getPanes().labelPane.appendChild(div);
+                    return div;
+                }
+                rangeOverlay.prototype.draw = function(){
+                    var map = this._map;
+
+                    var pointA = {}
+                    pointA.lat = this._point.lng
+                    //console.log(pointA.lat)
+                    pointA.lng = this._point.lat
+                    //console.log(pointA.lng)
+                    console.log(pointA)
+                    var pixel = map.pointToOverlayPixel(pointA);
+                    console.log(pixel)
+
+                    var pointA = {}
+                        pointA.lat = this._point.lng
+                        //console.log(pointA.lat)
+                        pointA.lng = this._point.lat
+                        //console.log(pointA.lng)
+                    var testA = map.pointToOverlayPixel(pointA)
+
+                    var pointB = {}
+                        pointB.lat = 36.114399
+                        //console.log(pointB.lat)
+                        pointB.lng = 120.474431
+                        //console.log(pointB.lng)
+                    var testB = map.pointToOverlayPixel(pointB)
+
+                    var pointC = {}
+                        pointC.lat = 36.150804
+                        pointC.lng = 120.439543
+                    var testC = map.pointToOverlayPixel(pointC)
+
+
+                    // console.log(this._point);
+                    // console.log(pixel)
+
+
+                    //console.dir(testA)
+                    //console.dir(testB)
+                    //console.dir(testC)
+
+                    this._div.style.left = pixel.x - 30 + "px";
+                    this._div.style.top  = pixel.y - 30 + "px";
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 const addBuilding = ( ObjGroup,setZoom ) => {
                     miniMap.clearOverlays()                                                         // 清理地图上面所有点
                     for (let i = 0; i < ObjGroup.length; i++) {
@@ -84,15 +202,12 @@ export default {
                         buildingOverlayArr[i] = BuildingOverlay
                     }
                 };
-                // 测试运行(实际项目不使用 - 而是条件调用)
-                addRangeOverlay()
-                addBuilding()
             },50)
         }
         // 目的: 获取地图地区所有数据
-        ,getRegionPointList() {
+        ,setRegionPointList() {
             this.$store.dispatch({
-                type: 'getRegionPointList',
+                type: 'setRegionPointList',
                 cityCode: this.$store.state.city.cityCode                                   // 查询当前城市地图数据
             })
         }
@@ -108,6 +223,15 @@ export default {
             bottomBtn_Arr[state].setAttribute("class","mu-buttom-item router-link-active mu-bottom-item-active")        // 改变"发现"按钮的状态
         }
     }
+    ,computed: mapGetters({
+        getRegionPointList: 'getRegionPointList'
+    })
+    ,watch: {
+        // 如果 question 发生改变，这个函数就会运行
+        getRegionPointList: function () {
+            this.asyncLoadMap()
+        }
+    }
 }
 </script>
 
@@ -115,4 +239,21 @@ export default {
 @import '../sass/main'
 
 #map
+
+.range-overlay
+    position: absolute
+    background-color: #FF5E1B
+    color: #FFF
+    padding: 2px 2px
+    line-height: 18px
+    white-space: nowrap
+    cursor: pointer
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 14px
+    font-weight: bold
+    width: 100px
+    height: 100px
+    border-radius: 50%
 </style>
