@@ -8,7 +8,8 @@ import  { mapActions, mapGetters }  from    'vuex'
 export default {
     mounted: function () {
         this.setMap_height()
-        this.setRegionPointList()                                                           // 获取地图地区所有数据
+        this.setRegionPointList()                                                           // 获取行政区数据
+        // this.setBCPointList()                                                               // 获取商圈数据
         this.setBottomBtnState(2)
     },
     methods: {
@@ -31,9 +32,12 @@ export default {
                     type: BMAP_NAVIGATION_CONTROL_SMALL
                 }));
                 /* 地图覆盖物判断添加事件 —— 调用 */
-                // 地图缩放监听
+                // 保存接口返回值
                 let administrativeRegion_Arr = [];
-                administrativeRegion_Arr = this.$store.state.regionPointList;                       // 将后台返回的行政区数组赋值
+                administrativeRegion_Arr    = this.$store.state.regionPointList;                        // 行政区
+                let businessRegion_Arr = [];
+                businessRegion_Arr          = this.$store.state.BCPointList;                            // 商圈
+                // 地图缩放监听
                 let lastLevel;
                 miniMap.addEventListener("zoomstart",function(){
                     lastLevel = this.getZoom();
@@ -45,15 +49,15 @@ export default {
                         addBuilding(BuildingModel,17);
                     }else if (zoomLevel >= 14){
                         console.log("输出2级地图内容:商圈");                                         // 商圈自定义覆盖物
-                        addRangeOverlay(businessCirclePoint,16);
+                        addRangeOverlay(businessRegion_Arr,16);
                     }else if (zoomLevel >= 12){
                         console.log("输出1级地图内容:行政区( 覆盖物放大 )");                          // 商圈自定义覆盖物
                         addRangeOverlay(administrativeRegion_Arr,14);
-                        setRangeOverlayStyle()                                                      // 改变范围覆盖物尺寸
                     }else{
                         if (!lastLevel < 12) {
                             console.log("输出1级地图内容:行政区( 覆盖物缩小 )");
                             addRangeOverlay(administrativeRegion_Arr,14);                           // 输出行政区自定义覆盖物
+                            setRangeOverlayStyle()                                                  // 改变范围覆盖物尺寸( 只有初始级别要缩小 )
                         }
                     }
                 });
@@ -86,7 +90,7 @@ export default {
                     this._map = map;
                     var div = this._div = document.createElement("div");
                     div.setAttribute("id",this._code);
-                    div.setAttribute("class","range-overlay");
+                    div.setAttribute("class","range-overlay--big");
                     div.style.zIndex = BMap.Overlay.getZIndex(this._point.lat);
                     // 保存code
                     var code = this._code,   //　区域代码
@@ -133,26 +137,34 @@ export default {
                     }
                 };
                 const setRangeOverlayStyle = () => {
-                    // let overlayArr_Arr = document.getElementsByClassName('range-overlay')
-                    // for(let i=0; i<overlayArr_Arr.length;i++){
-                    //     overlayArr_Arr[i].setAttribute("class","range-overlay--big")
-                    //     console.log('执行次数' + i)
-                    // }
-                    // console.log(administrativeRegion_Arr.length)
                     for(let i=0; i<administrativeRegion_Arr.length; i++){
                         let rangeOverlay_Obj = document.getElementById(administrativeRegion_Arr[i].code)
-                        rangeOverlay_Obj.setAttribute('class','range-overlay--big')
+                        rangeOverlay_Obj.setAttribute('class','range-overlay')
                     }
                 }
-                // 先执行一次覆盖物添加( 运行小覆盖物 , 层级默认为11级 )
-                addRangeOverlay(administrativeRegion_Arr,14)
+                addRangeOverlay(administrativeRegion_Arr,14)                                            // 先执行一次覆盖物添加( 运行小覆盖物 , 层级默认为11级 )
+                setRangeOverlayStyle()                                                                  // 改变范围覆盖物尺寸( 只有初始级别要缩小 )
             },50)
         }
-        // 目的: 获取地图地区所有数据
+        // 目的: 获取行政区数据
         ,setRegionPointList() {
             this.$store.dispatch({
                 type: 'setRegionPointList',
-                cityCode: this.$store.state.city.cityCode                                   // 查询当前城市地图数据
+                cityCode: this.$store.state.city.cityCode                                   // 查询当前城市 —— 行政区数据
+            })
+        }
+        // 目的: 获取商圈数据
+        ,setBCPointList() {
+            this.$store.dispatch({
+                type: 'setBCPointList',
+                cityCode: this.$store.state.city.cityCode                                   // 查询当前城市 —— 商圈数据
+            })
+        }
+        // 目的: 获取写字楼数据
+        ,setBuildingPointList() {
+            this.$store.dispatch({
+                type: 'setBuildingPointList',
+                cityCode: this.$store.state.city.cityCode                                   // 查询当前城市 —— 写字楼数据
             })
         }
         // 地图覆盖物判断添加事件 ( 行政区 + 商圈 + 具体覆盖物 )
@@ -174,6 +186,8 @@ export default {
         // 如果 question 发生改变，这个函数就会运行
         getRegionPointList: function () {
             this.asyncLoadMap()
+            this.setBCPointList()                                                               // 获取商圈数据
+            this.setBuildingPointList()                                                         // 获取写字楼数据
         }
     }
 }

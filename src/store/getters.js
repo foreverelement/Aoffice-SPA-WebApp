@@ -7,4 +7,7 @@ export const furnitureInfo              =   state   => state.furnitureInfo      
 export const researchInfo               =   state   => state.researchInfo               // 外出 详情页 信息内容
 export const getCoWorkingInfo           =   state   => state.coWorking                  // 联合办公
 export const getOfficeBuildingInfo      =   state   => state.officeBuilding             // 联合办公
-export const getRegionPointList         =   state   => state.regionPointList             // 地图初始数据
+export const getRegionPointList         =   state   => state.regionPointList            // 地图初始数据( 获取行政区数据 )
+export const getBCPointList             =   state   => state.BCPointList                // 获取商圈数据
+export const getBuildingPointList       =   state   => state.buildingPointList          // 获取写字楼数据
+

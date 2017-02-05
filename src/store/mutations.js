@@ -217,7 +217,15 @@ export const addOfficeBuildingInfo =( state,res ) => {
     },2000)
 }
 
-// 地图初始数据
+// 地图初始数据( 获取行政区数据 )
 export const addRegionPointList =( state,res ) => {
     state.regionPointList = res                                                                                             // 将数组直接赋给state
+}
+// 获取商圈数据
+export const addBCPointList =( state,res ) => {
+    state.BCPointList = res                                                                                                 // 将数组直接赋给state
+}
+// 获取商圈数据
+export const addBuildingPointList =( state,res ) => {
+    state.buildingPointList = res                                                                                           // 将数组直接赋给state
 }

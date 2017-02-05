@@ -44,7 +44,9 @@ const state = {
         buildingRelationList_judgeShow: true,
         nameInfo: '0'
     }
-    ,regionPointList: []                                // '地图' 初始数据( 地区时间 )
+    ,regionPointList: []                                // '地图' 初始数据( 获取行政区数据 )
+    ,BCPointList: []                                    // '地图' 商圈数据
+    ,buildingPointList: []                              // '地图' 写字楼数据
 }
 const store = new Vuex.Store({
     state,

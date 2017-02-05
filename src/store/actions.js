@@ -171,7 +171,7 @@ export const setOfficeBuildingInfo = ({commit},Obj) => {
     });
 }
 
-// 地图初始数据
+// 地图初始数据( 获取行政区数据 )
 export const setRegionPointList = ({commit},Obj) => {
     // Axios原生方法传参( 不支持ios )
     // var params = new URLSearchParams();
@@ -197,3 +197,31 @@ export const setRegionPointList = ({commit},Obj) => {
         console.log(error)
     });
 }
+
+// 获取商圈数据
+export const setBCPointList = ({commit},Obj) => {
+    // qs方法传参数
+    axios.post('http://app.aplusoffice.cn/api/map/getBCPointList', qs.stringify({ 'cityCode': Obj.cityCode }))
+    .then(function (response) {
+        let set_BCPointList = response.data.resultData
+        // console.dir('set_BCPointList值' + set_BCPointList)
+        commit('addBCPointList',set_BCPointList)
+    })
+    .catch(function (error) {
+        console.log(error)
+    });
+}
+
+// 获取写字楼数据
+export const setBuildingPointList = ({commit},Obj) => {
+    // qs方法传参数
+    axios.post('http://app.aplusoffice.cn/api/map/getBuildingPointList', qs.stringify({ 'cityCode': Obj.cityCode }))
+    .then(function (response) {
+        let set_BuildingPointList = response.data.resultData
+        commit('addBuildingPointList',set_BuildingPointList)
+    })
+    .catch(function (error) {
+        console.log(error)
+    });
+}
+
