@@ -11,6 +11,7 @@
 | Axios                                             | 交互处理        |  0.15.3  |
 | Sass (node-sass)                                  | 样式预处理器     |  4.1.1  |
 | Webpack                                           | 模块打包         |  1.13.2  |
+| Gulp                                              | 自动构建工具     |  3.9.1  |
 | Babel                                             | ES6转译ES5      |  6.0.0  |
 | Yarn                                              | 模块依赖安装     |  0.17.6  |
 | [Muse UI](https://museui.github.io/#/index)       | UI框架          |  2.0.0-rc.5  |
@@ -72,21 +73,21 @@ App.vue ( 根节点 )
     |
     |- Service.vue                          ( "服务" )
         |
-        |- Service_router.vue               ( "服务" - 路由页面 [ 上侧 通用标题组件; 下侧内容 根据  $route.params.id  传递来的ID值进行条件渲染  ] )
+        |- Service_router.vue               ( "服务" - 路由页面 )
             |
-            |- FindProperties.vue           ( "服务" - 条件渲染: "委托找房"内容 )
+            |- FindProperties.vue           ( 条件渲染: "委托找房" )
             |
-            |- PutInProperties.vue          ( "服务" - 条件渲染："投放房源"内容 )
+            |- PutInProperties.vue          ( 条件渲染："投放房源" )
             |
-            |- Furniture.vue                ( "服务" - 条件渲染："办公家具"内容 )
+            |- Furniture.vue                ( 条件渲染："办公家具" )
             |
-            |- Decoration.vue               ( "服务" - 条件渲染："办公装修"内容 )
+            |- Decoration.vue               ( 条件渲染："办公装修" )
             |
-            |- Research.vue                 ( "服务" - 条件渲染："外出考察"内容 )
+            |- Research.vue                 ( 条件渲染："外出考察" )
             |
-            |- Training.vue                 ( "服务" - 条件渲染："员工培训"内容 —— 静态页 )
+            |- Training.vue                 ( 条件渲染："员工培训" —— 静态页 )
             |
-            |- Computer.vue                 ( "服务" - 条件渲染："办公电脑"内容 —— 静态页 )
+            |- Computer.vue                 ( 条件渲染："办公电脑" —— 静态页 )
     |
     |- 404.vue                              ( "404" )
 ```
@@ -159,8 +160,8 @@ App.vue ( 根节点 )
     "resultCode": 1,
     "resultMsg": "楼盘详情加载成功",
     "resultData": {
-        "typeASearch": [],      // 独立空间LIST
-        "typeBSearch": [        // 工位LIST
+        "typeASearch": [],                          // 独立空间LIST
+        "typeBSearch": [                            // 工位LIST
             {
                 "code": "R000000148",
                 "type": "B",

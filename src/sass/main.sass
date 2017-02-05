@@ -40,3 +40,17 @@ body
     white-space: nowrap
     cursor: pointer
     border-radius: 50%
+// 当地图层级大于11级时( 初始屏是11级 )改为大号覆盖物
+.range-overlay--big
+    @extend %ABS
+    @extend %flexCenter
+    +bC($theme-color)
+    color: $F
+    +REM(padding,10px)
+    +REM(width,80px)
+    +REM(height,80px)
+    +REM(font-size,$badge-size)
+    +REM(line-height,$autoMargin)
+    white-space: nowrap
+    cursor: pointer
+    border-radius: 50%

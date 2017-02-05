@@ -4,11 +4,10 @@
 </template>
 
 <script>
-import  { mapActions }  from    'vuex'
+import  { mapActions, mapGetters }  from    'vuex'
 export default {
     mounted: function () {
         this.setMap_height()
-        // this.asyncLoadMap()
         this.setRegionPointList()                                                           // 获取地图地区所有数据
         this.setBottomBtnState(2)
     },
@@ -25,7 +24,7 @@ export default {
         ,asyncLoadMap: function() {
             setTimeout(() => {
                 const miniMap = new BMap.Map("map", {enableMapClick:false});                // 创建Map实例(关闭底图可点功能)
-                const miniMapPoint = new BMap.Point(120.323186,36.115521);                   // 标点位置( 青岛中心 )
+                const miniMapPoint = new BMap.Point(120.292284,36.126949);                   // 标点位置( 青岛中心 )
                 miniMap.centerAndZoom(miniMapPoint,11);                                     // 创建地图中心点,层级15级（并不显示标记）
                 miniMap.addControl(new BMap.NavigationControl({
                     anchor: BMAP_ANCHOR_TOP_RIGHT,
@@ -34,7 +33,7 @@ export default {
                 /* 地图覆盖物判断添加事件 —— 调用 */
                 // 地图缩放监听
                 let administrativeRegion_Arr = [];
-                administrativeRegion_Arr = this.$store.state.regionPointList;
+                administrativeRegion_Arr = this.$store.state.regionPointList;                       // 将后台返回的行政区数组赋值
                 let lastLevel;
                 miniMap.addEventListener("zoomstart",function(){
                     lastLevel = this.getZoom();
@@ -47,9 +46,13 @@ export default {
                     }else if (zoomLevel >= 14){
                         console.log("输出2级地图内容:商圈");                                         // 商圈自定义覆盖物
                         addRangeOverlay(businessCirclePoint,16);
+                    }else if (zoomLevel >= 12){
+                        console.log("输出1级地图内容:行政区( 覆盖物放大 )");                          // 商圈自定义覆盖物
+                        addRangeOverlay(administrativeRegion_Arr,14);
+                        setRangeOverlayStyle()                                                      // 改变范围覆盖物尺寸
                     }else{
-                        if (!lastLevel < 14) {
-                            console.log("输出1级地图内容:行政区");
+                        if (!lastLevel < 12) {
+                            console.log("输出1级地图内容:行政区( 覆盖物缩小 )");
                             addRangeOverlay(administrativeRegion_Arr,14);                           // 输出行政区自定义覆盖物
                         }
                     }
@@ -129,7 +132,19 @@ export default {
                         buildingOverlayArr[i] = BuildingOverlay
                     }
                 };
-                // 先执行一次覆盖物添加
+                const setRangeOverlayStyle = () => {
+                    // let overlayArr_Arr = document.getElementsByClassName('range-overlay')
+                    // for(let i=0; i<overlayArr_Arr.length;i++){
+                    //     overlayArr_Arr[i].setAttribute("class","range-overlay--big")
+                    //     console.log('执行次数' + i)
+                    // }
+                    // console.log(administrativeRegion_Arr.length)
+                    for(let i=0; i<administrativeRegion_Arr.length; i++){
+                        let rangeOverlay_Obj = document.getElementById(administrativeRegion_Arr[i].code)
+                        rangeOverlay_Obj.setAttribute('class','range-overlay--big')
+                    }
+                }
+                // 先执行一次覆盖物添加( 运行小覆盖物 , 层级默认为11级 )
                 addRangeOverlay(administrativeRegion_Arr,14)
             },50)
         }
@@ -152,11 +167,13 @@ export default {
             bottomBtn_Arr[state].setAttribute("class","mu-buttom-item router-link-active mu-bottom-item-active")        // 改变"发现"按钮的状态
         }
     }
+    ,computed: mapGetters({
+        getRegionPointList: 'getRegionPointList'
+    })
     ,watch: {
         // 如果 question 发生改变，这个函数就会运行
         getRegionPointList: function () {
             this.asyncLoadMap()
-
         }
     }
 }
