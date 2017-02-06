@@ -2,8 +2,8 @@
 <template>
     <div id="map_dropDownMenu">
         <mu-dropDown-menu :value="buildingType" @change="buildingTypeChange">
-            <mu-menu-item value="1" title="写字楼" />
-            <mu-menu-item value="2" title="联合办公" />
+            <mu-menu-item value="1" title="写字楼"/>
+            <mu-menu-item value="2" title="联合办公"/>
         </mu-dropDown-menu>
 
         <mu-dropDown-menu :value="dayPrice" @change="dayPriceChange">
@@ -38,7 +38,6 @@ export default {
         }
     },
     methods: {
-
         buildingTypeChange (value) {
             this.buildingType = value
         }
