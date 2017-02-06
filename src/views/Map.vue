@@ -9,7 +9,6 @@ export default {
     mounted: function () {
         this.setMap_height()
         this.setRegionPointList()                                                           // 获取行政区数据
-        // this.setBCPointList()                                                               // 获取商圈数据
         this.setBottomBtnState(2)
     },
     methods: {
@@ -25,7 +24,7 @@ export default {
         ,asyncLoadMap: function() {
             setTimeout(() => {
                 const miniMap = new BMap.Map("map", {enableMapClick:false});                // 创建Map实例(关闭底图可点功能)
-                const miniMapPoint = new BMap.Point(120.292284,36.126949);                   // 标点位置( 青岛中心 )
+                const miniMapPoint = new BMap.Point(120.292284,36.126949);                  // 标点位置( 青岛中心 )
                 miniMap.centerAndZoom(miniMapPoint,11);                                     // 创建地图中心点,层级15级（并不显示标记）
                 miniMap.addControl(new BMap.NavigationControl({
                     anchor: BMAP_ANCHOR_TOP_RIGHT,
@@ -33,10 +32,12 @@ export default {
                 }));
                 /* 地图覆盖物判断添加事件 —— 调用 */
                 // 保存接口返回值
-                let administrativeRegion_Arr = [];
-                administrativeRegion_Arr    = this.$store.state.regionPointList;                        // 行政区
-                let businessRegion_Arr = [];
-                businessRegion_Arr          = this.$store.state.BCPointList;                            // 商圈
+                let administrativeRegion_Arr    = [];
+                    administrativeRegion_Arr    = this.$store.state.regionPointList;                    // 行政区
+                let businessRegion_Arr          = [];
+                    businessRegion_Arr          = this.$store.state.BCPointList;                        // 商圈
+                let buildingPoint_Arr           = [];
+                    buildingPoint_Arr           = this.$store.state.buildingPointList;                  // 办公楼
                 // 地图缩放监听
                 let lastLevel;
                 miniMap.addEventListener("zoomstart",function(){
@@ -46,7 +47,7 @@ export default {
                     let zoomLevel = this.getZoom();     //　当前地图级别
                     if (zoomLevel >= 15){                                                           // 输出3级地图内容:详细覆盖
                         console.log("输出3级地图内容:详细覆盖");
-                        addBuilding(BuildingModel,17);
+                        addBuilding(buildingPoint_Arr,17);
                     }else if (zoomLevel >= 14){
                         console.log("输出2级地图内容:商圈");                                         // 商圈自定义覆盖物
                         addRangeOverlay(businessRegion_Arr,16);
@@ -119,23 +120,50 @@ export default {
                     this._div.style.left = pixel.x - 40 + "px"
                     this._div.style.top  = pixel.y - 40 + "px"
                 }
-                // 3级 详细覆盖物 事件
+                // 3级 详细覆盖物 事件( 建筑物点覆盖物 )
                 const addBuilding = ( ObjGroup,setZoom ) => {
                     miniMap.clearOverlays()                                                         // 清理地图上面所有点
-                    for (let i = 0; i < ObjGroup.length; i++) {
-                        let buildingArr = new Object()
-                            buildingArr = ObjGroup[i]
-                        let zoom = setZoom                                                         // 获取地图层级
-                        // 拼接属性文字内容
-                        let text = "￥" + buildingArr.priceBeginning +  " 起",
-                            mouseoverTxt = buildingArr.name + " " + buildingArr.resourceAmount + "套"
-                        buildingOverlayArr[i] = BuildingOverlay = new buildingOverlay(
-                            new BMap.Point(buildingArr.latitude,buildingArr.longitude),text,mouseoverTxt,buildingArr.code,i,zoom    // i = 序号
-                        )
-                        miniMap.addOverlay(BuildingOverlay)
-                        buildingOverlayArr[i] = BuildingOverlay
+                    for(let i=0; i < ObjGroup.length; i++) {
+                        let buildingArr  = new Object();
+                            buildingArr  = ObjGroup[i];
+                        // 办公楼 详细数据 保存变量
+                        let code    = buildingArr.code                                              // 保存code, 用于跳转页面
+                            ,imgUrl = buildingArr.imgUrl                                            // 保存图片地址, 点击自定义覆盖物 弹出框内图片
+                            ,zoom   = setZoom;
+                        // 执行添加坐标覆盖物事件
+                        addBuilding_RangeOverlay( buildingArr.longitude, buildingArr.latitude, code, zoom )
                     }
                 };
+                // 写字楼覆盖物 —— 3级使用
+                let addBuilding_RangeOverlay = (longitude, latitude, code, zoom) => {
+                    // 信息自定义标识
+                    let pointImg_Obj    = require('../assets/images/map_select_postion_copy.png');                          // 通过webpack引入图片对象
+                    let building_Icon   = new BMap.Icon(pointImg_Obj, new BMap.Size(40,40));                                // 自定义标注样式( 加入前面图片对象 )
+                    let building_Marker = new BMap.Marker(new BMap.Point(longitude,latitude),{icon: building_Icon});        // 创建信息自定义标识(将样式加入)
+                    // 添加建筑物 坐标覆盖物
+                    miniMap.addOverlay(building_Marker);
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // 改变1级范围覆盖物的样式( 当层级小于12级时 执行这个事件 )
                 const setRangeOverlayStyle = () => {
                     for(let i=0; i<administrativeRegion_Arr.length; i++){
                         let rangeOverlay_Obj = document.getElementById(administrativeRegion_Arr[i].code)

@@ -225,7 +225,11 @@ export const addRegionPointList =( state,res ) => {
 export const addBCPointList =( state,res ) => {
     state.BCPointList = res                                                                                                 // 将数组直接赋给state
 }
-// 获取商圈数据
+// 获取办公楼数据
 export const addBuildingPointList =( state,res ) => {
     state.buildingPointList = res                                                                                           // 将数组直接赋给state
+    // 拼接图片地址, 放入数组对象中完整地址
+    for(let i=0; i < res.length; i++) {
+        res[i]['imgUrl'] = 'http://images.aplusoffice.cn/' + res[i].appMapPic                                               // 循环 向对象添加属性
+    }
 }
