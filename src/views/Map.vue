@@ -153,9 +153,7 @@ export default {
                     });
                 }
 
-
-                // 改变1级范围覆盖物的样式( 当层级小于12级时 执行这个事件 )
-                const setRangeOverlayStyle = () => {
+                const setRangeOverlayStyle = () => {                                                    // 改变1级范围覆盖物的样式( 当层级小于12级时 执行这个事件 )
                     for(let i=0; i<administrativeRegion_Arr.length; i++){
                         let rangeOverlay_Obj = document.getElementById(administrativeRegion_Arr[i].code)
                         rangeOverlay_Obj.setAttribute('class','range-overlay')
@@ -163,6 +161,10 @@ export default {
                 }
                 addRangeOverlay(administrativeRegion_Arr,14)                                            // 先执行一次覆盖物添加( 运行小覆盖物 , 层级默认为11级 )
                 setRangeOverlayStyle()                                                                  // 改变范围覆盖物尺寸( 只有初始级别要缩小 )
+                (function(){
+                    let cpy_Obj = document.getElementsByClassName('BMap_cpyCtrl')[0]                    // 获得百度地图左下标志
+                        cpy_Obj.setAttribute('style','display: none')                                   // 隐藏百度地图左下角标志
+                }())
             },50)
         }
         // 目的: 获取行政区数据
