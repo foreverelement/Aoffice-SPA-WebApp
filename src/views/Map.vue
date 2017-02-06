@@ -142,25 +142,16 @@ export default {
                     let building_Marker = new BMap.Marker(new BMap.Point(longitude,latitude),{icon: building_Icon});        // 创建信息自定义标识(将样式加入)
                     // 添加建筑物 坐标覆盖物
                     miniMap.addOverlay(building_Marker);
+                    building_Marker.addEventListener("click",function(e){
+                        /*
+                            let p = e.target;
+                            let point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+                            let infoWindow = new BMap.InfoWindow(infoContent,opts);     // 创建信息窗口对象( 暂无信息 )
+                            building_Marker.openInfoWindow(infoWindow,point);           // 开启信息窗口
+                        */
+                        console.log(code)
+                    });
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 // 改变1级范围覆盖物的样式( 当层级小于12级时 执行这个事件 )
