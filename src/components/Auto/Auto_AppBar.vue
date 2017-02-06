@@ -2,17 +2,21 @@
 <template>
     <mu-appbar class="auto__AppBar" >
         <mu-icon-button icon='list' slot="left" @click="toggle(true)" />
-        <mu-text-field icon="search" class="auto__AppBar-search-field"  slot="right" />
+        <!--<mu-text-field icon="search" class="auto__AppBar-search-field"  slot="right" />-->
+        <!-- 搜索按钮 -->
+        <div class="auto__AppBar-search-field" @click="toSearch()">
+            <mu-icon-button icon='search' />
+        </div>
         <mu-icon-button icon='chat' slot="right" />
         <!-- 隐藏左侧 -->
         <mu-drawer :open="open" :docked="docked" class="left--box" @close="toggle()">
             <mu-list @itemClick="docked ? '' : toggle()">
-                <mu-list-item title="新功能介绍" @click="toAboutInfo( 'newFeatures' )" />                             <!-- NewFeatures -->
-                <mu-list-item title="常见问题"   @click="toAboutInfo( 'FAQ' )" />                                     <!-- FAQ -->
-                <mu-list-item title="关于我们"   @click="toAboutInfo( 'aboutUs' )" />                                 <!-- AboutUs -->
-                <mu-list-item title="商务合作"   @click="toAboutInfo( 'cooperation' )" />                             <!-- Cooperation -->
-                <mu-list-item title="隐私政策"   @click="toAboutInfo( 'privacyPolicy' )" />                           <!-- PrivacyPolicy -->
-                <mu-list-item title="版权信息"   @click="toAboutInfo( 'copyrightInfo' )" />                           <!-- CopyrightInfo -->
+                <mu-list-item title="新功能介绍" @click="toAboutInfo( 'newFeatures' )" />
+                <mu-list-item title="常见问题"   @click="toAboutInfo( 'FAQ' )" />
+                <mu-list-item title="关于我们"   @click="toAboutInfo( 'aboutUs' )" />
+                <mu-list-item title="商务合作"   @click="toAboutInfo( 'cooperation' )" />
+                <mu-list-item title="隐私政策"   @click="toAboutInfo( 'privacyPolicy' )" />
+                <mu-list-item title="版权信息"   @click="toAboutInfo( 'copyrightInfo' )" />
             </mu-list>
         </mu-drawer>
     </mu-appbar>
@@ -36,6 +40,9 @@ export default {
         toAboutInfo: function(pageName) {
             location.href = '#/aboutAPlus/' + pageName
         }
+        ,toSearch: function() {
+            location.href = '#/search/'
+        }
         // 目的: 通过计时器 二次修改 房源列表对象的高度
         ,setListObj_marginTop: function() {
             setTimeout(() => {
@@ -52,16 +59,12 @@ export default {
 @import '../../sass/main'
 
 .auto__AppBar-search-field
-    color: #FFF
-    margin-bottom: 0
-    &.focus-state
-        color: #FFF
-    .mu-text-field-hint
-        color: fade(#FFF,54%)
-    .mu-text-field-input
-        color: $title-color-light
-    .mu-text-field-focus-line
-        background-color: #FFF
+    @extend %flexCenter
+    +bC($searchBackGround-color)
+    button
+        padding: 0
+        +REM(width,35px)
+        +REM(height,35px)
 // 通用顶部AppBar ( 除'发现'页的顶部AppBar外 )
 .auto__AppBar
     position: fixed
@@ -73,12 +76,11 @@ export default {
     .mu-appbar-title
         width: 0 !important
     .left
-        position: absolute                                                          // 相对定位( 左侧按钮 )
         left: 0
         width: 14%
     .right
-        width: 84%
-        margin-left: -3%
+        right: 0
+        width: 14%
         .mu-text-field                                                              // 相对定位( 中间输入框 )
             position: absolute
             left: 15%

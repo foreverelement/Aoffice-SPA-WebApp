@@ -1,10 +1,16 @@
 <!-- "地图"页面 -->
 <template>
-    <div id="map"></div>
+    <div id="map">
+        <Auto_AppBar />
+        <!--<div id="map"></div>-->
+    </div>
 </template>
 
 <script>
 import  { mapActions, mapGetters }  from    'vuex'
+import  Auto_AppBar             from        '../components/Auto/Auto_AppBar.vue'
+const   components  = { Auto_AppBar }
+
 export default {
     mounted: function () {
         this.setMap_height()
@@ -211,6 +217,7 @@ export default {
             this.setBuildingPointList()                                                         // 获取写字楼数据
         }
     }
+    ,components: components
 }
 </script>
 
