@@ -233,3 +233,8 @@ export const addBuildingPointList =( state,res ) => {
         res[i]['imgUrl'] = 'http://images.aplusoffice.cn/' + res[i].appMapPic                                               // 循环 向对象添加属性
     }
 }
+
+// 获取行政区数据 ( 已经过类型判断的数据 )
+export const addTypeRegionPointList =( state,res ) => {
+    state.mapView.typeRegionPointList = res                                                                                // 将数组直接赋给state
+}

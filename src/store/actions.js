@@ -225,3 +225,21 @@ export const setBuildingPointList = ({commit},Obj) => {
     });
 }
 
+// 获取行政区数据 ( 参数: 城市代码, 类型 )
+export const getTypeRegionPointList = ({commit},Obj) => {
+    // qs方法传参数
+    axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', qs.stringify({
+        'cityCode': Obj.cityCode
+        ,'bType': Obj.btype
+    }))
+    .then(function (response) {
+        let set_typeRegionPointList = response.data.resultData
+        // console.log(set_BuildingPointList)
+        commit('addTypeRegionPointList',set_typeRegionPointList)
+    })
+    .catch(function (error) {
+        console.log(error)
+    });
+}
+
+

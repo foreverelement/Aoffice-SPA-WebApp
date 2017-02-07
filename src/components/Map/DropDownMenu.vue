@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import  { mapActions }  from    'vuex'
+
 export default {
     data () {
         return {
@@ -36,16 +38,40 @@ export default {
             ,dayPrice: '1'
             ,decoration: '1'
         }
-    },
-    methods: {
+    }
+    ,mounted: function() {
+        this.setRegionPointList()   // 首先 获取行政区数据
+    }
+    ,methods: {
         buildingTypeChange (value) {
             this.buildingType = value
+            // 获取行政区数据 ( 参数: 城市代码, 类型 ) => 提交actions的事件
+            let getTypeRegionPointList = ( typeValue ) => {
+                this.$store.dispatch({
+                    type: 'getTypeRegionPointList'
+                    ,cityCode: this.$store.state.city.cityCode                                   // 查询当前城市 —— 行政区数据
+                    ,btype: typeValue
+                })
+            }
+            // 判断 类型值, 然后根据类型值进行检索 获取数据
+            if( value == 1 ){
+                getTypeRegionPointList('A')
+            }else{
+                getTypeRegionPointList('B')
+            }
         }
         ,dayPriceChange (value) {
             this.dayPrice = value
         }
         ,decorationChange (value) {
             this.decoration = value
+        }
+        // 目的: 获取行政区数据
+        ,setRegionPointList() {
+            this.$store.dispatch({
+                type: 'setRegionPointList',
+                cityCode: this.$store.state.city.cityCode                                   // 查询当前城市 —— 行政区数据
+            })
         }
     }
 }

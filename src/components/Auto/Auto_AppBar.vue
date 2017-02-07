@@ -2,7 +2,6 @@
 <template>
     <mu-appbar class="auto__AppBar" >
         <mu-icon-button icon='list' slot="left" @click="toggle(true)" />
-        <!--<mu-text-field icon="search" class="auto__AppBar-search-field"  slot="right" />-->
         <!-- 搜索按钮 -->
         <div class="auto__AppBar-search-field" @click="toSearch()">
             <mu-icon-button icon='search' />
@@ -62,7 +61,7 @@ export default {
     // 抵消下部阴影效果
     box-shadow: none !important
     border-bottom: 1px solid rgba($badgeFont-color,.3) !important
-    .mu-icon                                                                      // 两侧按钮样式
+    .mu-icon                                                                        // 两侧按钮样式
         color: $theme-color !important
     .mu-appbar-title
         width: 0 !important
@@ -87,7 +86,7 @@ export default {
             position: absolute
             right: 0
         .mu-text-field.has-icon
-            padding-left: 0 !important                                          // 修正输入框的位置
+            padding-left: 0 !important                                              // 修正输入框的位置
         .focus-state
             >i.mu-icon
                 display: none !important

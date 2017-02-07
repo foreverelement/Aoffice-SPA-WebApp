@@ -47,6 +47,9 @@ const state = {
     ,regionPointList: []                                // '地图' 初始数据( 获取行政区数据 )
     ,BCPointList: []                                    // '地图' 商圈数据
     ,buildingPointList: []                              // '地图' 写字楼数据
+    ,mapView: {
+        typeRegionPointList: []                         // 经过检索后的行政区数据( 类型判断 )
+    }
 }
 const store = new Vuex.Store({
     state,
