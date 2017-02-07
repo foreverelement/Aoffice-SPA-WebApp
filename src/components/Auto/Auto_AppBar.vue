@@ -29,9 +29,6 @@ export default {
             docked: true
         }
     },
-    mounted: function () {
-        this.setListObj_marginTop()
-    },
     methods: {
         toggle (flag) {
             this.open = !this.open
@@ -42,15 +39,6 @@ export default {
         }
         ,toSearch: function() {
             location.href = '#/search/'
-        }
-        // 目的: 通过计时器 二次修改 房源列表对象的高度
-        ,setListObj_marginTop: function() {
-            setTimeout(() => {
-                const appBar_height     = document.getElementsByClassName("auto__AppBar")[0].offsetHeight       // 获取AppBar对象高度
-                const tabs_height       = document.getElementById("building_tabs").offsetHeight                 // 获取tabs对象高度
-                const buildingList_Obj  = document.getElementsByClassName("buildingList")[0]                    // 获取房源列表对象
-                buildingList_Obj.style.marginTop = appBar_height + tabs_height + 18 + "px"                      // 设置房源列表对象 的 margin-top值( 要加上一个$autoMargin值 )
-            }, 100)
         }
     }
 }
@@ -71,6 +59,9 @@ export default {
     top: 0
     +bC(rgba($F,.1))
     opacity: 1
+    // 抵消下部阴影效果
+    box-shadow: none !important
+    border-bottom: 1px solid rgba($badgeFont-color,.3) !important
     .mu-icon                                                                      // 两侧按钮样式
         color: $theme-color !important
     .mu-appbar-title

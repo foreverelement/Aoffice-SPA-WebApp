@@ -63,6 +63,7 @@ export default {
     >.mu-dropDown-menu
         flex: 1
         +bC($F)
-        &:first-child
-            border-right: 1px solid rgba($badgeFont-color,.3)
+        border-right: 1px solid rgba($badgeFont-color,.3)
+        &:last-child
+            border-right: none
 </style>

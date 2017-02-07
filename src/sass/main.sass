@@ -57,3 +57,11 @@ body
 // 通用AppBar - 背景色抵消
 .auto__AppBar
     +bC($F !important)
+// Map 下拉选项组件 - 下拉文字样式控制( 保证最多4个字的样式表现完整 )
+#map_dropDownMenu
+    .mu-dropDown-menu-text
+        +pR(24px)
+        color: $badgeFont-color
+        +REM(font-size,$badge-size)
+    .mu-dropDown-menu-line          // 隐藏掉多余底部线样式
+        bottom: 0
