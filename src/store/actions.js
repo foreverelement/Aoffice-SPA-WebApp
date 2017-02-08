@@ -242,4 +242,16 @@ export const getTypeRegionPointList = ({commit},Obj) => {
     });
 }
 
+// 接收地图检索参数( 类型检索值 )
+export const setSearchMapValue_btypeValue = ({commit},Obj) => {
+    // 保存要改变的值 到 统一数组对象 searchValue_Arr
+    let searchValue_Arr = [
+        {
+            attrName:   'btype'                         // 要改变的属性名称
+            ,setValue:  Obj.btype                       // 要改变的类型值
+        }
+    ]
+    commit('addSearchMapValue', searchValue_Arr)        // 交给统一处理任务
+}
+
 

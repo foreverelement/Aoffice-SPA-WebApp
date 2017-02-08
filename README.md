@@ -34,7 +34,9 @@ npm run dev
 # 当修改代码后,需要手动打包发布时,运行npm run build命令进行打包
 npm run build
 ```
+## API docs / 接口文档
 
+### [Map地图接口](./docs/API.md)
 
 ## Components Structure / 组件结构说明:
 

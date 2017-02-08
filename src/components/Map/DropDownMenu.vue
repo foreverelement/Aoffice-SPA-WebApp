@@ -1,10 +1,12 @@
  <!-- Map 下拉选项组件 -->
 <template>
     <div id="map_dropDownMenu">
+
         <mu-dropDown-menu :value="buildingType" @change="buildingTypeChange">
             <mu-menu-item value="1" title="写字楼"/>
             <mu-menu-item value="2" title="联合办公"/>
         </mu-dropDown-menu>
+
 
         <mu-dropDown-menu :value="dayPrice" @change="dayPriceChange">
             <mu-menu-item value="1" title="按天价格"/>
@@ -20,7 +22,6 @@
             <mu-menu-item value="1" title="装修"/>
             <mu-menu-item value="2" title="不限"/>
             <mu-menu-item value="3" title="豪装"/>
-
             <mu-menu-item value="4" title="精装"/>
             <mu-menu-item value="5" title="简装"/>
             <mu-menu-item value="6" title="毛坯"/>
@@ -48,8 +49,7 @@ export default {
             // 获取行政区数据 ( 参数: 城市代码, 类型 ) => 提交actions的事件
             let getTypeRegionPointList = ( typeValue ) => {
                 this.$store.dispatch({
-                    type: 'getTypeRegionPointList'
-                    ,cityCode: this.$store.state.city.cityCode                                   // 查询当前城市 —— 行政区数据
+                    type: 'setSearchMapValue_btypeValue'
                     ,btype: typeValue
                 })
             }

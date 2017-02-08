@@ -238,3 +238,8 @@ export const addBuildingPointList =( state,res ) => {
 export const addTypeRegionPointList =( state,res ) => {
     state.mapView.typeRegionPointList = res                                                                                // 将数组直接赋给state
 }
+
+// 改变搜素地图值 —— 统一处理 地图检索值 修改事件
+export const addSearchMapValue =( state,res ) => {
+    console.log(res)
+}
