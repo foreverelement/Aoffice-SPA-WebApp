@@ -241,5 +241,9 @@ export const addTypeRegionPointList =( state,res ) => {
 
 // 改变搜素地图值 —— 统一处理 地图检索值 修改事件
 export const addSearchMapValue =( state,res ) => {
-    console.log(res)
+    for (let i = 0; i < res.length; i++ ) {
+        state.searchValue[ res[i].attrName ] = res[i].setValue
+    }
+    let null_Obj = {}                                                                                                       // 创建一个空对象
+    state.searchMapRequest_Arr.push(null_Obj)                                                                               // 将空对象推入 '记录地图检索请求' 的数组中
 }

@@ -69,6 +69,7 @@ const state = {
         ,business_Arr:          ''                                      // 商圈数组
         ,building_Arr:          ''                                      // 办公楼数组
     }
+    ,searchMapRequest_Arr: []                                           // 当发生地图检索请求时,向内推入一个空对象( 触发watch观察事件 )
 }
 const store = new Vuex.Store({
     state,

@@ -242,7 +242,7 @@ export const getTypeRegionPointList = ({commit},Obj) => {
     });
 }
 
-// 接收地图检索参数( 类型检索值 )
+// 地图检索参数( 类型检索值 )
 export const setSearchMapValue_btypeValue = ({commit},Obj) => {
     // 保存要改变的值 到 统一数组对象 searchValue_Arr
     let searchValue_Arr = [
@@ -254,4 +254,46 @@ export const setSearchMapValue_btypeValue = ({commit},Obj) => {
     commit('addSearchMapValue', searchValue_Arr)        // 交给统一处理任务
 }
 
+// 地图检索参数( 日价格区间 )
+export const setSearchMapValue_dayPriceValue = ({commit},Obj) => {
+    // 保存要改变的值 到 统一数组对象 searchValue_Arr
+    let searchValue_Arr = [
+        {
+            attrName:   'priceDayMin'                   // 要改变的属性名称
+            ,setValue:  Obj.priceDayMin                 // 要改变的类型值
+        }
+        ,{
+            attrName:   'priceDayMax'                   // 要改变的属性名称
+            ,setValue:  Obj.priceDayMax                 // 要改变的类型值
+        }
+    ]
+    commit('addSearchMapValue', searchValue_Arr)        // 交给统一处理任务
+}
 
+// 地图检索参数( 月价格区间 )
+export const setSearchMapValue_monthPriceValue = ({commit},Obj) => {
+    // 保存要改变的值 到 统一数组对象 searchValue_Arr
+    let searchValue_Arr = [
+        {
+            attrName:   'priceMonthMin'                 // 要改变的属性名称
+            ,setValue:  Obj.priceMonthMin               // 要改变的类型值
+        }
+        ,{
+            attrName:   'priceMonthMax'                 // 要改变的属性名称
+            ,setValue:  Obj.priceMonthMax               // 要改变的类型值
+        }
+    ]
+    commit('addSearchMapValue', searchValue_Arr)        // 交给统一处理任务
+}
+
+// 地图检索参数( 装修级别 )
+export const setSearchMapValue_decorationValue = ({commit},Obj) => {
+    // 保存要改变的值 到 统一数组对象 searchValue_Arr
+    let searchValue_Arr = [
+        {
+            attrName:   'decoration'                    // 要改变的属性名称
+            ,setValue:  Obj.decoration                  // 要改变的类型值
+        }
+    ]
+    commit('addSearchMapValue', searchValue_Arr)        // 交给统一处理任务
+}
