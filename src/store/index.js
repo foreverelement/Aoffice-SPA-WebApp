@@ -3,13 +3,15 @@ import  Vuex                from 'vuex'
 import  * as getters        from './getters'
 import  * as actions        from './actions'
 import  * as mutations      from './mutations'
-// "服务" - "家具"详情 模块交互
 
 Vue.use(Vuex)
 // 状态树
 const state = {
-    city: {                                             // 查询城市
+    deviceInfo: {}                                       // 设备信息
+    ,city: {                                             // 查询城市
         cityCode: '3702'
+        ,cityLongitude: '120.292284'                    // 当前城市 - 经度
+        ,cityLatitude:  '36.126949'                     // 当前城市 - 纬度
     }
     ,loadingState: {
         judgeShow: true

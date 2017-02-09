@@ -49,7 +49,7 @@ export default {
     ,mounted: function() {
         this.setRegionPointList()   // 首先 获取行政区数据
         this.setPriceStyle()        // 改变价格菜单价格 事件
-        this.firstLoading()        // 删除'日价格'元素
+        this.firstLoading()         // 删除'日价格'元素
     }
     ,methods: {
         // 根据btype类型, 修改下拉菜单价格类型

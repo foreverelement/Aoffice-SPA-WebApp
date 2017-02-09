@@ -18,21 +18,6 @@ export const addState = ({commit}) => {
     // 本地JSON
     // axios.post('./static/data.json')
 
-    // 未使用QS方法
-    // var params = new URLSearchParams();
-    // params.append('cityCode', '3702');
-    // params.append('page', '1');
-    // axios.post('http://app.aplusoffice.cn/api/index', params)
-    // .then(function (response) {
-    //     let get_data = response.data.resultData
-    //     // console.log('get_data值' + get_data)
-    //     // console.dir(get_data)
-    //     commit('addState',get_data)
-    // })
-    // .catch(function (error) {
-    //     console.log(error);
-    // });
-
     // 使用QS获取数据
     axios.post('http://app.aplusoffice.cn/api/index',qs.stringify({ 'cityCode':3702, 'page': 1 }))
     .then(function (response) {
@@ -42,6 +27,14 @@ export const addState = ({commit}) => {
     .catch(function (error) {
         console.log(error)
     });
+}
+
+export const saveDeviceInfo = ({commit},Obj) => {
+    let deviceInfo_Obj = {
+        attrName:   Obj.attrName                        // 保存的属性名称
+        ,saveValue:  Obj.device_height                  // 保存的属性值
+    }
+    commit('addDeviceInfo', deviceInfo_Obj)
 }
 
 /* 后期将modules 分出 */

@@ -26,6 +26,7 @@ export default {
     ,mounted: function () {
         this.addState()
         this.addLoadingAnimation()                         // 添加Loading动画
+        this.saveDeviceInfo()                              // 保存设备必要信息
     }
     ,methods: {
         // 目的: 触发Action 获取首页数据
@@ -41,6 +42,15 @@ export default {
                 let loadingImg = document.getElementById("loading").firstChild          // 获取loading的img对象
                 loadingImg.setAttribute("class","animated rubberBand")                  // 改变它的class
             }, 1500)
+        }
+        // 目的: 保存设备必要信息
+        ,saveDeviceInfo() {
+            const windowScreen_Height = window.screen.height
+            this.$store.dispatch({
+                type: 'saveDeviceInfo'
+                ,attrName:      'device_height'
+                ,device_height:  windowScreen_Height
+            })
         }
     }
 }

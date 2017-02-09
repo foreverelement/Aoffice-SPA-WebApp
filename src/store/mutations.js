@@ -33,7 +33,12 @@ export const addState = (state,res) => {
     }
     setTimeout(function() {
         state.loadingState['judgeShow'] = false            // 当有数据时,设置加载动画状态为false
-    },6000)
+    },4500)
+}
+
+// 保存设备必要信息
+export const addDeviceInfo =( state,res ) => {
+    state.deviceInfo[ res.attrName ] = res.saveValue                                                                                // 将数组直接赋给state
 }
 
 // 后期将modules 分出
