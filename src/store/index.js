@@ -67,9 +67,9 @@ const state = {
         ,priceMonthMax:         ''                                      // 价格( 月 )最大值
         ,decoration:            ''                                      // 装修( A:豪装; B:精装; C:简装; D:毛坯 )
         // 经过检索后的渲染对象
-        ,administrative_Arr:    ''                                      // 行政区数组
-        ,business_Arr:          ''                                      // 商圈数组
-        ,building_Arr:          ''                                      // 办公楼数组
+        ,administrative_Arr:    []                                      // 行政区数组
+        ,business_Arr:          []                                      // 商圈数组
+        ,building_Arr:          []                                      // 办公楼数组
     }
     ,searchMapRequest_Arr: []                                           // 当发生地图检索请求时,向内推入一个空对象( 触发watch观察事件 )
 }

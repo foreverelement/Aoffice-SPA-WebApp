@@ -47,13 +47,21 @@ export default {
         }
     }
     ,mounted: function() {
-        this.setRegionPointList()   // 首先 获取行政区数据
+        this.setRegionPointList()   // 首先 获取行政区数据( 可能无效了 )
+        this.firstLoadingMap()      // 初次渲染地图页面( 直接使用默认检索条件, 不需要参数 )
         this.setPriceStyle()        // 改变价格菜单价格 事件
         this.firstLoading()         // 删除'日价格'元素
     }
     ,methods: {
+        // 目的: 初次渲染地图页面( 直接使用默认检索条件, 不需要参数 )
+        firstLoadingMap() {
+            this.$store.dispatch({
+                type: 'firstLoadingMap',
+                cityCode: this.$store.state.city.cityCode                                   // 查询当前城市 —— 行政区数据
+            })
+        }
         // 根据btype类型, 修改下拉菜单价格类型
-        setPriceStyle(day,month){
+        ,setPriceStyle(day,month){
             let dayPricePrice_Obj   = document.getElementById('dayPrice')
                 dayPricePrice_Obj.setAttribute('style', 'display:'+ day )
             let monthPrice_Obj      = document.getElementById('monthPrice')
