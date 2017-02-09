@@ -252,3 +252,10 @@ export const addSearchMapValue =( state,res ) => {
     let null_Obj = {}                                                                                                       // 创建一个空对象
     state.searchMapRequest_Arr.push(null_Obj)                                                                               // 将空对象推入 '记录地图检索请求' 的数组中
 }
+
+export const addFirstLoadingMap =( state,res ) => {
+    state.searchValue.administrative_Arr = res                                                                              // 将数组直接赋给state
+    // 初始页面需要添加一次状态
+    let null_Obj = {}                                                                                                       // 创建一个空对象
+    state.searchMapRequest_Arr.push(null_Obj)                                                                               // 将空对象推入 '记录地图检索请求' 的数组中
+}

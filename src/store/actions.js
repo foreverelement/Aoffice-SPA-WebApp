@@ -290,3 +290,19 @@ export const setSearchMapValue_decorationValue = ({commit},Obj) => {
     ]
     commit('addSearchMapValue', searchValue_Arr)        // 交给统一处理任务
 }
+
+// 初次渲染地图页面( 直接使用默认检索条件, 不需要参数 )
+export const firstLoadingMap = ({commit}, Obj) => {
+    // qs方法传参数
+    axios.post('http://app.aplusoffice.cn/api/map/getRegionPointList', qs.stringify({ 'cityCode': Obj.cityCode }))
+    .then(function (response) {
+        let set_administrative = response.data.resultData
+        // console.dir('set_RegionPointList值' + set_RegionPointList)
+        // commit('addRegionPointList',set_RegionPointList)
+        commit('addFirstLoadingMap',set_administrative)                        // 初次渲染地图页面
+    })
+    .catch(function (error) {
+        console.log(error)
+    });
+
+}
